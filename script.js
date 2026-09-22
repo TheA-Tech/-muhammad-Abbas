@@ -345,11 +345,11 @@ document.addEventListener("DOMContentLoaded", () => {
         Example:
 
         const businessEmail =
-            "yourname@gmail.com";
+            "abbasnazeer098@gmail.com";
     */
 
     const businessEmail =
-        "YOUR_EMAIL@example.com";
+        "abbasnazeer098@gmail.com";
 
 
     if (contactForm) {

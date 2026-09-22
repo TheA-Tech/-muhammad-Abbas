@@ -1,59 +1,106 @@
 /* =========================================================
-   MUHAMMAD ABBAS — PORTFOLIO
-   Interactive Portfolio JavaScript
+   THE A TECH — PROFESSIONAL PORTFOLIO
+   Final JavaScript
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
-       1. MOBILE MENU
+       1. PAGE LOADER — NEVER GET STUCK
        ===================================================== */
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
+    const pageLoader = document.getElementById("pageLoader");
 
-    if (menuToggle && navLinks) {
+    function finishLoader() {
+        if (!pageLoader) return;
 
-        menuToggle.addEventListener("click", () => {
-            navLinks.classList.toggle("active");
-            menuToggle.classList.toggle("active");
+        pageLoader.classList.add("is-hidden");
+
+        setTimeout(() => {
+            if (pageLoader && pageLoader.parentNode) {
+                pageLoader.remove();
+            }
+        }, 900);
+    }
+
+    window.addEventListener("load", finishLoader);
+
+    /* Safety fallback */
+    setTimeout(finishLoader, 2500);
+
+
+    /* =====================================================
+       2. MOBILE MENU
+       ===================================================== */
+
+    const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+    const mobileMenu = document.querySelector(".mobile-menu");
+
+    if (mobileMenuBtn && mobileMenu) {
+
+        mobileMenuBtn.addEventListener("click", () => {
+
+            mobileMenu.classList.toggle("active");
+            mobileMenuBtn.classList.toggle("active");
+
+            const expanded =
+                mobileMenuBtn.getAttribute("aria-expanded") === "true";
+
+            mobileMenuBtn.setAttribute(
+                "aria-expanded",
+                String(!expanded)
+            );
         });
 
-        navLinks.querySelectorAll("a").forEach(link => {
+        mobileMenu.querySelectorAll("a").forEach(link => {
+
             link.addEventListener("click", () => {
-                navLinks.classList.remove("active");
-                menuToggle.classList.remove("active");
+
+                mobileMenu.classList.remove("active");
+                mobileMenuBtn.classList.remove("active");
+
+                mobileMenuBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
             });
+
         });
     }
 
 
     /* =====================================================
-       2. NAVBAR SCROLL EFFECT
+       3. NAVBAR SCROLL EFFECT
        ===================================================== */
 
-    const navbar = document.querySelector(".navbar");
+    const navbar = document.getElementById("navbar");
 
     function updateNavbar() {
 
         if (!navbar) return;
 
-        if (window.scrollY > 50) {
+        if (window.scrollY > 40) {
             navbar.classList.add("scrolled");
         } else {
             navbar.classList.remove("scrolled");
         }
     }
 
-    window.addEventListener("scroll", updateNavbar);
+    window.addEventListener(
+        "scroll",
+        updateNavbar,
+        { passive: true }
+    );
+
     updateNavbar();
 
 
     /* =====================================================
-       3. SCROLL PROGRESS BAR
+       4. SCROLL PROGRESS
        ===================================================== */
 
-    const progressBar = document.querySelector(".scroll-progress");
+    const progressBar =
+        document.getElementById("scrollProgress");
 
     function updateScrollProgress() {
 
@@ -65,24 +112,35 @@ document.addEventListener("DOMContentLoaded", () => {
             document.documentElement.scrollHeight -
             window.innerHeight;
 
-        const progress =
-            documentHeight > 0
-                ? (scrollTop / documentHeight) * 100
-                : 0;
+        if (documentHeight <= 0) return;
 
-        progressBar.style.width = `${progress}%`;
+        const progress =
+            (scrollTop / documentHeight) * 100;
+
+        progressBar.style.width =
+            `${Math.min(progress, 100)}%`;
     }
 
-    window.addEventListener("scroll", updateScrollProgress);
+    window.addEventListener(
+        "scroll",
+        updateScrollProgress,
+        { passive: true }
+    );
+
     updateScrollProgress();
 
 
     /* =====================================================
-       4. ACTIVE NAVIGATION
+       5. ACTIVE NAVIGATION
        ===================================================== */
 
-    const sections = document.querySelectorAll("section[id]");
-    const navItems = document.querySelectorAll(".nav-links a");
+    const sections =
+        document.querySelectorAll("section[id]");
+
+    const navLinks =
+        document.querySelectorAll(
+            ".nav-link[href^='#']"
+        );
 
     function updateActiveNav() {
 
@@ -91,73 +149,67 @@ document.addEventListener("DOMContentLoaded", () => {
         sections.forEach(section => {
 
             const sectionTop =
-                section.offsetTop - 180;
+                section.offsetTop - 160;
 
-            const sectionHeight =
-                section.offsetHeight;
-
-            if (
-                window.scrollY >= sectionTop &&
-                window.scrollY < sectionTop + sectionHeight
-            ) {
-                currentSection = section.getAttribute("id");
+            if (window.scrollY >= sectionTop) {
+                currentSection = section.id;
             }
+
         });
 
-        navItems.forEach(link => {
+        navLinks.forEach(link => {
 
             link.classList.remove("active");
 
-            const href = link.getAttribute("href");
+            const href =
+                link.getAttribute("href");
 
             if (href === `#${currentSection}`) {
                 link.classList.add("active");
             }
+
         });
     }
 
-    window.addEventListener("scroll", updateActiveNav);
+    window.addEventListener(
+        "scroll",
+        updateActiveNav,
+        { passive: true }
+    );
+
     updateActiveNav();
 
 
     /* =====================================================
-       5. SMOOTH SCROLL
+       6. SMOOTH SCROLL
        ===================================================== */
 
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
+    document.querySelectorAll(
+        'a[href^="#"]'
+    ).forEach(link => {
 
-        link.addEventListener("click", function (event) {
+        link.addEventListener("click", event => {
 
-            const targetID = this.getAttribute("href");
+            const targetId =
+                link.getAttribute("href");
 
             if (
-                !targetID ||
-                targetID === "#" ||
-                targetID.length < 2
+                !targetId ||
+                targetId === "#"
             ) {
                 return;
             }
 
             const target =
-                document.querySelector(targetID);
+                document.querySelector(targetId);
 
             if (!target) return;
 
             event.preventDefault();
 
-            const navbarHeight =
-                navbar
-                    ? navbar.offsetHeight
-                    : 80;
-
-            const targetPosition =
-                target.getBoundingClientRect().top +
-                window.scrollY -
-                navbarHeight;
-
-            window.scrollTo({
-                top: targetPosition,
-                behavior: "smooth"
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
             });
 
         });
@@ -166,37 +218,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       6. SCROLL REVEAL
+       7. SCROLL REVEAL
        ===================================================== */
 
-    const revealElements = document.querySelectorAll(
-        ".reveal, .reveal-left, .reveal-right, .reveal-scale"
-    );
+    const revealElements =
+        document.querySelectorAll(
+            ".reveal, .reveal-left, .reveal-right, .reveal-scale"
+        );
 
     if ("IntersectionObserver" in window) {
 
         const revealObserver =
             new IntersectionObserver(
-                (entries, observer) => {
+                entries => {
 
                     entries.forEach(entry => {
 
-                        if (!entry.isIntersecting) {
-                            return;
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("show");
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
                         }
-
-                        entry.target.classList.add("show");
-
-                        observer.unobserve(
-                            entry.target
-                        );
 
                     });
 
                 },
                 {
                     threshold: 0.12,
-                    rootMargin: "0px 0px -60px 0px"
+                    rootMargin: "0px 0px -50px 0px"
                 }
             );
 
@@ -214,39 +266,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       7. STAGGER CARD ANIMATIONS
+       8. CARD STAGGER ANIMATION
        ===================================================== */
 
-    const cardGroups = document.querySelectorAll(
-        ".skills-grid, .projects-grid, .services-grid, .stats-grid, .process-grid"
-    );
+    const staggerGroups = [
+        ".skills-layout",
+        ".projects-grid",
+        ".approach-grid",
+        ".about-stats",
+        ".experience-timeline"
+    ];
 
-    cardGroups.forEach(group => {
+    staggerGroups.forEach(selector => {
 
-        const cards = group.children;
+        document.querySelectorAll(selector)
+            .forEach(group => {
 
-        Array.from(cards).forEach((card, index) => {
+                const cards =
+                    group.children;
 
-            card.style.setProperty(
-                "--delay",
-                `${index * 100}ms`
-            );
+                Array.from(cards).forEach(
+                    (card, index) => {
 
-        });
+                        card.style.setProperty(
+                            "--delay",
+                            `${index * 100}ms`
+                        );
+
+                        card.classList.add(
+                            "stagger-item"
+                        );
+                    }
+                );
+
+            });
 
     });
 
 
     /* =====================================================
-       8. TYPING TEXT
+       9. TYPING / ROLE ROTATION
        ===================================================== */
 
-    const typingElement =
-        document.querySelector(".typing-text");
+    const typingText =
+        document.getElementById("typingText");
 
-    if (typingElement) {
+    if (typingText) {
 
-        const words = [
+        const roles = [
             "Finance & Accounts",
             "Business Operations",
             "Excel & Reporting",
@@ -254,34 +321,34 @@ document.addEventListener("DOMContentLoaded", () => {
             "Data & Digital Solutions"
         ];
 
-        let wordIndex = 0;
+        let roleIndex = 0;
         let characterIndex = 0;
         let deleting = false;
 
-        function typeEffect() {
+        function typeRole() {
 
-            const currentWord =
-                words[wordIndex];
+            const currentRole =
+                roles[roleIndex];
 
             if (!deleting) {
 
-                typingElement.textContent =
-                    currentWord.substring(
-                        0,
-                        characterIndex + 1
-                    );
-
                 characterIndex++;
 
+                typingText.textContent =
+                    currentRole.substring(
+                        0,
+                        characterIndex
+                    );
+
                 if (
-                    characterIndex ===
-                    currentWord.length
+                    characterIndex >=
+                    currentRole.length
                 ) {
 
                     deleting = true;
 
                     setTimeout(
-                        typeEffect,
+                        typeRole,
                         1600
                     );
 
@@ -290,114 +357,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
             } else {
 
-                typingElement.textContent =
-                    currentWord.substring(
-                        0,
-                        characterIndex - 1
-                    );
-
                 characterIndex--;
 
-                if (characterIndex === 0) {
+                typingText.textContent =
+                    currentRole.substring(
+                        0,
+                        characterIndex
+                    );
+
+                if (characterIndex <= 0) {
 
                     deleting = false;
 
-                    wordIndex =
-                        (wordIndex + 1) %
-                        words.length;
+                    roleIndex =
+                        (roleIndex + 1) %
+                        roles.length;
                 }
             }
 
-            const speed =
-                deleting ? 45 : 75;
-
             setTimeout(
-                typeEffect,
-                speed
+                typeRole,
+                deleting ? 45 : 80
             );
         }
 
-        typeEffect();
+        typeRole();
     }
 
 
     /* =====================================================
-       9. HERO PARALLAX
+       10. HERO PARALLAX
        ===================================================== */
-
-    const hero = document.querySelector(".hero");
 
     const heroVisual =
         document.querySelector(".hero-visual");
 
-    const floatingCards =
-        document.querySelectorAll(
-            ".floating-card"
-        );
-
     if (
-        hero &&
         heroVisual &&
-        window.innerWidth > 768
+        window.matchMedia("(min-width: 901px)").matches
     ) {
 
-        hero.addEventListener(
-            "mousemove",
-            event => {
-
-                const rect =
-                    hero.getBoundingClientRect();
-
-                const x =
-                    (event.clientX -
-                        rect.left) /
-                    rect.width -
-                    0.5;
-
-                const y =
-                    (event.clientY -
-                        rect.top) /
-                    rect.height -
-                    0.5;
-
-                heroVisual.style.transform =
-                    `translate3d(${x * 15}px, ${y * 15}px, 0)`;
-
-                floatingCards.forEach(
-                    (card, index) => {
-
-                        const amount =
-                            index % 2 === 0
-                                ? 10
-                                : -10;
-
-                        card.style.transform =
-                            `translate(${x * amount}px, ${y * amount}px)`;
-                    }
-                );
-
-            }
-        );
-
-        hero.addEventListener(
-            "mouseleave",
+        window.addEventListener(
+            "scroll",
             () => {
 
+                const scroll =
+                    window.scrollY;
+
+                if (scroll > 900) return;
+
+                const movement =
+                    scroll * 0.08;
+
                 heroVisual.style.transform =
-                    "translate3d(0,0,0)";
+                    `translateY(${movement}px)`;
 
-                floatingCards.forEach(card => {
-                    card.style.transform =
-                        "translate(0,0)";
-                });
-
-            }
+            },
+            { passive: true }
         );
     }
 
 
     /* =====================================================
-       10. PROFILE IMAGE TILT
+       11. PROFILE IMAGE TILT
        ===================================================== */
 
     const profileImage =
@@ -405,7 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (
         profileImage &&
-        window.innerWidth > 768
+        window.matchMedia("(min-width: 901px)").matches
     ) {
 
         profileImage.addEventListener(
@@ -416,25 +438,22 @@ document.addEventListener("DOMContentLoaded", () => {
                     profileImage.getBoundingClientRect();
 
                 const x =
-                    event.clientX -
-                    rect.left;
+                    event.clientX - rect.left;
 
                 const y =
-                    event.clientY -
-                    rect.top;
+                    event.clientY - rect.top;
 
                 const rotateY =
-                    ((x / rect.width) - 0.5) * 10;
+                    ((x / rect.width) - 0.5) * 12;
 
                 const rotateX =
-                    ((y / rect.height) - 0.5) * -10;
+                    ((y / rect.height) - 0.5) * -12;
 
                 profileImage.style.transform =
-                    `perspective(700px)
+                    `perspective(800px)
                      rotateX(${rotateX}deg)
                      rotateY(${rotateY}deg)
-                     scale(1.03)`;
-
+                     translateZ(10px)`;
             }
         );
 
@@ -443,60 +462,82 @@ document.addEventListener("DOMContentLoaded", () => {
             () => {
 
                 profileImage.style.transform =
-                    "perspective(700px) rotateX(0) rotateY(0) scale(1)";
-
+                    "";
             }
         );
     }
 
 
     /* =====================================================
-       11. ANIMATED COUNTERS
+       12. ANIMATED COUNTERS
+       Supports:
+       .counter[data-target]
+       [data-counter]
        ===================================================== */
 
     const counters =
         document.querySelectorAll(
-            "[data-counter]"
+            ".counter[data-target], [data-counter]"
         );
 
     function animateCounter(element) {
 
-        const target =
-            parseInt(
-                element.dataset.counter,
-                10
+        if (element.dataset.animated === "true") {
+            return;
+        }
+
+        element.dataset.animated = "true";
+
+        const targetValue =
+            parseFloat(
+                element.dataset.target ||
+                element.dataset.counter ||
+                "0"
             );
 
-        if (isNaN(target)) return;
+        if (Number.isNaN(targetValue)) return;
 
         const duration = 1400;
-        const startTime = performance.now();
+
+        const startTime =
+            performance.now();
 
         function updateCounter(currentTime) {
 
+            const elapsed =
+                currentTime - startTime;
+
             const progress =
                 Math.min(
-                    (currentTime - startTime) /
-                    duration,
+                    elapsed / duration,
                     1
                 );
 
             const eased =
-                1 - Math.pow(1 - progress, 3);
-
-            const value =
-                Math.floor(
-                    eased * target
+                1 -
+                Math.pow(
+                    1 - progress,
+                    3
                 );
 
-            element.textContent = value;
+            const value =
+                Math.round(
+                    targetValue * eased
+                );
+
+            element.textContent =
+                value.toLocaleString();
 
             if (progress < 1) {
+
                 requestAnimationFrame(
                     updateCounter
                 );
+
             } else {
-                element.textContent = target;
+
+                element.textContent =
+                    targetValue.toLocaleString();
             }
         }
 
@@ -505,58 +546,60 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     }
 
+    if ("IntersectionObserver" in window) {
 
-    if (counters.length) {
+        const counterObserver =
+            new IntersectionObserver(
+                entries => {
 
-        if ("IntersectionObserver" in window) {
+                    entries.forEach(entry => {
 
-            const counterObserver =
-                new IntersectionObserver(
-                    entries => {
+                        if (entry.isIntersecting) {
 
-                        entries.forEach(entry => {
+                            animateCounter(
+                                entry.target
+                            );
 
-                            if (
-                                entry.isIntersecting &&
-                                !entry.target.dataset.animated
-                            ) {
+                            counterObserver.unobserve(
+                                entry.target
+                            );
+                        }
 
-                                entry.target.dataset.animated =
-                                    "true";
+                    });
 
-                                animateCounter(
-                                    entry.target
-                                );
-                            }
+                },
+                {
+                    threshold: 0.5
+                }
+            );
 
-                        });
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
 
-                    },
-                    {
-                        threshold: 0.7
-                    }
-                );
+    } else {
 
-            counters.forEach(counter => {
-                counterObserver.observe(counter);
-            });
-
-        }
+        counters.forEach(
+            animateCounter
+        );
     }
 
 
     /* =====================================================
-       12. SKILL BAR ANIMATION
+       13. WORKFLOW ANIMATION
+       Supports:
+       .workflow-item
+       .workflow-step
        ===================================================== */
 
-    const skillBars =
+    const workflowItems =
         document.querySelectorAll(
-            ".skill-progress"
+            ".workflow-item, .workflow-step"
         );
 
-    if (skillBars.length) {
+    if ("IntersectionObserver" in window) {
 
-        const skillObserver =
+        const workflowObserver =
             new IntersectionObserver(
                 entries => {
 
@@ -566,22 +609,12 @@ document.addEventListener("DOMContentLoaded", () => {
                             entry.isIntersecting
                         ) {
 
-                            const bar =
-                                entry.target;
+                            entry.target.classList.add(
+                                "active-workflow"
+                            );
 
-                            const width =
-                                bar.dataset.width ||
-                                bar.getAttribute(
-                                    "data-width"
-                                );
-
-                            if (width) {
-                                bar.style.width =
-                                    width;
-                            }
-
-                            skillObserver.unobserve(
-                                bar
+                            workflowObserver.unobserve(
+                                entry.target
                             );
                         }
 
@@ -589,174 +622,83 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 },
                 {
-                    threshold: 0.4
+                    threshold: 0.35
                 }
             );
 
-        skillBars.forEach(bar => {
-            skillObserver.observe(bar);
+        workflowItems.forEach(item => {
+            workflowObserver.observe(item);
         });
     }
 
 
     /* =====================================================
-       13. HORIZONTAL SCROLL VISUALS
+       14. FINANCE / ERP FLOW ANIMATION
        ===================================================== */
 
-    const horizontalItems =
+    const flowNodes =
         document.querySelectorAll(
-            ".horizontal-item"
+            ".finance-visual .workflow-item, " +
+            ".erp-flow .workflow-item, " +
+            ".case-node"
         );
 
-    if (horizontalItems.length) {
+    flowNodes.forEach((node, index) => {
 
-        window.addEventListener(
-            "scroll",
-            () => {
+        node.style.setProperty(
+            "--flow-delay",
+            `${index * 180}ms`
+        );
 
-                if (window.innerWidth < 768) {
-                    return;
-                }
+    });
 
-                horizontalItems.forEach(
-                    (item, index) => {
 
-                        const rect =
-                            item.getBoundingClientRect();
+    /* =====================================================
+       15. THEA BOOKS DASHBOARD ANIMATION
+       ===================================================== */
 
-                        const center =
-                            window.innerHeight / 2;
+    const chartBars =
+        document.querySelectorAll(
+            ".chart-bar"
+        );
 
-                        const distance =
-                            (rect.top +
-                                rect.height / 2) -
-                            center;
+    if ("IntersectionObserver" in window) {
 
-                        const movement =
-                            Math.max(
-                                -30,
-                                Math.min(
-                                    30,
-                                    distance * 0.08
-                                )
+        const chartObserver =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "chart-visible"
                             );
 
-                        item.style.transform =
-                            `translateX(${movement}px)`;
+                            chartObserver.unobserve(
+                                entry.target
+                            );
+                        }
 
-                    }
-                );
-
-            },
-            {
-                passive: true
-            }
-        );
-    }
-
-
-    /* =====================================================
-       14. PROCESS / WORKFLOW ANIMATION
-       ===================================================== */
-
-    const workflowSteps =
-        document.querySelectorAll(
-            ".workflow-step"
-        );
-
-    if (workflowSteps.length) {
-
-        workflowSteps.forEach(
-            (step, index) => {
-
-                step.addEventListener(
-                    "mouseenter",
-                    () => {
-
-                        workflowSteps.forEach(
-                            item => {
-                                item.classList.remove(
-                                    "active"
-                                );
-                            }
-                        );
-
-                        step.classList.add(
-                            "active"
-                        );
-
-                    }
-                );
-
-            }
-        );
-    }
-
-
-    /* =====================================================
-       15. THEA BOOKS INTERACTIVE TABS
-       ===================================================== */
-
-    const theaTabs =
-        document.querySelectorAll(
-            "[data-thea-tab]"
-        );
-
-    const theaPanels =
-        document.querySelectorAll(
-            "[data-thea-panel]"
-        );
-
-    if (
-        theaTabs.length &&
-        theaPanels.length
-    ) {
-
-        theaTabs.forEach(tab => {
-
-            tab.addEventListener(
-                "click",
-                () => {
-
-                    const target =
-                        tab.dataset.theaTab;
-
-                    theaTabs.forEach(item => {
-                        item.classList.remove(
-                            "active"
-                        );
                     });
 
-                    theaPanels.forEach(panel => {
-                        panel.classList.remove(
-                            "active"
-                        );
-                    });
-
-                    tab.classList.add(
-                        "active"
-                    );
-
-                    const panel =
-                        document.querySelector(
-                            `[data-thea-panel="${target}"]`
-                        );
-
-                    if (panel) {
-                        panel.classList.add(
-                            "active"
-                        );
-                    }
-
+                },
+                {
+                    threshold: 0.25
                 }
             );
 
+        chartBars.forEach(bar => {
+            chartObserver.observe(bar);
         });
     }
 
 
     /* =====================================================
-       16. PROJECT CARD MOUSE MOVEMENT
+       16. PROJECT CARD MOUSE EFFECT
        ===================================================== */
 
     const projectCards =
@@ -765,8 +707,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     if (
-        projectCards.length &&
-        window.innerWidth > 900
+        window.matchMedia("(min-width: 901px)").matches
     ) {
 
         projectCards.forEach(card => {
@@ -786,18 +727,17 @@ document.addEventListener("DOMContentLoaded", () => {
                         event.clientY -
                         rect.top;
 
-                    const rotateY =
-                        ((x / rect.width) - 0.5) * 5;
-
                     const rotateX =
                         ((y / rect.height) - 0.5) * -5;
 
+                    const rotateY =
+                        ((x / rect.width) - 0.5) * 5;
+
                     card.style.transform =
-                        `perspective(900px)
+                        `perspective(1000px)
                          rotateX(${rotateX}deg)
                          rotateY(${rotateY}deg)
                          translateY(-5px)`;
-
                 }
             );
 
@@ -805,23 +745,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 "mouseleave",
                 () => {
 
-                    card.style.transform =
-                        "";
-
+                    card.style.transform = "";
                 }
             );
-
         });
     }
 
 
     /* =====================================================
-       17. SERVICE CARDS
+       17. SERVICE / SKILL CARD INTERACTION
        ===================================================== */
 
     const serviceCards =
         document.querySelectorAll(
-            ".service-card"
+            ".skill-card"
         );
 
     serviceCards.forEach(card => {
@@ -831,20 +768,17 @@ document.addEventListener("DOMContentLoaded", () => {
             () => {
 
                 serviceCards.forEach(
-                    item => {
+                    item =>
                         item.classList.remove(
                             "selected"
-                        );
-                    }
+                        )
                 );
 
                 card.classList.add(
                     "selected"
                 );
-
             }
         );
-
     });
 
 
@@ -854,7 +788,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const contactForm =
         document.querySelector(
-            "#contactForm"
+            ".contact-form"
         );
 
     if (contactForm) {
@@ -866,105 +800,56 @@ document.addEventListener("DOMContentLoaded", () => {
                 event.preventDefault();
 
                 const name =
-                    document.querySelector(
-                        "#name"
+                    document.getElementById(
+                        "name"
                     )?.value.trim();
 
                 const email =
-                    document.querySelector(
-                        "#email"
+                    document.getElementById(
+                        "email"
+                    )?.value.trim();
+
+                const subject =
+                    document.getElementById(
+                        "subject"
                     )?.value.trim();
 
                 const message =
-                    document.querySelector(
-                        "#message"
+                    document.getElementById(
+                        "message"
                     )?.value.trim();
 
-                if (
-                    !name ||
-                    !email ||
-                    !message
-                ) {
+                const receiver =
+                    "abbasnazeer098@gmail.com";
 
-                    showFormMessage(
-                        "Please fill in all fields.",
-                        "error"
-                    );
-
-                    return;
-                }
-
-                const subject =
-                    encodeURIComponent(
-                        `Portfolio Contact — ${name}`
-                    );
+                const mailSubject =
+                    subject ||
+                    `Portfolio Contact from ${name || "Visitor"}`;
 
                 const body =
-                    encodeURIComponent(
-                        `Name: ${name}\n` +
-                        `Email: ${email}\n\n` +
-                        `Message:\n${message}`
-                    );
+                    `Name: ${name || ""}\n` +
+                    `Email: ${email || ""}\n\n` +
+                    `${message || ""}`;
+
+                const mailto =
+                    `mailto:${receiver}` +
+                    `?subject=${encodeURIComponent(mailSubject)}` +
+                    `&body=${encodeURIComponent(body)}`;
 
                 window.location.href =
-                    `mailto:abbasnazeer098@gmail.com?subject=${subject}&body=${body}`;
-
-                showFormMessage(
-                    "Opening your email application...",
-                    "success"
-                );
-
+                    mailto;
             }
         );
-    }
-
-
-    function showFormMessage(
-        message,
-        type
-    ) {
-
-        let messageBox =
-            document.querySelector(
-                ".form-message"
-            );
-
-        if (!messageBox) {
-
-            messageBox =
-                document.createElement(
-                    "div"
-                );
-
-            messageBox.className =
-                "form-message";
-
-            if (contactForm) {
-                contactForm.appendChild(
-                    messageBox
-                );
-            }
-        }
-
-        messageBox.textContent =
-            message;
-
-        messageBox.className =
-            `form-message ${type}`;
-
     }
 
 
     /* =====================================================
-       19. COPY PHONE / EMAIL
+       19. COPY TO CLIPBOARD
        ===================================================== */
 
-    const copyButtons =
-        document.querySelectorAll(
-            "[data-copy]"
-        );
-
-    copyButtons.forEach(button => {
+    document.querySelectorAll(
+        "[data-copy]"
+    ).forEach(button => {
 
         button.addEventListener(
             "click",
@@ -981,37 +866,30 @@ document.addEventListener("DOMContentLoaded", () => {
                         value
                     );
 
-                    const oldText =
+                    const original =
                         button.textContent;
 
                     button.textContent =
                         "Copied!";
 
-                    setTimeout(
-                        () => {
-                            button.textContent =
-                                oldText;
-                        },
-                        1500
-                    );
+                    setTimeout(() => {
+                        button.textContent =
+                            original;
+                    }, 1400);
 
                 } catch (error) {
 
-                    console.log(
-                        "Copy failed:",
-                        error
+                    console.warn(
+                        "Clipboard unavailable."
                     );
-
                 }
-
             }
         );
-
     });
 
 
     /* =====================================================
-       20. SCROLL-BASED PARALLAX
+       20. PARALLAX ELEMENTS
        ===================================================== */
 
     const parallaxElements =
@@ -1019,15 +897,17 @@ document.addEventListener("DOMContentLoaded", () => {
             "[data-parallax]"
         );
 
-    if (parallaxElements.length) {
+    if (
+        parallaxElements.length &&
+        window.matchMedia("(min-width: 901px)").matches
+    ) {
 
         window.addEventListener(
             "scroll",
             () => {
 
-                if (window.innerWidth < 768) {
-                    return;
-                }
+                const scroll =
+                    window.scrollY;
 
                 parallaxElements.forEach(
                     element => {
@@ -1035,26 +915,15 @@ document.addEventListener("DOMContentLoaded", () => {
                         const speed =
                             parseFloat(
                                 element.dataset.parallax
-                            ) || 0.15;
-
-                        const rect =
-                            element.getBoundingClientRect();
-
-                        const offset =
-                            (rect.top -
-                                window.innerHeight / 2) *
-                            speed;
+                            ) || 0.05;
 
                         element.style.transform =
-                            `translateY(${offset}px)`;
-
+                            `translateY(${scroll * speed}px)`;
                     }
                 );
 
             },
-            {
-                passive: true
-            }
+            { passive: true }
         );
     }
 
@@ -1063,31 +932,24 @@ document.addEventListener("DOMContentLoaded", () => {
        21. FLOATING PARTICLES
        ===================================================== */
 
-    const particleContainer =
-        document.querySelector(
-            ".hero-particles"
-        );
+    const hero =
+        document.querySelector(".hero");
 
-    if (particleContainer) {
+    if (hero) {
 
-        const particleCount =
-            window.innerWidth < 600
-                ? 12
-                : 25;
+        const particleContainer =
+            document.createElement("div");
 
-        for (
-            let i = 0;
-            i < particleCount;
-            i++
-        ) {
+        particleContainer.className =
+            "hero-particles";
+
+        for (let i = 0; i < 22; i++) {
 
             const particle =
-                document.createElement(
-                    "span"
-                );
+                document.createElement("span");
 
             particle.className =
-                "particle";
+                "hero-particle";
 
             particle.style.left =
                 `${Math.random() * 100}%`;
@@ -1099,25 +961,31 @@ document.addEventListener("DOMContentLoaded", () => {
                 `${Math.random() * 5}s`;
 
             particle.style.animationDuration =
-                `${4 + Math.random() * 5}s`;
+                `${5 + Math.random() * 7}s`;
 
             particleContainer.appendChild(
                 particle
             );
         }
+
+        hero.appendChild(
+            particleContainer
+        );
     }
 
 
     /* =====================================================
-       22. CURSOR GLOW — DESKTOP ONLY
+       22. DESKTOP CURSOR GLOW
        ===================================================== */
 
-    if (window.innerWidth > 1000) {
+    if (
+        window.matchMedia(
+            "(pointer: fine) and (min-width: 901px)"
+        ).matches
+    ) {
 
         const cursorGlow =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
         cursorGlow.className =
             "cursor-glow";
@@ -1126,112 +994,135 @@ document.addEventListener("DOMContentLoaded", () => {
             cursorGlow
         );
 
+        let mouseX = 0;
+        let mouseY = 0;
+        let glowX = 0;
+        let glowY = 0;
+
         document.addEventListener(
             "mousemove",
             event => {
 
-                cursorGlow.style.left =
-                    `${event.clientX}px`;
-
-                cursorGlow.style.top =
-                    `${event.clientY}px`;
-
-            },
-            {
-                passive: true
+                mouseX = event.clientX;
+                mouseY = event.clientY;
             }
         );
 
+        function animateCursor() {
+
+            glowX +=
+                (mouseX - glowX) * 0.12;
+
+            glowY +=
+                (mouseY - glowY) * 0.12;
+
+            cursorGlow.style.transform =
+                `translate3d(${glowX}px, ${glowY}px, 0)`;
+
+            requestAnimationFrame(
+                animateCursor
+            );
+        }
+
+        animateCursor();
     }
 
 
     /* =====================================================
-       23. BUTTON RIPPLE EFFECT
+       23. BUTTON RIPPLE
        ===================================================== */
 
-    const buttons =
-        document.querySelectorAll(
-            ".btn, button"
-        );
-
-    buttons.forEach(button => {
+    document.querySelectorAll(
+        ".btn-primary, .btn-outline, .form-submit, .nav-cta"
+    ).forEach(button => {
 
         button.addEventListener(
             "click",
-            function (event) {
+            event => {
 
                 const rect =
-                    this.getBoundingClientRect();
+                    button.getBoundingClientRect();
 
                 const ripple =
-                    document.createElement(
-                        "span"
-                    );
+                    document.createElement("span");
 
                 ripple.className =
-                    "button-ripple";
+                    "ripple";
+
+                const size =
+                    Math.max(
+                        rect.width,
+                        rect.height
+                    );
+
+                ripple.style.width =
+                    `${size}px`;
+
+                ripple.style.height =
+                    `${size}px`;
 
                 ripple.style.left =
-                    `${event.clientX - rect.left}px`;
+                    `${event.clientX - rect.left - size / 2}px`;
 
                 ripple.style.top =
-                    `${event.clientY - rect.top}px`;
+                    `${event.clientY - rect.top - size / 2}px`;
 
-                this.appendChild(
+                button.appendChild(
                     ripple
                 );
 
-                setTimeout(
-                    () => {
-                        ripple.remove();
-                    },
-                    600
-                );
-
+                setTimeout(() => {
+                    ripple.remove();
+                }, 650);
             }
         );
-
     });
 
 
     /* =====================================================
-       24. IMAGE FALLBACK
+       24. PROFILE IMAGE FALLBACK
        ===================================================== */
 
-    const images =
-        document.querySelectorAll(
-            "img"
+    const profileImg =
+        document.querySelector(
+            ".profile-image img"
         );
 
-    images.forEach(image => {
+    if (profileImg) {
 
-        image.addEventListener(
+        profileImg.addEventListener(
             "error",
             () => {
 
-                image.classList.add(
-                    "image-error"
+                profileImg.style.display =
+                    "none";
+
+                profileImg.parentElement.classList.add(
+                    "image-missing"
                 );
-
-                if (
-                    image.alt &&
-                    image.parentElement
-                ) {
-
-                    image.parentElement.classList.add(
-                        "image-missing"
-                    );
-
-                }
-
             }
         );
+    }
 
+
+    /* =====================================================
+       25. CURRENT YEAR
+       ===================================================== */
+
+    const yearElements =
+        document.querySelectorAll(
+            "#currentYear, .current-year"
+        );
+
+    yearElements.forEach(element => {
+
+        element.textContent =
+            new Date().getFullYear();
     });
 
 
     /* =====================================================
-       25. REDUCED MOTION ACCESSIBILITY
+       26. REDUCED MOTION
        ===================================================== */
 
     const reducedMotion =
@@ -1241,61 +1132,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (reducedMotion.matches) {
 
-        document.documentElement.style.scrollBehavior =
-            "auto";
+        document.documentElement.classList.add(
+            "reduced-motion"
+        );
 
-        document
-            .querySelectorAll(
-                ".reveal, .reveal-left, .reveal-right, .reveal-scale"
-            )
-            .forEach(element => {
-
-                element.classList.add(
-                    "show"
-                );
-
-            });
-
+        revealElements.forEach(element => {
+            element.classList.add("show");
+        });
     }
 
 
     /* =====================================================
-       26. INITIAL PAGE LOAD
+       27. RESIZE SAFETY
        ===================================================== */
 
-    document.body.classList.add(
-        "page-loaded"
-    );
+    let resizeTimer;
 
+    window.addEventListener(
+        "resize",
+        () => {
 
-    /* =====================================================
-       27. YEAR
-       ===================================================== */
+            clearTimeout(resizeTimer);
 
-    const yearElements =
-        document.querySelectorAll(
-            ".current-year"
-        );
+            resizeTimer =
+                setTimeout(() => {
 
-    yearElements.forEach(
-        element => {
-            element.textContent =
-                new Date().getFullYear();
+                    updateNavbar();
+                    updateScrollProgress();
+                    updateActiveNav();
+
+                }, 150);
         }
     );
 
 
     /* =====================================================
-       28. CONSOLE MESSAGE
+       28. PAGE READY
        ===================================================== */
 
-    console.log(
-        "%c Muhammad Abbas — Portfolio ",
-        "font-size:16px;font-weight:bold;"
+    document.body.classList.add(
+        "portfolio-ready"
     );
 
     console.log(
-        "Finance • Accounts • Operations • Digital Solutions"
+        "THE A TECH Portfolio loaded successfully."
     );
 
 });

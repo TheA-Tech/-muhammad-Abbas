@@ -1,177 +1,147 @@
-/* =========================================================
-   MUHAMMAD ABBAS PORTFOLIO
-   JAVASCRIPT
-   Animations + Navigation + THEA Books Interaction
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    /* =====================================================
-       PAGE LOAD
-    ===================================================== */
-
-    setTimeout(function () {
-        document.body.classList.add("page-loaded");
-    }, 100);
+document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       MOBILE NAVIGATION
+       PAGE LOADED
     ===================================================== */
 
-    const mobileButton = document.querySelector(".mobile-menu-button");
-    const navMenu = document.querySelector(".nav-menu");
+    document.body.classList.add("page-loaded");
+
+
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    const mobileButton =
+        document.querySelector(".mobile-menu-button");
+
+    const navMenu =
+        document.querySelector(".nav-menu");
+
 
     if (mobileButton && navMenu) {
 
-        mobileButton.addEventListener("click", function () {
+        mobileButton.addEventListener("click", () => {
 
-            navMenu.classList.toggle("active");
-
-            mobileButton.classList.toggle("active");
+            navMenu.classList.toggle("open");
 
         });
+
+
+        document
+            .querySelectorAll(".nav-menu a")
+            .forEach(link => {
+
+                link.addEventListener("click", () => {
+
+                    navMenu.classList.remove("open");
+
+                });
+
+            });
 
     }
 
-
-    /* =====================================================
-       CLOSE MOBILE MENU AFTER CLICK
-    ===================================================== */
-
-    const navLinks = document.querySelectorAll(".nav-menu a");
-
-    navLinks.forEach(function (link) {
-
-        link.addEventListener("click", function () {
-
-            if (navMenu) {
-                navMenu.classList.remove("active");
-            }
-
-            if (mobileButton) {
-                mobileButton.classList.remove("active");
-            }
-
-        });
-
-    });
 
 
     /* =====================================================
        SMOOTH SCROLL
     ===================================================== */
 
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    document
+        .querySelectorAll('a[href^="#"]')
+        .forEach(link => {
 
-    anchorLinks.forEach(function (link) {
+            link.addEventListener("click", event => {
 
-        link.addEventListener("click", function (event) {
+                const target =
+                    document.querySelector(
+                        link.getAttribute("href")
+                    );
 
-            const targetId = link.getAttribute("href");
-
-            if (!targetId || targetId === "#") {
-                return;
-            }
-
-            const target = document.querySelector(targetId);
-
-            if (target) {
+                if (!target) return;
 
                 event.preventDefault();
 
                 target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
+                    behavior: "smooth"
                 });
 
-            }
+            });
 
         });
 
-    });
 
 
     /* =====================================================
        SCROLL PROGRESS
     ===================================================== */
 
-    const progressBar = document.querySelector(".scroll-progress");
+    const progress =
+        document.getElementById("scrollProgress");
 
-    function updateScrollProgress() {
 
-        if (!progressBar) {
-            return;
-        }
+    function updateProgress() {
 
-        const scrollTop = window.scrollY;
+        if (!progress) return;
 
-        const documentHeight =
-            document.documentElement.scrollHeight -
-            window.innerHeight;
 
-        if (documentHeight <= 0) {
+        const scrollTop =
+            window.scrollY;
 
-            progressBar.style.width = "0%";
+        const pageHeight =
+            document.documentElement.scrollHeight
+            - window.innerHeight;
 
-            return;
-        }
 
-        const progress =
-            (scrollTop / documentHeight) * 100;
+        const percentage =
+            pageHeight > 0
+                ? (scrollTop / pageHeight) * 100
+                : 0;
 
-        progressBar.style.width =
-            Math.min(progress, 100) + "%";
+
+        progress.style.width =
+            percentage + "%";
 
     }
 
+
     window.addEventListener(
         "scroll",
-        updateScrollProgress,
+        updateProgress,
         { passive: true }
     );
 
-    updateScrollProgress();
+
+    updateProgress();
+
 
 
     /* =====================================================
-       ACTIVE NAVIGATION
+       ACTIVE NAV
     ===================================================== */
 
     const sections =
         document.querySelectorAll("section[id]");
 
-    const navigationLinks =
-        document.querySelectorAll(
-            '.nav-menu a[href^="#"]'
-        );
+    const navLinks =
+        document.querySelectorAll(".nav-link");
 
 
-    function updateActiveNavigation() {
+    function updateActiveNav() {
 
-        if (!sections.length) {
-            return;
-        }
+        let current = "";
 
-        const currentPosition =
-            window.scrollY + 180;
 
-        let currentSection = "";
+        sections.forEach(section => {
 
-        sections.forEach(function (section) {
+            const top =
+                section.offsetTop - 150;
 
-            const sectionTop =
-                section.offsetTop;
+            if (window.scrollY >= top) {
 
-            const sectionHeight =
-                section.offsetHeight;
-
-            if (
-                currentPosition >= sectionTop &&
-                currentPosition < sectionTop + sectionHeight
-            ) {
-
-                currentSection =
+                current =
                     section.getAttribute("id");
 
             }
@@ -179,16 +149,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        navigationLinks.forEach(function (link) {
-
-            const linkTarget =
-                link.getAttribute("href");
+        navLinks.forEach(link => {
 
             link.classList.remove("active");
 
+
             if (
-                currentSection &&
-                linkTarget === "#" + currentSection
+                link.getAttribute("href")
+                === "#" + current
             ) {
 
                 link.classList.add("active");
@@ -202,11 +170,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener(
         "scroll",
-        updateActiveNavigation,
+        updateActiveNav,
         { passive: true }
     );
 
-    updateActiveNavigation();
+
+    updateActiveNav();
+
 
 
     /* =====================================================
@@ -217,118 +187,43 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".reveal");
 
 
-    if ("IntersectionObserver" in window) {
+    const revealObserver =
+        new IntersectionObserver(
+            entries => {
 
-        const revealObserver =
-            new IntersectionObserver(
-                function (entries, observer) {
+                entries.forEach(entry => {
 
-                    entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
 
-                        if (entry.isIntersecting) {
+                        entry.target.classList.add(
+                            "visible"
+                        );
 
-                            entry.target.classList.add(
-                                "visible"
-                            );
+                        revealObserver.unobserve(
+                            entry.target
+                        );
 
-                            observer.unobserve(
-                                entry.target
-                            );
+                    }
 
-                        }
+                });
 
-                    });
-
-                },
-                {
-                    threshold: 0.12,
-                    rootMargin: "0px 0px -50px 0px"
-                }
-            );
-
-
-        revealElements.forEach(function (element) {
-
-            revealObserver.observe(element);
-
-        });
-
-    } else {
-
-        revealElements.forEach(function (element) {
-
-            element.classList.add("visible");
-
-        });
-
-    }
-
-
-    /* =====================================================
-       VISUAL CARD 3D EFFECT
-    ===================================================== */
-
-    const visualCard =
-        document.querySelector(".visual-card");
-
-
-    if (
-        visualCard &&
-        window.matchMedia("(pointer: fine)").matches
-    ) {
-
-        visualCard.addEventListener(
-            "mousemove",
-            function (event) {
-
-                const rect =
-                    visualCard.getBoundingClientRect();
-
-                const x =
-                    event.clientX - rect.left;
-
-                const y =
-                    event.clientY - rect.top;
-
-                const centerX =
-                    rect.width / 2;
-
-                const centerY =
-                    rect.height / 2;
-
-                const rotateY =
-                    ((x - centerX) / centerX) * 5;
-
-                const rotateX =
-                    ((centerY - y) / centerY) * 5;
-
-
-                visualCard.style.transform =
-                    "perspective(1000px) " +
-                    "rotateY(" + (-8 + rotateY) + "deg) " +
-                    "rotateX(" + (3 + rotateX) + "deg)";
-
+            },
+            {
+                threshold: 0.12
             }
         );
 
 
-        visualCard.addEventListener(
-            "mouseleave",
-            function () {
+    revealElements.forEach(element => {
 
-                visualCard.style.transform =
-                    "perspective(1000px) " +
-                    "rotateY(-8deg) " +
-                    "rotateX(3deg)";
+        revealObserver.observe(element);
 
-            }
-        );
+    });
 
-    }
 
 
     /* =====================================================
-       THEA BOOKS DASHBOARD MENU
+       THEA BOOKS SIDEBAR
     ===================================================== */
 
     const theaMenuItems =
@@ -337,442 +232,221 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-    const theaDashboardTitle =
+    const theaPageTitle =
         document.querySelector(
             ".thea-topbar h4"
         );
 
 
-    const theaPageLabel =
-        document.querySelector(
-            ".thea-page-label"
-        );
+    theaMenuItems.forEach(item => {
+
+        item.addEventListener("click", () => {
+
+            theaMenuItems.forEach(button => {
+
+                button.classList.remove("active");
+
+            });
 
 
-    theaMenuItems.forEach(function (item) {
-
-        item.addEventListener(
-            "click",
-            function () {
-
-                theaMenuItems.forEach(
-                    function (menuItem) {
-
-                        menuItem.classList.remove(
-                            "active"
-                        );
-
-                    }
-                );
+            item.classList.add("active");
 
 
-                item.classList.add("active");
+            if (theaPageTitle) {
 
-
-                const menuName =
-                    item.getAttribute("data-page");
-
-
-                if (
-                    menuName &&
-                    theaDashboardTitle
-                ) {
-
-                    theaDashboardTitle.textContent =
-                        menuName;
-
-                }
-
-
-                if (
-                    menuName &&
-                    theaPageLabel
-                ) {
-
-                    theaPageLabel.textContent =
-                        "THEA BOOKS / " +
-                        menuName.toUpperCase();
-
-                }
+                theaPageTitle.textContent =
+                    item.dataset.page;
 
             }
-        );
+
+        });
 
     });
+
 
 
     /* =====================================================
        THEA BOOKS WORKFLOW
     ===================================================== */
 
-    const workflowSteps =
+    const workflowButtons =
         document.querySelectorAll(
-            ".thea-workflow-step"
+            ".workflow-step"
         );
 
 
-    const workflowTitle =
-        document.querySelector(
-            ".thea-workflow-detail h3"
+    const workflowPanels =
+        document.querySelectorAll(
+            ".workflow-panel"
         );
 
 
-    const workflowText =
-        document.querySelector(
-            ".thea-workflow-detail p"
-        );
+    workflowButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const workflow =
+                button.dataset.workflow;
 
 
-    const workflowLabel =
-        document.querySelector(
-            ".thea-detail-label"
-        );
+            workflowButtons.forEach(item => {
+
+                item.classList.remove("active");
+
+            });
 
 
-    const workflowData = {
+            workflowPanels.forEach(panel => {
 
-        setup: {
-            label: "01 / COMPANY SETUP",
-            title: "Company Setup",
-            text:
-                "Create a company profile with business name, owner information, contact details, address and currency. This becomes the foundation of the accounting system."
-        },
+                panel.classList.remove("active");
 
-        customers: {
-            label: "02 / CUSTOMERS & VENDORS",
-            title: "Customers & Vendors",
-            text:
-                "Store customer and vendor information in one place so sales, purchases, receivables and payables can be organized efficiently."
-        },
-
-        products: {
-            label: "03 / PRODUCTS & INVENTORY",
-            title: "Products & Inventory",
-            text:
-                "Add products, manage prices and track inventory information so the business can maintain a clear view of available stock."
-        },
-
-        sales: {
-            label: "04 / SALES",
-            title: "Sales & Invoices",
-            text:
-                "Create sales invoices, record customer transactions and track paid and unpaid sales. Invoice numbers can be generated automatically."
-        },
-
-        purchases: {
-            label: "05 / PURCHASES",
-            title: "Purchases",
-            text:
-                "Record purchases from vendors and maintain purchase information that contributes to inventory, expenses and payable tracking."
-        },
-
-        expenses: {
-            label: "06 / EXPENSES",
-            title: "Expenses",
-            text:
-                "Record business expenses and use the information to understand operating costs and calculate business performance."
-        },
-
-        accounting: {
-            label: "07 / ACCOUNTING",
-            title: "Accounting",
-            text:
-                "Bring financial transactions together so sales, purchases, expenses, receivables and payables can be reviewed from an accounting perspective."
-        },
-
-        reports: {
-            label: "08 / REPORTS",
-            title: "Reports",
-            text:
-                "Use organized financial and business information to review sales, expenses, purchases, inventory and overall business performance."
-        }
-
-    };
+            });
 
 
-    workflowSteps.forEach(function (step) {
+            button.classList.add("active");
 
-        step.addEventListener(
-            "click",
-            function () {
 
-                workflowSteps.forEach(
-                    function (item) {
+            const target =
+                document.querySelector(
+                    `[data-workflow-panel="${workflow}"]`
+                );
 
-                        item.classList.remove(
-                            "active"
-                        );
+
+            if (target) {
+
+                target.classList.add("active");
+
+            }
+
+        });
+
+    });
+
+
+
+    /* =====================================================
+       CONTACT FORM
+       Opens user's default email application
+    ===================================================== */
+
+    const contactForm =
+        document.getElementById("contactForm");
+
+
+    const formMessage =
+        document.getElementById("formMessage");
+
+
+    /*
+        IMPORTANT:
+
+        Replace this with your actual email.
+
+        Example:
+
+        const businessEmail =
+            "yourname@gmail.com";
+    */
+
+    const businessEmail =
+        "YOUR_EMAIL@example.com";
+
+
+    if (contactForm) {
+
+        contactForm.addEventListener(
+            "submit",
+            event => {
+
+                event.preventDefault();
+
+
+                const name =
+                    document.getElementById(
+                        "name"
+                    ).value.trim();
+
+
+                const senderEmail =
+                    document.getElementById(
+                        "email"
+                    ).value.trim();
+
+
+                const subject =
+                    document.getElementById(
+                        "subject"
+                    ).value.trim();
+
+
+                const message =
+                    document.getElementById(
+                        "message"
+                    ).value.trim();
+
+
+                if (
+                    !name ||
+                    !senderEmail ||
+                    !subject ||
+                    !message
+                ) {
+
+                    if (formMessage) {
+
+                        formMessage.textContent =
+                            "Please complete all fields.";
 
                     }
-                );
 
-
-                step.classList.add("active");
-
-
-                const workflowKey =
-                    step.getAttribute(
-                        "data-workflow"
-                    );
-
-
-                const data =
-                    workflowData[workflowKey];
-
-
-                if (!data) {
                     return;
-                }
-
-
-                if (workflowLabel) {
-
-                    workflowLabel.textContent =
-                        data.label;
 
                 }
 
 
-                if (workflowTitle) {
-
-                    workflowTitle.textContent =
-                        data.title;
-
-                }
+                const emailSubject =
+                    encodeURIComponent(
+                        subject
+                    );
 
 
-                if (workflowText) {
+                const emailBody =
+                    encodeURIComponent(
 
-                    workflowText.textContent =
-                        data.text;
+                        `Hello Muhammad,
+
+Name: ${name}
+Email: ${senderEmail}
+
+Message:
+
+${message}
+
+Sent from the Muhammad Abbas portfolio website.`
+
+                    );
+
+
+                const mailto =
+                    `mailto:${businessEmail}?subject=${emailSubject}&body=${emailBody}`;
+
+
+                window.location.href =
+                    mailto;
+
+
+                if (formMessage) {
+
+                    formMessage.textContent =
+                        "Opening your email application...";
 
                 }
 
             }
         );
-
-    });
-
-
-    /* =====================================================
-       THEA BOOKS MODULE TABS
-       Supports future interactive THEA section
-    ===================================================== */
-
-    const theaTabs =
-        document.querySelectorAll(
-            "[data-thea-tab]"
-        );
-
-
-    const theaPanels =
-        document.querySelectorAll(
-            "[data-thea-panel]"
-        );
-
-
-    function activateTheaTab(tabName) {
-
-        theaTabs.forEach(function (tab) {
-
-            tab.classList.toggle(
-                "active",
-                tab.getAttribute(
-                    "data-thea-tab"
-                ) === tabName
-            );
-
-        });
-
-
-        theaPanels.forEach(function (panel) {
-
-            panel.classList.toggle(
-                "active",
-                panel.getAttribute(
-                    "data-thea-panel"
-                ) === tabName
-            );
-
-        });
 
     }
 
-
-    theaTabs.forEach(function (tab) {
-
-        tab.addEventListener(
-            "click",
-            function () {
-
-                const tabName =
-                    tab.getAttribute(
-                        "data-thea-tab"
-                    );
-
-                activateTheaTab(tabName);
-
-            }
-        );
-
-    });
-
-
-    /* =====================================================
-       THEA DASHBOARD BAR ANIMATION
-    ===================================================== */
-
-    const chartBars =
-        document.querySelectorAll(
-            ".thea-bars div"
-        );
-
-
-    if (
-        chartBars.length &&
-        "IntersectionObserver" in window
-    ) {
-
-        const chartObserver =
-            new IntersectionObserver(
-                function (entries, observer) {
-
-                    entries.forEach(function (entry) {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            const bars =
-                                entry.target.querySelectorAll(
-                                    ".thea-bars div"
-                                );
-
-
-                            bars.forEach(
-                                function (bar, index) {
-
-                                    const height =
-                                        bar.getAttribute(
-                                            "data-height"
-                                        );
-
-
-                                    if (height) {
-
-                                        setTimeout(
-                                            function () {
-
-                                                bar.style.height =
-                                                    height + "%";
-
-                                            },
-                                            index * 80
-                                        );
-
-                                    }
-
-                                }
-                            );
-
-
-                            observer.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.2
-                }
-            );
-
-
-        const chart =
-            document.querySelector(".thea-chart");
-
-
-        if (chart) {
-
-            chartObserver.observe(chart);
-
-        }
-
-    }
-
-
-    /* =====================================================
-       PROJECT CARD HOVER
-    ===================================================== */
-
-    const projectCards =
-        document.querySelectorAll(
-            ".project-card"
-        );
-
-
-    projectCards.forEach(function (card) {
-
-        card.addEventListener(
-            "mouseenter",
-            function () {
-
-                card.classList.add("project-hover");
-
-            }
-        );
-
-
-        card.addEventListener(
-            "mouseleave",
-            function () {
-
-                card.classList.remove(
-                    "project-hover"
-                );
-
-            }
-        );
-
-    });
-
-
-    /* =====================================================
-       BUTTON RIPPLE EFFECT
-    ===================================================== */
-
-    const buttons =
-        document.querySelectorAll(
-            ".primary-button, .secondary-button, .nav-button"
-        );
-
-
-    buttons.forEach(function (button) {
-
-        button.addEventListener(
-            "click",
-            function () {
-
-                button.classList.add(
-                    "button-clicked"
-                );
-
-
-                setTimeout(function () {
-
-                    button.classList.remove(
-                        "button-clicked"
-                    );
-
-                }, 300);
-
-            }
-        );
-
-    });
 
 
     /* =====================================================
@@ -793,19 +467,35 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+
     /* =====================================================
-       RESIZE HANDLER
+       PROJECT BUTTON FEEDBACK
     ===================================================== */
 
-    window.addEventListener(
-        "resize",
-        function () {
+    document
+        .querySelectorAll(".btn")
+        .forEach(button => {
 
-            updateScrollProgress();
-            updateActiveNavigation();
+            button.addEventListener(
+                "click",
+                () => {
 
-        }
-    );
+                    button.classList.add(
+                        "clicked"
+                    );
 
+
+                    setTimeout(() => {
+
+                        button.classList.remove(
+                            "clicked"
+                        );
+
+                    }, 250);
+
+                }
+            );
+
+        });
 
 });

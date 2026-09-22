@@ -1,1519 +1,811 @@
 /* =========================================================
    MUHAMMAD ABBAS PORTFOLIO
-   PREMIUM DARK NAVY + ELECTRIC BLUE DESIGN
+   JAVASCRIPT
+   Animations + Navigation + THEA Books Interaction
 ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+document.addEventListener("DOMContentLoaded", function () {
 
-:root {
-    --bg: #050816;
-    --bg-soft: #081126;
-    --card: rgba(12, 24, 48, 0.72);
-    --card-solid: #0d1930;
+    /* =====================================================
+       PAGE LOAD
+    ===================================================== */
 
-    --primary: #2f81ff;
-    --primary-light: #42b8ff;
-    --cyan: #00e5ff;
-
-    --text: #f4f8ff;
-    --text-soft: #aab7cc;
-    --text-muted: #71809a;
-
-    --border: rgba(73, 151, 255, 0.18);
-    --border-hover: rgba(66, 184, 255, 0.5);
-
-    --shadow:
-        0 20px 60px rgba(0, 0, 0, 0.35);
-
-    --glow:
-        0 0 35px rgba(47, 129, 255, 0.18);
-
-    --radius: 20px;
-    --container: 1180px;
-}
+    setTimeout(function () {
+        document.body.classList.add("page-loaded");
+    }, 100);
 
 
-/* =========================================================
-   RESET
-========================================================= */
+    /* =====================================================
+       MOBILE NAVIGATION
+    ===================================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    const mobileButton = document.querySelector(".mobile-menu-button");
+    const navMenu = document.querySelector(".nav-menu");
 
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 90px;
-}
+    if (mobileButton && navMenu) {
 
-body {
-    font-family: "Inter", sans-serif;
-    background:
-        radial-gradient(
-            circle at 15% 10%,
-            rgba(47, 129, 255, 0.13),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 85% 25%,
-            rgba(0, 229, 255, 0.08),
-            transparent 25%
-        ),
-        var(--bg);
+        mobileButton.addEventListener("click", function () {
 
-    color: var(--text);
-    line-height: 1.7;
-    overflow-x: hidden;
-}
+            navMenu.classList.toggle("active");
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
+            mobileButton.classList.toggle("active");
 
-    background-image:
-        linear-gradient(
-            rgba(66, 184, 255, 0.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(66, 184, 255, 0.025) 1px,
-            transparent 1px
+        });
+
+    }
+
+
+    /* =====================================================
+       CLOSE MOBILE MENU AFTER CLICK
+    ===================================================== */
+
+    const navLinks = document.querySelectorAll(".nav-menu a");
+
+    navLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            if (navMenu) {
+                navMenu.classList.remove("active");
+            }
+
+            if (mobileButton) {
+                mobileButton.classList.remove("active");
+            }
+
+        });
+
+    });
+
+
+    /* =====================================================
+       SMOOTH SCROLL
+    ===================================================== */
+
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+    anchorLinks.forEach(function (link) {
+
+        link.addEventListener("click", function (event) {
+
+            const targetId = link.getAttribute("href");
+
+            if (!targetId || targetId === "#") {
+                return;
+            }
+
+            const target = document.querySelector(targetId);
+
+            if (target) {
+
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+        });
+
+    });
+
+
+    /* =====================================================
+       SCROLL PROGRESS
+    ===================================================== */
+
+    const progressBar = document.querySelector(".scroll-progress");
+
+    function updateScrollProgress() {
+
+        if (!progressBar) {
+            return;
+        }
+
+        const scrollTop = window.scrollY;
+
+        const documentHeight =
+            document.documentElement.scrollHeight -
+            window.innerHeight;
+
+        if (documentHeight <= 0) {
+
+            progressBar.style.width = "0%";
+
+            return;
+        }
+
+        const progress =
+            (scrollTop / documentHeight) * 100;
+
+        progressBar.style.width =
+            Math.min(progress, 100) + "%";
+
+    }
+
+    window.addEventListener(
+        "scroll",
+        updateScrollProgress,
+        { passive: true }
+    );
+
+    updateScrollProgress();
+
+
+    /* =====================================================
+       ACTIVE NAVIGATION
+    ===================================================== */
+
+    const sections =
+        document.querySelectorAll("section[id]");
+
+    const navigationLinks =
+        document.querySelectorAll(
+            '.nav-menu a[href^="#"]'
         );
 
-    background-size: 55px 55px;
 
-    pointer-events: none;
-    z-index: -2;
-}
+    function updateActiveNavigation() {
 
-body::after {
-    content: "";
-    position: fixed;
-    width: 500px;
-    height: 500px;
+        if (!sections.length) {
+            return;
+        }
 
-    right: -200px;
-    bottom: -220px;
+        const currentPosition =
+            window.scrollY + 180;
 
-    background: rgba(47, 129, 255, 0.08);
-    filter: blur(120px);
+        let currentSection = "";
 
-    border-radius: 50%;
+        sections.forEach(function (section) {
 
-    pointer-events: none;
-    z-index: -1;
-}
+            const sectionTop =
+                section.offsetTop;
 
+            const sectionHeight =
+                section.offsetHeight;
 
-/* =========================================================
-   GENERAL
-========================================================= */
+            if (
+                currentPosition >= sectionTop &&
+                currentPosition < sectionTop + sectionHeight
+            ) {
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
+                currentSection =
+                    section.getAttribute("id");
 
-button,
-a {
-    -webkit-tap-highlight-color: transparent;
-}
+            }
 
-img {
-    max-width: 100%;
-    display: block;
-}
-
-section {
-    position: relative;
-}
-
-.container {
-    width: min(var(--container), calc(100% - 40px));
-    margin: auto;
-}
-
-.section {
-    padding: 110px 0;
-}
-
-.section-heading {
-    max-width: 720px;
-    margin-bottom: 55px;
-}
-
-.section-heading .eyebrow {
-    display: inline-block;
-
-    color: var(--cyan);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-
-    margin-bottom: 12px;
-}
-
-.section-heading h2 {
-    font-size: clamp(34px, 5vw, 58px);
-    line-height: 1.05;
-    letter-spacing: -2px;
-}
-
-.section-heading p {
-    color: var(--text-soft);
-    margin-top: 18px;
-    max-width: 620px;
-}
+        });
 
 
-/* =========================================================
-   NAVBAR
-========================================================= */
+        navigationLinks.forEach(function (link) {
 
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+            const linkTarget =
+                link.getAttribute("href");
 
-    z-index: 1000;
+            link.classList.remove("active");
 
-    background: rgba(5, 8, 22, 0.72);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+            if (
+                currentSection &&
+                linkTarget === "#" + currentSection
+            ) {
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
+                link.classList.add("active");
 
-.navbar .container {
-    min-height: 78px;
+            }
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+        });
 
-.logo {
-    width: 44px;
-    height: 44px;
+    }
 
-    display: grid;
-    place-items: center;
 
-    border-radius: 13px;
+    window.addEventListener(
+        "scroll",
+        updateActiveNavigation,
+        { passive: true }
+    );
 
-    font-size: 15px;
-    font-weight: 800;
+    updateActiveNavigation();
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--cyan)
+
+    /* =====================================================
+       REVEAL ANIMATION
+    ===================================================== */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+
+    if ("IntersectionObserver" in window) {
+
+        const revealObserver =
+            new IntersectionObserver(
+                function (entries, observer) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12,
+                    rootMargin: "0px 0px -50px 0px"
+                }
+            );
+
+
+        revealElements.forEach(function (element) {
+
+            revealObserver.observe(element);
+
+        });
+
+    } else {
+
+        revealElements.forEach(function (element) {
+
+            element.classList.add("visible");
+
+        });
+
+    }
+
+
+    /* =====================================================
+       VISUAL CARD 3D EFFECT
+    ===================================================== */
+
+    const visualCard =
+        document.querySelector(".visual-card");
+
+
+    if (
+        visualCard &&
+        window.matchMedia("(pointer: fine)").matches
+    ) {
+
+        visualCard.addEventListener(
+            "mousemove",
+            function (event) {
+
+                const rect =
+                    visualCard.getBoundingClientRect();
+
+                const x =
+                    event.clientX - rect.left;
+
+                const y =
+                    event.clientY - rect.top;
+
+                const centerX =
+                    rect.width / 2;
+
+                const centerY =
+                    rect.height / 2;
+
+                const rotateY =
+                    ((x - centerX) / centerX) * 5;
+
+                const rotateX =
+                    ((centerY - y) / centerY) * 5;
+
+
+                visualCard.style.transform =
+                    "perspective(1000px) " +
+                    "rotateY(" + (-8 + rotateY) + "deg) " +
+                    "rotateX(" + (3 + rotateX) + "deg)";
+
+            }
         );
 
-    color: white;
 
-    box-shadow:
-        0 0 25px rgba(47, 129, 255, 0.35);
-}
+        visualCard.addEventListener(
+            "mouseleave",
+            function () {
 
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
+                visualCard.style.transform =
+                    "perspective(1000px) " +
+                    "rotateY(-8deg) " +
+                    "rotateX(3deg)";
 
-.nav-links a {
-    color: var(--text-soft);
-
-    font-size: 13px;
-    font-weight: 600;
-
-    transition:
-        color 0.3s ease,
-        transform 0.3s ease;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: white;
-}
-
-.nav-links a:hover {
-    transform: translateY(-2px);
-}
-
-.nav-cta {
-    padding: 11px 18px;
-
-    border-radius: 10px;
-
-    background: rgba(47, 129, 255, 0.12);
-
-    border: 1px solid var(--border);
-
-    color: white !important;
-}
-
-.nav-cta:hover {
-    background: rgba(47, 129, 255, 0.22);
-    border-color: var(--border-hover);
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-    min-height: 100vh;
-
-    padding-top: 150px;
-    padding-bottom: 100px;
-
-    display: flex;
-    align-items: center;
-
-    position: relative;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: "";
-
-    position: absolute;
-
-    width: 650px;
-    height: 650px;
-
-    left: -300px;
-    top: 80px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(47, 129, 255, 0.2),
-            transparent 65%
+            }
         );
 
-    filter: blur(20px);
+    }
 
-    pointer-events: none;
-}
 
-.hero::after {
-    content: "";
+    /* =====================================================
+       THEA BOOKS DASHBOARD MENU
+    ===================================================== */
 
-    position: absolute;
-
-    width: 550px;
-    height: 550px;
-
-    right: -250px;
-    top: 100px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(0, 229, 255, 0.12),
-            transparent 65%
+    const theaMenuItems =
+        document.querySelectorAll(
+            ".thea-menu-item"
         );
 
-    filter: blur(25px);
 
-    pointer-events: none;
-}
-
-.hero .container {
-    position: relative;
-    z-index: 2;
-
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-
-    align-items: center;
-    gap: 70px;
-}
-
-.hero-content {
-    max-width: 700px;
-}
-
-.hero-content .eyebrow {
-    color: var(--cyan);
-
-    font-size: 13px;
-    font-weight: 800;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 20px;
-}
-
-.hero h1 {
-    font-size: clamp(54px, 8vw, 94px);
-
-    line-height: 0.98;
-    letter-spacing: -5px;
-
-    margin-bottom: 22px;
-}
-
-.hero h1 span {
-    display: block;
-
-    background:
-        linear-gradient(
-            100deg,
-            #ffffff 0%,
-            var(--primary-light) 45%,
-            var(--cyan) 100%
+    const theaDashboardTitle =
+        document.querySelector(
+            ".thea-topbar h4"
         );
 
-    -webkit-background-clip: text;
-    background-clip: text;
 
-    color: transparent;
-}
-
-.hero-subtitle {
-    color: #d8e5fa;
-
-    font-size: clamp(17px, 2vw, 22px);
-    font-weight: 600;
-
-    margin-bottom: 18px;
-}
-
-.hero-description {
-    max-width: 650px;
-
-    color: var(--text-soft);
-
-    font-size: 16px;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 14px;
-
-    margin-top: 34px;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    min-height: 50px;
-
-    padding: 0 23px;
-
-    border-radius: 12px;
-
-    font-size: 13px;
-    font-weight: 700;
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease,
-        background 0.3s ease;
-}
-
-.btn-primary {
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            #1765d8
+    const theaPageLabel =
+        document.querySelector(
+            ".thea-page-label"
         );
 
-    box-shadow:
-        0 10px 35px rgba(47, 129, 255, 0.25);
-}
 
-.btn-primary:hover {
-    transform: translateY(-3px);
+    theaMenuItems.forEach(function (item) {
 
-    box-shadow:
-        0 16px 45px rgba(47, 129, 255, 0.35);
-}
+        item.addEventListener(
+            "click",
+            function () {
 
-.btn-secondary {
-    color: #eaf3ff;
+                theaMenuItems.forEach(
+                    function (menuItem) {
 
-    background: rgba(255, 255, 255, 0.035);
+                        menuItem.classList.remove(
+                            "active"
+                        );
 
-    border: 1px solid var(--border);
-}
-
-.btn-secondary:hover {
-    transform: translateY(-3px);
-
-    border-color: var(--border-hover);
-
-    background: rgba(47, 129, 255, 0.08);
-}
+                    }
+                );
 
 
-/* =========================================================
-   HERO VISUAL
-========================================================= */
-
-.hero-visual {
-    position: relative;
-
-    min-height: 500px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-circle {
-    position: absolute;
-
-    border-radius: 50%;
-
-    pointer-events: none;
-}
-
-.hero-circle.circle-one {
-    width: 380px;
-    height: 380px;
-
-    border: 1px solid rgba(47, 129, 255, 0.15);
-
-    box-shadow:
-        inset 0 0 70px rgba(47, 129, 255, 0.06),
-        0 0 70px rgba(47, 129, 255, 0.08);
-
-    animation: orbitOne 8s ease-in-out infinite;
-}
-
-.hero-circle.circle-two {
-    width: 270px;
-    height: 270px;
-
-    border: 1px dashed rgba(0, 229, 255, 0.2);
-
-    animation: orbitTwo 10s ease-in-out infinite;
-}
-
-@keyframes orbitOne {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-16px) rotate(6deg);
-    }
-}
-
-@keyframes orbitTwo {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(18px) rotate(-8deg);
-    }
-}
+                item.classList.add("active");
 
 
-/* =========================================================
-   PROFILE CARD
-========================================================= */
+                const menuName =
+                    item.getAttribute("data-page");
 
-.main-card {
-    position: relative;
-    z-index: 5;
 
-    width: min(420px, 90%);
+                if (
+                    menuName &&
+                    theaDashboardTitle
+                ) {
 
-    padding: 30px;
+                    theaDashboardTitle.textContent =
+                        menuName;
 
-    border-radius: 26px;
+                }
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(20, 39, 74, 0.92),
-            rgba(7, 16, 34, 0.88)
+
+                if (
+                    menuName &&
+                    theaPageLabel
+                ) {
+
+                    theaPageLabel.textContent =
+                        "THEA BOOKS / " +
+                        menuName.toUpperCase();
+
+                }
+
+            }
         );
 
-    border: 1px solid rgba(86, 165, 255, 0.25);
+    });
 
-    box-shadow:
-        0 35px 90px rgba(0, 0, 0, 0.45),
-        0 0 50px rgba(47, 129, 255, 0.12);
 
-    backdrop-filter: blur(20px);
+    /* =====================================================
+       THEA BOOKS WORKFLOW
+    ===================================================== */
 
-    animation: floatingCard 5s ease-in-out infinite;
-}
-
-@keyframes floatingCard {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-.main-card::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 15%;
-
-    width: 70%;
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--cyan),
-            transparent
+    const workflowSteps =
+        document.querySelectorAll(
+            ".thea-workflow-step"
         );
 
-    box-shadow:
-        0 0 15px var(--cyan);
-}
 
-.profile-avatar {
-    width: 100px;
-    height: 100px;
-
-    margin-bottom: 22px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(47, 129, 255, 0.25),
-            rgba(0, 229, 255, 0.15)
+    const workflowTitle =
+        document.querySelector(
+            ".thea-workflow-detail h3"
         );
 
-    border: 1px solid rgba(66, 184, 255, 0.35);
 
-    font-size: 30px;
-    font-weight: 800;
-
-    box-shadow:
-        0 0 35px rgba(47, 129, 255, 0.2);
-}
-
-.main-card h3 {
-    font-size: 27px;
-    margin-bottom: 5px;
-}
-
-.main-card > p {
-    color: var(--cyan);
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.card-stats {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 10px;
-
-    margin-top: 28px;
-}
-
-.card-stat {
-    padding: 15px 10px;
-
-    text-align: center;
-
-    border-radius: 14px;
-
-    background: rgba(255, 255, 255, 0.035);
-
-    border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.card-stat strong {
-    display: block;
-
-    font-size: 20px;
-
-    color: white;
-}
-
-.card-stat span {
-    color: var(--text-muted);
-
-    font-size: 10px;
-}
-
-.floating-card {
-    position: absolute;
-    z-index: 10;
-
-    padding: 13px 17px;
-
-    border-radius: 12px;
-
-    background: rgba(9, 20, 40, 0.85);
-
-    border: 1px solid var(--border);
-
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.3);
-
-    backdrop-filter: blur(12px);
-
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.floating-card.excel {
-    top: 50px;
-    right: 10px;
-
-    color: #6ee7b7;
-
-    animation: floatSmall 4s ease-in-out infinite;
-}
-
-.floating-card.erp {
-    bottom: 60px;
-    left: 5px;
-
-    color: var(--cyan);
-
-    animation: floatSmall 4.8s ease-in-out infinite;
-}
-
-@keyframes floatSmall {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-9px);
-    }
-}
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about-grid {
-    display: grid;
-
-    grid-template-columns:
-        1.1fr 0.9fr;
-
-    gap: 60px;
-
-    align-items: center;
-}
-
-.about-content p {
-    color: var(--text-soft);
-
-    margin-bottom: 18px;
-
-    font-size: 16px;
-}
-
-.about-content strong {
-    color: white;
-}
-
-.stats-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 15px;
-}
-
-.stat-box {
-    padding: 28px;
-
-    border-radius: 18px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(20, 39, 74, 0.75),
-            rgba(8, 17, 36, 0.7)
+    const workflowText =
+        document.querySelector(
+            ".thea-workflow-detail p"
         );
 
-    border: 1px solid var(--border);
 
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.stat-box:hover {
-    transform: translateY(-6px);
-
-    border-color: var(--border-hover);
-
-    box-shadow: var(--glow);
-}
-
-.stat-box strong {
-    display: block;
-
-    font-size: 36px;
-
-    background:
-        linear-gradient(
-            135deg,
-            white,
-            var(--cyan)
+    const workflowLabel =
+        document.querySelector(
+            ".thea-detail-label"
         );
 
-    -webkit-background-clip: text;
-    background-clip: text;
 
-    color: transparent;
-}
+    const workflowData = {
 
-.stat-box span {
-    color: var(--text-muted);
+        setup: {
+            label: "01 / COMPANY SETUP",
+            title: "Company Setup",
+            text:
+                "Create a company profile with business name, owner information, contact details, address and currency. This becomes the foundation of the accounting system."
+        },
 
-    font-size: 12px;
-}
+        customers: {
+            label: "02 / CUSTOMERS & VENDORS",
+            title: "Customers & Vendors",
+            text:
+                "Store customer and vendor information in one place so sales, purchases, receivables and payables can be organized efficiently."
+        },
+
+        products: {
+            label: "03 / PRODUCTS & INVENTORY",
+            title: "Products & Inventory",
+            text:
+                "Add products, manage prices and track inventory information so the business can maintain a clear view of available stock."
+        },
+
+        sales: {
+            label: "04 / SALES",
+            title: "Sales & Invoices",
+            text:
+                "Create sales invoices, record customer transactions and track paid and unpaid sales. Invoice numbers can be generated automatically."
+        },
+
+        purchases: {
+            label: "05 / PURCHASES",
+            title: "Purchases",
+            text:
+                "Record purchases from vendors and maintain purchase information that contributes to inventory, expenses and payable tracking."
+        },
+
+        expenses: {
+            label: "06 / EXPENSES",
+            title: "Expenses",
+            text:
+                "Record business expenses and use the information to understand operating costs and calculate business performance."
+        },
+
+        accounting: {
+            label: "07 / ACCOUNTING",
+            title: "Accounting",
+            text:
+                "Bring financial transactions together so sales, purchases, expenses, receivables and payables can be reviewed from an accounting perspective."
+        },
+
+        reports: {
+            label: "08 / REPORTS",
+            title: "Reports",
+            text:
+                "Use organized financial and business information to review sales, expenses, purchases, inventory and overall business performance."
+        }
+
+    };
 
 
-/* =========================================================
-   SKILLS
-========================================================= */
+    workflowSteps.forEach(function (step) {
 
-.skills-grid {
-    display: grid;
+        step.addEventListener(
+            "click",
+            function () {
 
-    grid-template-columns:
-        repeat(4, 1fr);
+                workflowSteps.forEach(
+                    function (item) {
 
-    gap: 16px;
-}
+                        item.classList.remove(
+                            "active"
+                        );
 
-.skill-card {
-    position: relative;
+                    }
+                );
 
-    padding: 27px 22px;
 
-    min-height: 165px;
+                step.classList.add("active");
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 
-    border-radius: var(--radius);
+                const workflowKey =
+                    step.getAttribute(
+                        "data-workflow"
+                    );
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(16, 33, 64, 0.8),
-            rgba(7, 16, 33, 0.75)
+
+                const data =
+                    workflowData[workflowKey];
+
+
+                if (!data) {
+                    return;
+                }
+
+
+                if (workflowLabel) {
+
+                    workflowLabel.textContent =
+                        data.label;
+
+                }
+
+
+                if (workflowTitle) {
+
+                    workflowTitle.textContent =
+                        data.title;
+
+                }
+
+
+                if (workflowText) {
+
+                    workflowText.textContent =
+                        data.text;
+
+                }
+
+            }
         );
 
-    border: 1px solid var(--border);
-
-    overflow: hidden;
-
-    transition:
-        transform 0.35s ease,
-        border-color 0.35s ease,
-        box-shadow 0.35s ease;
-}
-
-.skill-card::after {
-    content: "";
-
-    position: absolute;
-
-    width: 100px;
-    height: 100px;
-
-    right: -40px;
-    bottom: -45px;
-
-    border-radius: 50%;
-
-    background: rgba(0, 229, 255, 0.08);
-
-    filter: blur(20px);
-}
-
-.skill-card:hover {
-    transform: translateY(-8px);
-
-    border-color: var(--border-hover);
-
-    box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.3),
-        0 0 35px rgba(47, 129, 255, 0.08);
-}
-
-.skill-number {
-    color: var(--primary-light);
-
-    font-size: 11px;
-    font-weight: 800;
-
-    letter-spacing: 2px;
-}
-
-.skill-card h3 {
-    font-size: 17px;
-    line-height: 1.3;
-}
-
-.skill-card p {
-    color: var(--text-muted);
-
-    font-size: 12px;
-}
+    });
 
 
-/* =========================================================
-   PROJECTS
-========================================================= */
+    /* =====================================================
+       THEA BOOKS MODULE TABS
+       Supports future interactive THEA section
+    ===================================================== */
 
-.projects-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 22px;
-}
-
-.project-card {
-    position: relative;
-
-    overflow: hidden;
-
-    border-radius: 22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(17, 35, 67, 0.85),
-            rgba(7, 16, 33, 0.82)
+    const theaTabs =
+        document.querySelectorAll(
+            "[data-thea-tab]"
         );
 
-    border: 1px solid var(--border);
 
-    transition:
-        transform 0.4s ease,
-        border-color 0.4s ease,
-        box-shadow 0.4s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-9px);
-
-    border-color: var(--border-hover);
-
-    box-shadow:
-        0 25px 65px rgba(0, 0, 0, 0.35),
-        0 0 35px rgba(47, 129, 255, 0.1);
-}
-
-.project-visual {
-    min-height: 190px;
-
-    padding: 20px;
-
-    position: relative;
-
-    background:
-        radial-gradient(
-            circle at 30% 20%,
-            rgba(47, 129, 255, 0.2),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #0b1934,
-            #071021
+    const theaPanels =
+        document.querySelectorAll(
+            "[data-thea-panel]"
         );
 
-    border-bottom: 1px solid var(--border);
-}
 
-.project-visual::before {
-    content: "";
+    function activateTheaTab(tabName) {
 
-    position: absolute;
+        theaTabs.forEach(function (tab) {
 
-    left: 25px;
-    right: 25px;
-    bottom: 28px;
+            tab.classList.toggle(
+                "active",
+                tab.getAttribute(
+                    "data-thea-tab"
+                ) === tabName
+            );
 
-    height: 55px;
+        });
 
-    background:
-        linear-gradient(
-            135deg,
-            transparent 0 8%,
-            rgba(66, 184, 255, 0.18) 8% 10%,
-            transparent 10% 20%,
-            rgba(47, 129, 255, 0.25) 20% 22%,
-            transparent 22% 32%,
-            rgba(0, 229, 255, 0.18) 32% 34%,
-            transparent 34%
+
+        theaPanels.forEach(function (panel) {
+
+            panel.classList.toggle(
+                "active",
+                panel.getAttribute(
+                    "data-thea-panel"
+                ) === tabName
+            );
+
+        });
+
+    }
+
+
+    theaTabs.forEach(function (tab) {
+
+        tab.addEventListener(
+            "click",
+            function () {
+
+                const tabName =
+                    tab.getAttribute(
+                        "data-thea-tab"
+                    );
+
+                activateTheaTab(tabName);
+
+            }
         );
 
-    opacity: 0.8;
-}
-
-.project-card-content {
-    padding: 25px;
-}
-
-.project-card h3 {
-    font-size: 21px;
-    margin-bottom: 9px;
-}
-
-.project-card p {
-    color: var(--text-soft);
-
-    font-size: 13px;
-
-    margin-bottom: 20px;
-}
-
-.project-link {
-    color: var(--cyan);
-
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.project-link:hover {
-    color: white;
-}
+    });
 
 
-/* =========================================================
-   EXPERIENCE
-========================================================= */
+    /* =====================================================
+       THEA DASHBOARD BAR ANIMATION
+    ===================================================== */
 
-.timeline {
-    position: relative;
-
-    max-width: 900px;
-
-    margin: auto;
-}
-
-.timeline::before {
-    content: "";
-
-    position: absolute;
-
-    left: 10px;
-    top: 0;
-    bottom: 0;
-
-    width: 1px;
-
-    background:
-        linear-gradient(
-            var(--primary),
-            rgba(47, 129, 255, 0.05)
-        );
-}
-
-.timeline-item {
-    position: relative;
-
-    padding-left: 48px;
-
-    margin-bottom: 45px;
-}
-
-.timeline-item::before {
-    content: "";
-
-    position: absolute;
-
-    left: 4px;
-    top: 8px;
-
-    width: 13px;
-    height: 13px;
-
-    border-radius: 50%;
-
-    background: var(--primary);
-
-    border: 3px solid var(--bg);
-
-    box-shadow:
-        0 0 18px rgba(47, 129, 255, 0.65);
-}
-
-.timeline-item h3 {
-    font-size: 20px;
-}
-
-.timeline-item .date {
-    display: inline-block;
-
-    margin: 5px 0 10px;
-
-    color: var(--cyan);
-
-    font-size: 11px;
-    font-weight: 700;
-
-    letter-spacing: 1px;
-}
-
-.timeline-item p {
-    color: var(--text-soft);
-
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   APPROACH
-========================================================= */
-
-.approach-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 20px;
-}
-
-.approach-card {
-    padding: 35px 28px;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(17, 35, 67, 0.7),
-            rgba(7, 16, 33, 0.75)
+    const chartBars =
+        document.querySelectorAll(
+            ".thea-bars div"
         );
 
-    border: 1px solid var(--border);
 
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease;
-}
+    if (
+        chartBars.length &&
+        "IntersectionObserver" in window
+    ) {
 
-.approach-card:hover {
-    transform: translateY(-7px);
+        const chartObserver =
+            new IntersectionObserver(
+                function (entries, observer) {
 
-    border-color: var(--border-hover);
-}
+                    entries.forEach(function (entry) {
 
-.approach-card span {
-    display: block;
+                        if (
+                            entry.isIntersecting
+                        ) {
 
-    color: var(--primary-light);
-
-    font-size: 12px;
-    font-weight: 800;
-
-    margin-bottom: 18px;
-}
-
-.approach-card h3 {
-    font-size: 22px;
-    margin-bottom: 10px;
-}
-
-.approach-card p {
-    color: var(--text-muted);
-
-    font-size: 13px;
-}
+                            const bars =
+                                entry.target.querySelectorAll(
+                                    ".thea-bars div"
+                                );
 
 
-/* =========================================================
-   CONTACT
-========================================================= */
+                            bars.forEach(
+                                function (bar, index) {
 
-.contact-box {
-    position: relative;
+                                    const height =
+                                        bar.getAttribute(
+                                            "data-height"
+                                        );
 
-    overflow: hidden;
 
-    padding: 65px;
+                                    if (height) {
 
-    border-radius: 28px;
+                                        setTimeout(
+                                            function () {
 
-    text-align: center;
+                                                bar.style.height =
+                                                    height + "%";
 
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(47, 129, 255, 0.2),
-            transparent 45%
-        ),
-        linear-gradient(
-            145deg,
-            rgba(16, 35, 69, 0.9),
-            rgba(6, 14, 30, 0.92)
+                                            },
+                                            index * 80
+                                        );
+
+                                    }
+
+                                }
+                            );
+
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.2
+                }
+            );
+
+
+        const chart =
+            document.querySelector(".thea-chart");
+
+
+        if (chart) {
+
+            chartObserver.observe(chart);
+
+        }
+
+    }
+
+
+    /* =====================================================
+       PROJECT CARD HOVER
+    ===================================================== */
+
+    const projectCards =
+        document.querySelectorAll(
+            ".project-card"
         );
 
-    border: 1px solid var(--border);
 
-    box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.3);
-}
+    projectCards.forEach(function (card) {
 
-.contact-box h2 {
-    font-size: clamp(34px, 5vw, 58px);
+        card.addEventListener(
+            "mouseenter",
+            function () {
 
-    letter-spacing: -2px;
+                card.classList.add("project-hover");
 
-    margin-bottom: 15px;
-}
-
-.contact-box p {
-    color: var(--text-soft);
-
-    max-width: 600px;
-
-    margin: 0 auto 30px;
-}
-
-.contact-links {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    flex-wrap: wrap;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-    padding: 35px 0;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-
-    color: var(--text-muted);
-
-    font-size: 12px;
-
-    text-align: center;
-}
-
-footer a {
-    color: var(--text-soft);
-}
-
-footer a:hover {
-    color: var(--cyan);
-}
-
-
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
-
-.reveal {
-    opacity: 0;
-
-    transform: translateY(35px);
-
-    transition:
-        opacity 0.8s ease,
-        transform 0.8s ease;
-}
-
-.reveal.active {
-    opacity: 1;
-
-    transform: translateY(0);
-}
-
-
-/* =========================================================
-   SCROLL PROGRESS
-========================================================= */
-
-.scroll-progress {
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 0%;
-    height: 2px;
-
-    z-index: 2000;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--primary),
-            var(--cyan)
+            }
         );
 
-    box-shadow:
-        0 0 12px rgba(0, 229, 255, 0.7);
-}
 
+        card.addEventListener(
+            "mouseleave",
+            function () {
 
-/* =========================================================
-   MOBILE MENU
-========================================================= */
+                card.classList.remove(
+                    "project-hover"
+                );
 
-.menu-toggle {
-    display: none;
-
-    width: 42px;
-    height: 42px;
-
-    border-radius: 10px;
-
-    border: 1px solid var(--border);
-
-    background: rgba(255, 255, 255, 0.04);
-
-    color: white;
-
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   SELECTION
-========================================================= */
-
-::selection {
-    background: rgba(47, 129, 255, 0.35);
-    color: white;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 1000px) {
-
-    .hero .container {
-        grid-template-columns: 1fr;
-
-        text-align: center;
-    }
-
-    .hero-content {
-        margin: auto;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-    }
-
-    .hero-visual {
-        min-height: 450px;
-    }
-
-    .about-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .skills-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .projects-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-}
-
-
-@media (max-width: 760px) {
-
-    .container {
-        width: min(
-            var(--container),
-            calc(100% - 28px)
+            }
         );
+
+    });
+
+
+    /* =====================================================
+       BUTTON RIPPLE EFFECT
+    ===================================================== */
+
+    const buttons =
+        document.querySelectorAll(
+            ".primary-button, .secondary-button, .nav-button"
+        );
+
+
+    buttons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                button.classList.add(
+                    "button-clicked"
+                );
+
+
+                setTimeout(function () {
+
+                    button.classList.remove(
+                        "button-clicked"
+                    );
+
+                }, 300);
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       FOOTER YEAR
+    ===================================================== */
+
+    const footerYear =
+        document.getElementById(
+            "footerYear"
+        );
+
+
+    if (footerYear) {
+
+        footerYear.textContent =
+            new Date().getFullYear();
+
     }
 
-    .section {
-        padding: 80px 0;
-    }
 
-    .navbar .container {
-        min-height: 70px;
-    }
+    /* =====================================================
+       RESIZE HANDLER
+    ===================================================== */
 
-    .nav-links {
-        position: fixed;
+    window.addEventListener(
+        "resize",
+        function () {
 
-        top: 70px;
-        left: 14px;
-        right: 14px;
+            updateScrollProgress();
+            updateActiveNavigation();
 
-        display: none;
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-        gap: 5px;
-
-        padding: 15px;
-
-        border-radius: 18px;
-
-        background:
-            rgba(7, 16, 33, 0.96);
-
-        border: 1px solid var(--border);
-
-        box-shadow:
-            0 25px 60px rgba(0, 0, 0, 0.4);
-
-        backdrop-filter: blur(20px);
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .nav-links a {
-        padding: 13px 15px;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .hero {
-        padding-top: 125px;
-    }
-
-    .hero h1 {
-        font-size: clamp(48px, 14vw, 72px);
-
-        letter-spacing: -3px;
-    }
-
-    .hero-description {
-        font-size: 14px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-
-        align-items: stretch;
-    }
-
-    .hero-buttons .btn {
-        width: 100%;
-    }
-
-    .hero-visual {
-        min-height: 400px;
-    }
-
-    .main-card {
-        width: 92%;
-
-        padding: 24px;
-    }
-
-    .floating-card.excel {
-        right: 0;
-    }
-
-    .floating-card.erp {
-        left: 0;
-    }
-
-    .skills-grid,
-    .projects-grid,
-    .approach-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .contact-box {
-        padding: 40px 22px;
-    }
-}
+        }
+    );
 
 
-@media (max-width: 480px) {
-
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-circle.circle-one {
-        width: 300px;
-        height: 300px;
-    }
-
-    .hero-circle.circle-two {
-        width: 220px;
-        height: 220px;
-    }
-
-    .card-stats {
-        gap: 7px;
-    }
-
-    .card-stat {
-        padding: 12px 5px;
-    }
-
-    .card-stat strong {
-        font-size: 17px;
-    }
-}
+});

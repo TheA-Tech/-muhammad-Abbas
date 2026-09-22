@@ -1,743 +1,966 @@
 /* =========================================================
-   THE A TECH — PROFESSIONAL PORTFOLIO
-   Final JavaScript
+   MUHAMMAD ABBAS — PROFESSIONAL PORTFOLIO
+   FINAL INTEGRATED JAVASCRIPT
+   Compatible with current index.html + style.css
    ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
+    "use strict";
 
     /* =====================================================
-       1. PAGE LOADER — NEVER GET STUCK
+       1. LOADER — FAIL-SAFE
        ===================================================== */
 
     const pageLoader = document.getElementById("pageLoader");
 
-    function finishLoader() {
-        if (!pageLoader) return;
+    let loaderFinished = false;
 
-        pageLoader.classList.add("is-hidden");
+    function finishLoader() {
+
+        if (loaderFinished || !pageLoader) return;
+
+        loaderFinished = true;
+
+        pageLoader.classList.add("hidden");
+        pageLoader.setAttribute("aria-hidden", "true");
 
         setTimeout(() => {
+
             if (pageLoader && pageLoader.parentNode) {
-                pageLoader.remove();
+                pageLoader.style.display = "none";
             }
-        }, 900);
+
+        }, 800);
     }
 
-    window.addEventListener("load", finishLoader);
+    /* Start loader protection immediately */
+    document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(finishLoader, 350);
+    });
 
-    /* Safety fallback */
+    window.addEventListener("load", () => {
+        setTimeout(finishLoader, 150);
+    });
+
+    /* Absolute safety fallback */
     setTimeout(finishLoader, 2500);
 
 
     /* =====================================================
-       2. MOBILE MENU
+       2. DOM READY
        ===================================================== */
 
-    const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
-    const mobileMenu = document.querySelector(".mobile-menu");
+    document.addEventListener("DOMContentLoaded", () => {
 
-    if (mobileMenuBtn && mobileMenu) {
 
-        mobileMenuBtn.addEventListener("click", () => {
+        /* =================================================
+           3. ELEMENT REFERENCES
+           ================================================= */
 
-            mobileMenu.classList.toggle("active");
-            mobileMenuBtn.classList.toggle("active");
+        const body = document.body;
 
-            const expanded =
-                mobileMenuBtn.getAttribute("aria-expanded") === "true";
+        const navbar =
+            document.getElementById("navbar");
+
+        const scrollProgress =
+            document.getElementById("scrollProgress");
+
+        const mobileMenuBtn =
+            document.querySelector(".mobile-menu-btn");
+
+        const mobileMenu =
+            document.querySelector(".mobile-menu");
+
+        const sections =
+            document.querySelectorAll("section[id]");
+
+        const navLinks =
+            document.querySelectorAll(
+                ".nav-link[href^='#']"
+            );
+
+
+        /* =================================================
+           4. MOBILE MENU
+           ================================================= */
+
+        if (mobileMenuBtn && mobileMenu) {
 
             mobileMenuBtn.setAttribute(
                 "aria-expanded",
-                String(!expanded)
+                "false"
             );
-        });
 
-        mobileMenu.querySelectorAll("a").forEach(link => {
+            mobileMenuBtn.addEventListener(
+                "click",
+                () => {
 
-            link.addEventListener("click", () => {
+                    const isOpen =
+                        mobileMenu.classList.toggle("open");
 
-                mobileMenu.classList.remove("active");
-                mobileMenuBtn.classList.remove("active");
+                    mobileMenuBtn.classList.toggle(
+                        "open",
+                        isOpen
+                    );
 
-                mobileMenuBtn.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-            });
+                    mobileMenuBtn.setAttribute(
+                        "aria-expanded",
+                        String(isOpen)
+                    );
+                }
+            );
 
-        });
-    }
+            mobileMenu
+                .querySelectorAll("a")
+                .forEach(link => {
 
+                    link.addEventListener(
+                        "click",
+                        () => {
 
-    /* =====================================================
-       3. NAVBAR SCROLL EFFECT
-       ===================================================== */
+                            mobileMenu.classList.remove(
+                                "open"
+                            );
 
-    const navbar = document.getElementById("navbar");
+                            mobileMenuBtn.classList.remove(
+                                "open"
+                            );
 
-    function updateNavbar() {
+                            mobileMenuBtn.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+                        }
+                    );
 
-        if (!navbar) return;
-
-        if (window.scrollY > 40) {
-            navbar.classList.add("scrolled");
-        } else {
-            navbar.classList.remove("scrolled");
+                });
         }
-    }
-
-    window.addEventListener(
-        "scroll",
-        updateNavbar,
-        { passive: true }
-    );
-
-    updateNavbar();
 
 
-    /* =====================================================
-       4. SCROLL PROGRESS
-       ===================================================== */
+        /* =================================================
+           5. NAVBAR SCROLL
+           ================================================= */
 
-    const progressBar =
-        document.getElementById("scrollProgress");
+        function updateNavbar() {
 
-    function updateScrollProgress() {
+            if (!navbar) return;
 
-        if (!progressBar) return;
-
-        const scrollTop = window.scrollY;
-
-        const documentHeight =
-            document.documentElement.scrollHeight -
-            window.innerHeight;
-
-        if (documentHeight <= 0) return;
-
-        const progress =
-            (scrollTop / documentHeight) * 100;
-
-        progressBar.style.width =
-            `${Math.min(progress, 100)}%`;
-    }
-
-    window.addEventListener(
-        "scroll",
-        updateScrollProgress,
-        { passive: true }
-    );
-
-    updateScrollProgress();
+            navbar.classList.toggle(
+                "scrolled",
+                window.scrollY > 40
+            );
+        }
 
 
-    /* =====================================================
-       5. ACTIVE NAVIGATION
-       ===================================================== */
+        /* =================================================
+           6. SCROLL PROGRESS
+           ================================================= */
 
-    const sections =
-        document.querySelectorAll("section[id]");
+        function updateScrollProgress() {
 
-    const navLinks =
-        document.querySelectorAll(
-            ".nav-link[href^='#']"
-        );
+            if (!scrollProgress) return;
 
-    function updateActiveNav() {
+            const scrollTop =
+                window.scrollY;
 
-        let currentSection = "";
+            const pageHeight =
+                document.documentElement.scrollHeight -
+                window.innerHeight;
 
-        sections.forEach(section => {
+            if (pageHeight <= 0) {
 
-            const sectionTop =
-                section.offsetTop - 160;
-
-            if (window.scrollY >= sectionTop) {
-                currentSection = section.id;
-            }
-
-        });
-
-        navLinks.forEach(link => {
-
-            link.classList.remove("active");
-
-            const href =
-                link.getAttribute("href");
-
-            if (href === `#${currentSection}`) {
-                link.classList.add("active");
-            }
-
-        });
-    }
-
-    window.addEventListener(
-        "scroll",
-        updateActiveNav,
-        { passive: true }
-    );
-
-    updateActiveNav();
-
-
-    /* =====================================================
-       6. SMOOTH SCROLL
-       ===================================================== */
-
-    document.querySelectorAll(
-        'a[href^="#"]'
-    ).forEach(link => {
-
-        link.addEventListener("click", event => {
-
-            const targetId =
-                link.getAttribute("href");
-
-            if (
-                !targetId ||
-                targetId === "#"
-            ) {
+                scrollProgress.style.width = "0%";
                 return;
             }
 
-            const target =
-                document.querySelector(targetId);
+            const progress =
+                (scrollTop / pageHeight) * 100;
 
-            if (!target) return;
-
-            event.preventDefault();
-
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        });
-
-    });
-
-
-    /* =====================================================
-       7. SCROLL REVEAL
-       ===================================================== */
-
-    const revealElements =
-        document.querySelectorAll(
-            ".reveal, .reveal-left, .reveal-right, .reveal-scale"
-        );
-
-    if ("IntersectionObserver" in window) {
-
-        const revealObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (entry.isIntersecting) {
-
-                            entry.target.classList.add("show");
-
-                            revealObserver.unobserve(
-                                entry.target
-                            );
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.12,
-                    rootMargin: "0px 0px -50px 0px"
-                }
-            );
-
-        revealElements.forEach(element => {
-            revealObserver.observe(element);
-        });
-
-    } else {
-
-        revealElements.forEach(element => {
-            element.classList.add("show");
-        });
-
-    }
-
-
-    /* =====================================================
-       8. CARD STAGGER ANIMATION
-       ===================================================== */
-
-    const staggerGroups = [
-        ".skills-layout",
-        ".projects-grid",
-        ".approach-grid",
-        ".about-stats",
-        ".experience-timeline"
-    ];
-
-    staggerGroups.forEach(selector => {
-
-        document.querySelectorAll(selector)
-            .forEach(group => {
-
-                const cards =
-                    group.children;
-
-                Array.from(cards).forEach(
-                    (card, index) => {
-
-                        card.style.setProperty(
-                            "--delay",
-                            `${index * 100}ms`
-                        );
-
-                        card.classList.add(
-                            "stagger-item"
-                        );
-                    }
-                );
-
-            });
-
-    });
-
-
-    /* =====================================================
-       9. TYPING / ROLE ROTATION
-       ===================================================== */
-
-    const typingText =
-        document.getElementById("typingText");
-
-    if (typingText) {
-
-        const roles = [
-            "Finance & Accounts",
-            "Business Operations",
-            "Excel & Reporting",
-            "ERP & Business Systems",
-            "Data & Digital Solutions"
-        ];
-
-        let roleIndex = 0;
-        let characterIndex = 0;
-        let deleting = false;
-
-        function typeRole() {
-
-            const currentRole =
-                roles[roleIndex];
-
-            if (!deleting) {
-
-                characterIndex++;
-
-                typingText.textContent =
-                    currentRole.substring(
-                        0,
-                        characterIndex
-                    );
-
-                if (
-                    characterIndex >=
-                    currentRole.length
-                ) {
-
-                    deleting = true;
-
-                    setTimeout(
-                        typeRole,
-                        1600
-                    );
-
-                    return;
-                }
-
-            } else {
-
-                characterIndex--;
-
-                typingText.textContent =
-                    currentRole.substring(
-                        0,
-                        characterIndex
-                    );
-
-                if (characterIndex <= 0) {
-
-                    deleting = false;
-
-                    roleIndex =
-                        (roleIndex + 1) %
-                        roles.length;
-                }
-            }
-
-            setTimeout(
-                typeRole,
-                deleting ? 45 : 80
-            );
+            scrollProgress.style.width =
+                `${Math.min(100, Math.max(0, progress))}%`;
         }
 
-        typeRole();
-    }
+
+        /* =================================================
+           7. ACTIVE NAVIGATION
+           ================================================= */
+
+        function updateActiveNavigation() {
+
+            if (!sections.length || !navLinks.length) {
+                return;
+            }
+
+            let currentSection = "";
+
+            const scrollPosition =
+                window.scrollY + 180;
+
+            sections.forEach(section => {
+
+                if (
+                    scrollPosition >=
+                    section.offsetTop
+                ) {
+
+                    currentSection =
+                        section.id;
+                }
+
+            });
+
+            navLinks.forEach(link => {
+
+                const href =
+                    link.getAttribute("href");
+
+                link.classList.toggle(
+                    "active",
+                    href === `#${currentSection}`
+                );
+            });
+        }
 
 
-    /* =====================================================
-       10. HERO PARALLAX
-       ===================================================== */
+        /* =================================================
+           8. COMBINED SCROLL HANDLER
+           ================================================= */
 
-    const heroVisual =
-        document.querySelector(".hero-visual");
+        let ticking = false;
 
-    if (
-        heroVisual &&
-        window.matchMedia("(min-width: 901px)").matches
-    ) {
+        function handleScroll() {
+
+            if (ticking) return;
+
+            ticking = true;
+
+            requestAnimationFrame(() => {
+
+                updateNavbar();
+                updateScrollProgress();
+                updateActiveNavigation();
+
+                ticking = false;
+            });
+        }
 
         window.addEventListener(
             "scroll",
-            () => {
-
-                const scroll =
-                    window.scrollY;
-
-                if (scroll > 900) return;
-
-                const movement =
-                    scroll * 0.08;
-
-                heroVisual.style.transform =
-                    `translateY(${movement}px)`;
-
-            },
+            handleScroll,
             { passive: true }
         );
-    }
+
+        updateNavbar();
+        updateScrollProgress();
+        updateActiveNavigation();
 
 
-    /* =====================================================
-       11. PROFILE IMAGE TILT
-       ===================================================== */
+        /* =================================================
+           9. SMOOTH SCROLL
+           ================================================= */
 
-    const profileImage =
-        document.querySelector(".profile-image");
+        document
+            .querySelectorAll('a[href^="#"]')
+            .forEach(link => {
 
-    if (
-        profileImage &&
-        window.matchMedia("(min-width: 901px)").matches
-    ) {
+                link.addEventListener(
+                    "click",
+                    event => {
 
-        profileImage.addEventListener(
-            "mousemove",
-            event => {
-
-                const rect =
-                    profileImage.getBoundingClientRect();
-
-                const x =
-                    event.clientX - rect.left;
-
-                const y =
-                    event.clientY - rect.top;
-
-                const rotateY =
-                    ((x / rect.width) - 0.5) * 12;
-
-                const rotateX =
-                    ((y / rect.height) - 0.5) * -12;
-
-                profileImage.style.transform =
-                    `perspective(800px)
-                     rotateX(${rotateX}deg)
-                     rotateY(${rotateY}deg)
-                     translateZ(10px)`;
-            }
-        );
-
-        profileImage.addEventListener(
-            "mouseleave",
-            () => {
-
-                profileImage.style.transform =
-                    "";
-            }
-        );
-    }
-
-
-    /* =====================================================
-       12. ANIMATED COUNTERS
-       Supports:
-       .counter[data-target]
-       [data-counter]
-       ===================================================== */
-
-    const counters =
-        document.querySelectorAll(
-            ".counter[data-target], [data-counter]"
-        );
-
-    function animateCounter(element) {
-
-        if (element.dataset.animated === "true") {
-            return;
-        }
-
-        element.dataset.animated = "true";
-
-        const targetValue =
-            parseFloat(
-                element.dataset.target ||
-                element.dataset.counter ||
-                "0"
-            );
-
-        if (Number.isNaN(targetValue)) return;
-
-        const duration = 1400;
-
-        const startTime =
-            performance.now();
-
-        function updateCounter(currentTime) {
-
-            const elapsed =
-                currentTime - startTime;
-
-            const progress =
-                Math.min(
-                    elapsed / duration,
-                    1
-                );
-
-            const eased =
-                1 -
-                Math.pow(
-                    1 - progress,
-                    3
-                );
-
-            const value =
-                Math.round(
-                    targetValue * eased
-                );
-
-            element.textContent =
-                value.toLocaleString();
-
-            if (progress < 1) {
-
-                requestAnimationFrame(
-                    updateCounter
-                );
-
-            } else {
-
-                element.textContent =
-                    targetValue.toLocaleString();
-            }
-        }
-
-        requestAnimationFrame(
-            updateCounter
-        );
-    }
-
-    if ("IntersectionObserver" in window) {
-
-        const counterObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (entry.isIntersecting) {
-
-                            animateCounter(
-                                entry.target
-                            );
-
-                            counterObserver.unobserve(
-                                entry.target
-                            );
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.5
-                }
-            );
-
-        counters.forEach(counter => {
-            counterObserver.observe(counter);
-        });
-
-    } else {
-
-        counters.forEach(
-            animateCounter
-        );
-    }
-
-
-    /* =====================================================
-       13. WORKFLOW ANIMATION
-       Supports:
-       .workflow-item
-       .workflow-step
-       ===================================================== */
-
-    const workflowItems =
-        document.querySelectorAll(
-            ".workflow-item, .workflow-step"
-        );
-
-    if ("IntersectionObserver" in window) {
-
-        const workflowObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
+                        const targetId =
+                            link.getAttribute("href");
 
                         if (
-                            entry.isIntersecting
+                            !targetId ||
+                            targetId === "#"
                         ) {
-
-                            entry.target.classList.add(
-                                "active-workflow"
-                            );
-
-                            workflowObserver.unobserve(
-                                entry.target
-                            );
+                            return;
                         }
 
-                    });
-
-                },
-                {
-                    threshold: 0.35
-                }
-            );
-
-        workflowItems.forEach(item => {
-            workflowObserver.observe(item);
-        });
-    }
-
-
-    /* =====================================================
-       14. FINANCE / ERP FLOW ANIMATION
-       ===================================================== */
-
-    const flowNodes =
-        document.querySelectorAll(
-            ".finance-visual .workflow-item, " +
-            ".erp-flow .workflow-item, " +
-            ".case-node"
-        );
-
-    flowNodes.forEach((node, index) => {
-
-        node.style.setProperty(
-            "--flow-delay",
-            `${index * 180}ms`
-        );
-
-    });
-
-
-    /* =====================================================
-       15. THEA BOOKS DASHBOARD ANIMATION
-       ===================================================== */
-
-    const chartBars =
-        document.querySelectorAll(
-            ".chart-bar"
-        );
-
-    if ("IntersectionObserver" in window) {
-
-        const chartObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            entry.target.classList.add(
-                                "chart-visible"
+                        const target =
+                            document.querySelector(
+                                targetId
                             );
 
-                            chartObserver.unobserve(
-                                entry.target
-                            );
-                        }
+                        if (!target) return;
 
-                    });
+                        event.preventDefault();
 
-                },
-                {
-                    threshold: 0.25
-                }
+                        const navbarHeight =
+                            navbar
+                                ? navbar.offsetHeight
+                                : 0;
+
+                        const targetPosition =
+                            target.getBoundingClientRect()
+                                .top +
+                            window.scrollY -
+                            navbarHeight;
+
+                        window.scrollTo({
+                            top: Math.max(
+                                0,
+                                targetPosition
+                            ),
+                            behavior: "smooth"
+                        });
+                    }
+                );
+            });
+
+
+        /* =================================================
+           10. SCROLL REVEAL
+           ================================================= */
+
+        const revealElements =
+            document.querySelectorAll(
+                ".reveal, .reveal-left, .reveal-right, .reveal-scale"
             );
 
-        chartBars.forEach(bar => {
-            chartObserver.observe(bar);
+        function revealImmediately() {
+
+            revealElements.forEach(element => {
+                element.classList.add("show");
+            });
+        }
+
+        const reducedMotion =
+            window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches;
+
+        if (
+            reducedMotion ||
+            !("IntersectionObserver" in window)
+        ) {
+
+            revealImmediately();
+
+        } else {
+
+            const revealObserver =
+                new IntersectionObserver(
+                    entries => {
+
+                        entries.forEach(entry => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.classList.add(
+                                    "show"
+                                );
+
+                                revealObserver.unobserve(
+                                    entry.target
+                                );
+                            }
+
+                        });
+
+                    },
+                    {
+                        threshold: 0.10,
+                        rootMargin:
+                            "0px 0px -60px 0px"
+                    }
+                );
+
+            revealElements.forEach(element => {
+                revealObserver.observe(element);
+            });
+        }
+
+
+        /* =================================================
+           11. STAGGER ANIMATIONS
+           ================================================= */
+
+        const staggerGroups = [
+            ".skills-layout",
+            ".projects-grid",
+            ".approach-grid",
+            ".about-stats",
+            ".experience-timeline",
+            ".services-grid"
+        ];
+
+        staggerGroups.forEach(selector => {
+
+            document
+                .querySelectorAll(selector)
+                .forEach(group => {
+
+                    Array.from(group.children)
+                        .forEach((item, index) => {
+
+                            item.style.setProperty(
+                                "--delay",
+                                `${index * 90}ms`
+                            );
+
+                            item.classList.add(
+                                "stagger-item"
+                            );
+                        });
+                });
         });
-    }
 
 
-    /* =====================================================
-       16. PROJECT CARD MOUSE EFFECT
-       ===================================================== */
+        /* =================================================
+           12. HERO TYPING EFFECT
+           ================================================= */
 
-    const projectCards =
-        document.querySelectorAll(
-            ".project-card"
-        );
+        const typingText =
+            document.getElementById("typingText");
 
-    if (
-        window.matchMedia("(min-width: 901px)").matches
-    ) {
+        if (
+            typingText &&
+            !reducedMotion
+        ) {
 
-        projectCards.forEach(card => {
+            const roles = [
+                "Finance & Accounts",
+                "Business Operations",
+                "Excel & Reporting",
+                "ERP & Business Systems",
+                "Data & Digital Solutions"
+            ];
 
-            card.addEventListener(
+            let roleIndex = 0;
+            let characterIndex = 0;
+            let deleting = false;
+
+            function typeRole() {
+
+                const role =
+                    roles[roleIndex];
+
+                if (!deleting) {
+
+                    characterIndex++;
+
+                    typingText.textContent =
+                        role.substring(
+                            0,
+                            characterIndex
+                        );
+
+                    if (
+                        characterIndex >=
+                        role.length
+                    ) {
+
+                        deleting = true;
+
+                        setTimeout(
+                            typeRole,
+                            1700
+                        );
+
+                        return;
+                    }
+
+                } else {
+
+                    characterIndex--;
+
+                    typingText.textContent =
+                        role.substring(
+                            0,
+                            characterIndex
+                        );
+
+                    if (characterIndex <= 0) {
+
+                        deleting = false;
+
+                        roleIndex =
+                            (roleIndex + 1) %
+                            roles.length;
+                    }
+                }
+
+                setTimeout(
+                    typeRole,
+                    deleting ? 42 : 75
+                );
+            }
+
+            typeRole();
+        }
+
+
+        /* =================================================
+           13. HERO PARALLAX
+           ================================================= */
+
+        const heroVisual =
+            document.querySelector(".hero-visual");
+
+        const desktopScreen =
+            window.matchMedia(
+                "(min-width: 901px)"
+            );
+
+        if (
+            heroVisual &&
+            desktopScreen.matches &&
+            !reducedMotion
+        ) {
+
+            function updateHeroParallax() {
+
+                if (window.scrollY > 850) return;
+
+                const movement =
+                    window.scrollY * 0.045;
+
+                heroVisual.style.transform =
+                    `translate3d(0, ${movement}px, 0)`;
+            }
+
+            window.addEventListener(
+                "scroll",
+                updateHeroParallax,
+                { passive: true }
+            );
+        }
+
+
+        /* =================================================
+           14. PROFILE IMAGE TILT
+           ================================================= */
+
+        const profileImage =
+            document.querySelector(".profile-image");
+
+        if (
+            profileImage &&
+            desktopScreen.matches &&
+            !reducedMotion
+        ) {
+
+            profileImage.addEventListener(
                 "mousemove",
                 event => {
 
                     const rect =
-                        card.getBoundingClientRect();
+                        profileImage.getBoundingClientRect();
+
+                    if (
+                        !rect.width ||
+                        !rect.height
+                    ) {
+                        return;
+                    }
 
                     const x =
-                        event.clientX -
-                        rect.left;
+                        (event.clientX -
+                            rect.left) /
+                        rect.width;
 
                     const y =
-                        event.clientY -
-                        rect.top;
-
-                    const rotateX =
-                        ((y / rect.height) - 0.5) * -5;
+                        (event.clientY -
+                            rect.top) /
+                        rect.height;
 
                     const rotateY =
-                        ((x / rect.width) - 0.5) * 5;
+                        (x - 0.5) * 10;
 
-                    card.style.transform =
-                        `perspective(1000px)
+                    const rotateX =
+                        (y - 0.5) * -10;
+
+                    profileImage.style.transform =
+                        `perspective(900px)
                          rotateX(${rotateX}deg)
                          rotateY(${rotateY}deg)
-                         translateY(-5px)`;
+                         translateZ(8px)`;
+                }
+            );
+
+            profileImage.addEventListener(
+                "mouseleave",
+                () => {
+
+                    profileImage.style.transform =
+                        "";
+                }
+            );
+        }
+
+
+        /* =================================================
+           15. ANIMATED COUNTERS
+           ================================================= */
+
+        const counters =
+            document.querySelectorAll(
+                ".counter[data-target], [data-counter]"
+            );
+
+        function animateCounter(element) {
+
+            if (
+                element.dataset.animated ===
+                "true"
+            ) {
+                return;
+            }
+
+            element.dataset.animated =
+                "true";
+
+            const target =
+                parseFloat(
+                    element.dataset.target ||
+                    element.dataset.counter ||
+                    "0"
+                );
+
+            if (Number.isNaN(target)) {
+                return;
+            }
+
+            if (reducedMotion) {
+
+                element.textContent =
+                    target.toLocaleString();
+
+                return;
+            }
+
+            const duration = 1300;
+            const start =
+                performance.now();
+
+            function updateCounter(now) {
+
+                const elapsed =
+                    now - start;
+
+                const progress =
+                    Math.min(
+                        elapsed / duration,
+                        1
+                    );
+
+                const eased =
+                    1 -
+                    Math.pow(
+                        1 - progress,
+                        3
+                    );
+
+                const value =
+                    Math.round(
+                        target * eased
+                    );
+
+                element.textContent =
+                    value.toLocaleString();
+
+                if (progress < 1) {
+
+                    requestAnimationFrame(
+                        updateCounter
+                    );
+
+                } else {
+
+                    element.textContent =
+                        target.toLocaleString();
+                }
+            }
+
+            requestAnimationFrame(
+                updateCounter
+            );
+        }
+
+        if (
+            counters.length &&
+            "IntersectionObserver" in window
+        ) {
+
+            const counterObserver =
+                new IntersectionObserver(
+                    entries => {
+
+                        entries.forEach(entry => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                animateCounter(
+                                    entry.target
+                                );
+
+                                counterObserver.unobserve(
+                                    entry.target
+                                );
+                            }
+                        });
+
+                    },
+                    {
+                        threshold: 0.45
+                    }
+                );
+
+            counters.forEach(counter => {
+                counterObserver.observe(counter);
+            });
+
+        } else {
+
+            counters.forEach(
+                animateCounter
+            );
+        }
+
+
+        /* =================================================
+           16. WORKFLOW ANIMATION
+           ================================================= */
+
+        const workflowItems =
+            document.querySelectorAll(
+                ".workflow-item, .workflow-step"
+            );
+
+        if (
+            workflowItems.length &&
+            !reducedMotion &&
+            "IntersectionObserver" in window
+        ) {
+
+            const workflowObserver =
+                new IntersectionObserver(
+                    entries => {
+
+                        entries.forEach(entry => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.classList.add(
+                                    "active-workflow"
+                                );
+
+                                workflowObserver.unobserve(
+                                    entry.target
+                                );
+                            }
+                        });
+
+                    },
+                    {
+                        threshold: 0.25
+                    }
+                );
+
+            workflowItems.forEach(item => {
+                workflowObserver.observe(item);
+            });
+        }
+
+
+        /* =================================================
+           17. FLOW DELAYS
+           ================================================= */
+
+        const flowNodes =
+            document.querySelectorAll(
+                ".finance-visual .workflow-item, " +
+                ".erp-flow .workflow-item, " +
+                ".case-node"
+            );
+
+        flowNodes.forEach((node, index) => {
+
+            node.style.setProperty(
+                "--flow-delay",
+                `${index * 150}ms`
+            );
+        });
+
+
+        /* =================================================
+           18. THEA BOOKS CHART ANIMATION
+           ================================================= */
+
+        const chartBars =
+            document.querySelectorAll(
+                ".chart-bar"
+            );
+
+        if (
+            chartBars.length &&
+            !reducedMotion &&
+            "IntersectionObserver" in window
+        ) {
+
+            const chartObserver =
+                new IntersectionObserver(
+                    entries => {
+
+                        entries.forEach(entry => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.classList.add(
+                                    "chart-visible"
+                                );
+
+                                chartObserver.unobserve(
+                                    entry.target
+                                );
+                            }
+                        });
+
+                    },
+                    {
+                        threshold: 0.15
+                    }
+                );
+
+            chartBars.forEach(bar => {
+                chartObserver.observe(bar);
+            });
+        } else {
+
+            chartBars.forEach(bar => {
+                bar.classList.add(
+                    "chart-visible"
+                );
+            });
+        }
+
+
+        /* =================================================
+           19. PROJECT CARD TILT
+           ================================================= */
+
+        const projectCards =
+            document.querySelectorAll(
+                ".project-card"
+            );
+
+        if (
+            projectCards.length &&
+            desktopScreen.matches &&
+            !reducedMotion
+        ) {
+
+            projectCards.forEach(card => {
+
+                card.addEventListener(
+                    "mousemove",
+                    event => {
+
+                        const rect =
+                            card.getBoundingClientRect();
+
+                        if (
+                            !rect.width ||
+                            !rect.height
+                        ) {
+                            return;
+                        }
+
+                        const x =
+                            (event.clientX -
+                                rect.left) /
+                            rect.width;
+
+                        const y =
+                            (event.clientY -
+                                rect.top) /
+                            rect.height;
+
+                        const rotateX =
+                            (y - 0.5) * -4;
+
+                        const rotateY =
+                            (x - 0.5) * 4;
+
+                        card.style.transform =
+                            `perspective(1000px)
+                             rotateX(${rotateX}deg)
+                             rotateY(${rotateY}deg)
+                             translateY(-4px)`;
+                    }
+                );
+
+                card.addEventListener(
+                    "mouseleave",
+                    () => {
+
+                        card.style.transform =
+                            "";
+                    }
+                );
+            });
+        }
+
+
+        /* =================================================
+           20. SKILL CARD INTERACTION
+           ================================================= */
+
+        const skillCards =
+            document.querySelectorAll(
+                ".skill-card"
+            );
+
+        skillCards.forEach(card => {
+
+            card.addEventListener(
+                "click",
+                () => {
+
+                    skillCards.forEach(item => {
+
+                        if (item !== card) {
+                            item.classList.remove(
+                                "selected"
+                            );
+                        }
+                    });
+
+                    card.classList.toggle(
+                        "selected"
+                    );
+                }
+            );
+        });
+
+
+        /* =================================================
+           21. SERVICE CARD HOVER
+           ================================================= */
+
+        const serviceCards =
+            document.querySelectorAll(
+                ".service-card"
+            );
+
+        serviceCards.forEach(card => {
+
+            card.addEventListener(
+                "mouseenter",
+                () => {
+
+                    card.classList.add(
+                        "service-active"
+                    );
                 }
             );
 
@@ -745,437 +968,512 @@ document.addEventListener("DOMContentLoaded", () => {
                 "mouseleave",
                 () => {
 
-                    card.style.transform = "";
+                    card.classList.remove(
+                        "service-active"
+                    );
                 }
             );
         });
-    }
 
 
-    /* =====================================================
-       17. SERVICE / SKILL CARD INTERACTION
-       ===================================================== */
+        /* =================================================
+           22. CONTACT FORM
+           ================================================= */
 
-    const serviceCards =
-        document.querySelectorAll(
-            ".skill-card"
-        );
+        const contactForm =
+            document.querySelector(
+                ".contact-form"
+            );
 
-    serviceCards.forEach(card => {
+        if (contactForm) {
 
-        card.addEventListener(
-            "click",
-            () => {
+            contactForm.addEventListener(
+                "submit",
+                event => {
 
-                serviceCards.forEach(
-                    item =>
-                        item.classList.remove(
-                            "selected"
-                        )
-                );
+                    event.preventDefault();
 
-                card.classList.add(
-                    "selected"
-                );
-            }
-        );
-    });
+                    const name =
+                        document.getElementById(
+                            "name"
+                        )?.value.trim() || "";
 
+                    const email =
+                        document.getElementById(
+                            "email"
+                        )?.value.trim() || "";
 
-    /* =====================================================
-       18. CONTACT FORM
-       ===================================================== */
+                    const subject =
+                        document.getElementById(
+                            "subject"
+                        )?.value.trim() || "";
 
-    const contactForm =
-        document.querySelector(
-            ".contact-form"
-        );
+                    const message =
+                        document.getElementById(
+                            "message"
+                        )?.value.trim() || "";
 
-    if (contactForm) {
+                    const receiver =
+                        "abbasnazeer098@gmail.com";
 
-        contactForm.addEventListener(
-            "submit",
-            event => {
+                    const mailSubject =
+                        subject ||
+                        `Portfolio Contact from ${name || "Visitor"}`;
 
-                event.preventDefault();
+                    const body =
+                        `Name: ${name}\n` +
+                        `Email: ${email}\n\n` +
+                        `Message:\n${message}`;
 
-                const name =
-                    document.getElementById(
-                        "name"
-                    )?.value.trim();
+                    const mailto =
+                        `mailto:${receiver}` +
+                        `?subject=${encodeURIComponent(
+                            mailSubject
+                        )}` +
+                        `&body=${encodeURIComponent(
+                            body
+                        )}`;
 
-                const email =
-                    document.getElementById(
-                        "email"
-                    )?.value.trim();
-
-                const subject =
-                    document.getElementById(
-                        "subject"
-                    )?.value.trim();
-
-                const message =
-                    document.getElementById(
-                        "message"
-                    )?.value.trim();
-
-                const receiver =
-                    "abbasnazeer098@gmail.com";
-
-                const mailSubject =
-                    subject ||
-                    `Portfolio Contact from ${name || "Visitor"}`;
-
-                const body =
-                    `Name: ${name || ""}\n` +
-                    `Email: ${email || ""}\n\n` +
-                    `${message || ""}`;
-
-                const mailto =
-                    `mailto:${receiver}` +
-                    `?subject=${encodeURIComponent(mailSubject)}` +
-                    `&body=${encodeURIComponent(body)}`;
-
-                window.location.href =
-                    mailto;
-            }
-        );
-    }
-
-
-    /* =====================================================
-       19. COPY TO CLIPBOARD
-       ===================================================== */
-
-    document.querySelectorAll(
-        "[data-copy]"
-    ).forEach(button => {
-
-        button.addEventListener(
-            "click",
-            async () => {
-
-                const value =
-                    button.dataset.copy;
-
-                if (!value) return;
-
-                try {
-
-                    await navigator.clipboard.writeText(
-                        value
-                    );
-
-                    const original =
-                        button.textContent;
-
-                    button.textContent =
-                        "Copied!";
-
-                    setTimeout(() => {
-                        button.textContent =
-                            original;
-                    }, 1400);
-
-                } catch (error) {
-
-                    console.warn(
-                        "Clipboard unavailable."
-                    );
+                    window.location.href =
+                        mailto;
                 }
-            }
-        );
-    });
+            );
+        }
 
 
-    /* =====================================================
-       20. PARALLAX ELEMENTS
-       ===================================================== */
+        /* =================================================
+           23. COPY TO CLIPBOARD
+           ================================================= */
 
-    const parallaxElements =
-        document.querySelectorAll(
-            "[data-parallax]"
-        );
+        document
+            .querySelectorAll("[data-copy]")
+            .forEach(button => {
 
-    if (
-        parallaxElements.length &&
-        window.matchMedia("(min-width: 901px)").matches
-    ) {
+                button.addEventListener(
+                    "click",
+                    async () => {
 
-        window.addEventListener(
-            "scroll",
-            () => {
+                        const value =
+                            button.dataset.copy;
 
-                const scroll =
-                    window.scrollY;
+                        if (!value) return;
 
-                parallaxElements.forEach(
-                    element => {
+                        try {
 
-                        const speed =
-                            parseFloat(
-                                element.dataset.parallax
-                            ) || 0.05;
+                            await navigator
+                                .clipboard
+                                .writeText(value);
 
-                        element.style.transform =
-                            `translateY(${scroll * speed}px)`;
+                            const original =
+                                button.textContent;
+
+                            button.textContent =
+                                "Copied!";
+
+                            setTimeout(() => {
+
+                                button.textContent =
+                                    original;
+
+                            }, 1400);
+
+                        } catch (error) {
+
+                            console.warn(
+                                "Clipboard unavailable."
+                            );
+                        }
                     }
                 );
+            });
 
+
+        /* =================================================
+           24. DATA PARALLAX
+           ================================================= */
+
+        const parallaxElements =
+            document.querySelectorAll(
+                "[data-parallax]"
+            );
+
+        if (
+            parallaxElements.length &&
+            desktopScreen.matches &&
+            !reducedMotion
+        ) {
+
+            let parallaxTicking = false;
+
+            function updateParallax() {
+
+                if (parallaxTicking) return;
+
+                parallaxTicking = true;
+
+                requestAnimationFrame(() => {
+
+                    const scroll =
+                        window.scrollY;
+
+                    parallaxElements.forEach(
+                        element => {
+
+                            const speed =
+                                parseFloat(
+                                    element.dataset.parallax
+                                ) || 0.05;
+
+                            element.style.transform =
+                                `translate3d(
+                                    0,
+                                    ${scroll * speed}px,
+                                    0
+                                )`;
+                        }
+                    );
+
+                    parallaxTicking = false;
+                });
+            }
+
+            window.addEventListener(
+                "scroll",
+                updateParallax,
+                { passive: true }
+            );
+        }
+
+
+        /* =================================================
+           25. HERO PARTICLES
+           ================================================= */
+
+        const hero =
+            document.querySelector(".hero");
+
+        if (
+            hero &&
+            !reducedMotion &&
+            !hero.querySelector(".hero-particles")
+        ) {
+
+            const particleContainer =
+                document.createElement("div");
+
+            particleContainer.className =
+                "hero-particles";
+
+            particleContainer.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            const fragment =
+                document.createDocumentFragment();
+
+            for (let i = 0; i < 22; i++) {
+
+                const particle =
+                    document.createElement("span");
+
+                particle.className =
+                    "hero-particle";
+
+                particle.style.left =
+                    `${Math.random() * 100}%`;
+
+                particle.style.top =
+                    `${Math.random() * 100}%`;
+
+                particle.style.animationDelay =
+                    `${Math.random() * 5}s`;
+
+                particle.style.animationDuration =
+                    `${5 + Math.random() * 7}s`;
+
+                fragment.appendChild(
+                    particle
+                );
+            }
+
+            particleContainer.appendChild(
+                fragment
+            );
+
+            hero.appendChild(
+                particleContainer
+            );
+        }
+
+
+        /* =================================================
+           26. DESKTOP CURSOR GLOW
+           ================================================= */
+
+        const finePointer =
+            window.matchMedia(
+                "(pointer: fine) and (min-width: 901px)"
+            );
+
+        if (
+            finePointer.matches &&
+            !reducedMotion
+        ) {
+
+            const cursorGlow =
+                document.getElementById(
+                    "cursorGlow"
+                ) ||
+                document.createElement("div");
+
+            if (!cursorGlow.id) {
+
+                cursorGlow.id =
+                    "cursorGlow";
+
+                cursorGlow.className =
+                    "cursor-glow";
+
+                document.body.appendChild(
+                    cursorGlow
+                );
+            }
+
+            cursorGlow.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            let mouseX = 0;
+            let mouseY = 0;
+
+            let glowX = 0;
+            let glowY = 0;
+
+            document.addEventListener(
+                "mousemove",
+                event => {
+
+                    mouseX =
+                        event.clientX;
+
+                    mouseY =
+                        event.clientY;
+                },
+                { passive: true }
+            );
+
+            function animateCursor() {
+
+                glowX +=
+                    (mouseX - glowX) *
+                    0.12;
+
+                glowY +=
+                    (mouseY - glowY) *
+                    0.12;
+
+                cursorGlow.style.transform =
+                    `translate3d(
+                        ${glowX}px,
+                        ${glowY}px,
+                        0
+                    )`;
+
+                requestAnimationFrame(
+                    animateCursor
+                );
+            }
+
+            animateCursor();
+        }
+
+
+        /* =================================================
+           27. BUTTON RIPPLE
+           ================================================= */
+
+        document
+            .querySelectorAll(
+                ".btn-primary, " +
+                ".btn-outline, " +
+                ".form-submit, " +
+                ".nav-cta"
+            )
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    event => {
+
+                        if (reducedMotion) {
+                            return;
+                        }
+
+                        const rect =
+                            button.getBoundingClientRect();
+
+                        const ripple =
+                            document.createElement(
+                                "span"
+                            );
+
+                        ripple.className =
+                            "ripple";
+
+                        const size =
+                            Math.max(
+                                rect.width,
+                                rect.height
+                            );
+
+                        ripple.style.width =
+                            `${size}px`;
+
+                        ripple.style.height =
+                            `${size}px`;
+
+                        ripple.style.left =
+                            `${event.clientX -
+                                rect.left -
+                                size / 2}px`;
+
+                        ripple.style.top =
+                            `${event.clientY -
+                                rect.top -
+                                size / 2}px`;
+
+                        button.appendChild(
+                            ripple
+                        );
+
+                        setTimeout(() => {
+
+                            if (
+                                ripple &&
+                                ripple.parentNode
+                            ) {
+                                ripple.remove();
+                            }
+
+                        }, 700);
+                    }
+                );
+            });
+
+
+        /* =================================================
+           28. PROFILE IMAGE FALLBACK
+           ================================================= */
+
+        const profileImg =
+            document.querySelector(
+                ".profile-image img"
+            );
+
+        if (profileImg) {
+
+            profileImg.addEventListener(
+                "error",
+                () => {
+
+                    console.warn(
+                        "profile.jpg could not be loaded."
+                    );
+
+                    profileImg.style.display =
+                        "none";
+
+                    if (
+                        profileImg.parentElement
+                    ) {
+
+                        profileImg.parentElement
+                            .classList.add(
+                                "image-missing"
+                            );
+                    }
+                }
+            );
+        }
+
+
+        /* =================================================
+           29. CURRENT YEAR
+           ================================================= */
+
+        document
+            .querySelectorAll(
+                "#currentYear, .current-year"
+            )
+            .forEach(element => {
+
+                element.textContent =
+                    new Date()
+                        .getFullYear();
+            });
+
+
+        /* =================================================
+           30. REDUCED MOTION
+           ================================================= */
+
+        if (reducedMotion) {
+
+            document.documentElement.classList.add(
+                "reduced-motion"
+            );
+
+            revealImmediately();
+
+            chartBars.forEach(bar => {
+                bar.classList.add(
+                    "chart-visible"
+                );
+            });
+        }
+
+
+        /* =================================================
+           31. RESIZE SAFETY
+           ================================================= */
+
+        let resizeTimer = null;
+
+        window.addEventListener(
+            "resize",
+            () => {
+
+                clearTimeout(
+                    resizeTimer
+                );
+
+                resizeTimer =
+                    setTimeout(() => {
+
+                        updateNavbar();
+                        updateScrollProgress();
+                        updateActiveNavigation();
+
+                    }, 150);
             },
             { passive: true }
         );
-    }
 
 
-    /* =====================================================
-       21. FLOATING PARTICLES
-       ===================================================== */
+        /* =================================================
+           32. PAGE READY
+           ================================================= */
 
-    const hero =
-        document.querySelector(".hero");
-
-    if (hero) {
-
-        const particleContainer =
-            document.createElement("div");
-
-        particleContainer.className =
-            "hero-particles";
-
-        for (let i = 0; i < 22; i++) {
-
-            const particle =
-                document.createElement("span");
-
-            particle.className =
-                "hero-particle";
-
-            particle.style.left =
-                `${Math.random() * 100}%`;
-
-            particle.style.top =
-                `${Math.random() * 100}%`;
-
-            particle.style.animationDelay =
-                `${Math.random() * 5}s`;
-
-            particle.style.animationDuration =
-                `${5 + Math.random() * 7}s`;
-
-            particleContainer.appendChild(
-                particle
-            );
-        }
-
-        hero.appendChild(
-            particleContainer
-        );
-    }
-
-
-    /* =====================================================
-       22. DESKTOP CURSOR GLOW
-       ===================================================== */
-
-    if (
-        window.matchMedia(
-            "(pointer: fine) and (min-width: 901px)"
-        ).matches
-    ) {
-
-        const cursorGlow =
-            document.createElement("div");
-
-        cursorGlow.className =
-            "cursor-glow";
-
-        document.body.appendChild(
-            cursorGlow
+        body.classList.add(
+            "portfolio-ready"
         );
 
-        let mouseX = 0;
-        let mouseY = 0;
-        let glowX = 0;
-        let glowY = 0;
-
-        document.addEventListener(
-            "mousemove",
-            event => {
-
-                mouseX = event.clientX;
-                mouseY = event.clientY;
-            }
+        console.log(
+            "Muhammad Abbas Portfolio loaded successfully."
         );
 
-        function animateCursor() {
-
-            glowX +=
-                (mouseX - glowX) * 0.12;
-
-            glowY +=
-                (mouseY - glowY) * 0.12;
-
-            cursorGlow.style.transform =
-                `translate3d(${glowX}px, ${glowY}px, 0)`;
-
-            requestAnimationFrame(
-                animateCursor
-            );
-        }
-
-        animateCursor();
-    }
-
-
-    /* =====================================================
-       23. BUTTON RIPPLE
-       ===================================================== */
-
-    document.querySelectorAll(
-        ".btn-primary, .btn-outline, .form-submit, .nav-cta"
-    ).forEach(button => {
-
-        button.addEventListener(
-            "click",
-            event => {
-
-                const rect =
-                    button.getBoundingClientRect();
-
-                const ripple =
-                    document.createElement("span");
-
-                ripple.className =
-                    "ripple";
-
-                const size =
-                    Math.max(
-                        rect.width,
-                        rect.height
-                    );
-
-                ripple.style.width =
-                    `${size}px`;
-
-                ripple.style.height =
-                    `${size}px`;
-
-                ripple.style.left =
-                    `${event.clientX - rect.left - size / 2}px`;
-
-                ripple.style.top =
-                    `${event.clientY - rect.top - size / 2}px`;
-
-                button.appendChild(
-                    ripple
-                );
-
-                setTimeout(() => {
-                    ripple.remove();
-                }, 650);
-            }
-        );
     });
 
-
-    /* =====================================================
-       24. PROFILE IMAGE FALLBACK
-       ===================================================== */
-
-    const profileImg =
-        document.querySelector(
-            ".profile-image img"
-        );
-
-    if (profileImg) {
-
-        profileImg.addEventListener(
-            "error",
-            () => {
-
-                profileImg.style.display =
-                    "none";
-
-                profileImg.parentElement.classList.add(
-                    "image-missing"
-                );
-            }
-        );
-    }
-
-
-    /* =====================================================
-       25. CURRENT YEAR
-       ===================================================== */
-
-    const yearElements =
-        document.querySelectorAll(
-            "#currentYear, .current-year"
-        );
-
-    yearElements.forEach(element => {
-
-        element.textContent =
-            new Date().getFullYear();
-    });
-
-
-    /* =====================================================
-       26. REDUCED MOTION
-       ===================================================== */
-
-    const reducedMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        );
-
-    if (reducedMotion.matches) {
-
-        document.documentElement.classList.add(
-            "reduced-motion"
-        );
-
-        revealElements.forEach(element => {
-            element.classList.add("show");
-        });
-    }
-
-
-    /* =====================================================
-       27. RESIZE SAFETY
-       ===================================================== */
-
-    let resizeTimer;
-
-    window.addEventListener(
-        "resize",
-        () => {
-
-            clearTimeout(resizeTimer);
-
-            resizeTimer =
-                setTimeout(() => {
-
-                    updateNavbar();
-                    updateScrollProgress();
-                    updateActiveNav();
-
-                }, 150);
-        }
-    );
-
-
-    /* =====================================================
-       28. PAGE READY
-       ===================================================== */
-
-    document.body.classList.add(
-        "portfolio-ready"
-    );
-
-    console.log(
-        "THE A TECH Portfolio loaded successfully."
-    );
-
-});
+})();

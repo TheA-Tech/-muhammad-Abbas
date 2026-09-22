@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
 
@@ -11,1034 +10,1552 @@
 
     <meta
         name="description"
-        content="Muhammad Abbas — Finance, Accounts, Business Operations and Digital Systems portfolio."
+        content="Muhammad Abbas - Finance, Accounting, Business Operations and Digital Systems Portfolio"
     >
 
     <title>Muhammad Abbas | Finance • Operations • Digital Systems</title>
 
     <link
-        rel="stylesheet"
-        href="style.css"
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
     >
 </head>
 
 <body>
 
-    <!-- =========================
-         SCROLL PROGRESS
-    ========================== -->
+<!-- =====================================================
+     PAGE LOADER
+===================================================== -->
 
-    <div
-        class="scroll-progress"
-        id="scrollProgress"
-    ></div>
+<div class="page-loader" id="pageLoader">
+    <div class="loader-logo">
+        MA
+    </div>
+
+    <div class="loader-line">
+        <span></span>
+    </div>
+
+    <p>Building digital experience...</p>
+</div>
 
 
-    <!-- =========================
-         NAVBAR
-    ========================== -->
+<!-- =====================================================
+     SCROLL PROGRESS
+===================================================== -->
 
-    <header class="navbar">
+<div class="scroll-progress">
+    <span id="scrollProgress"></span>
+</div>
 
-        <div class="nav-container">
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar" id="navbar">
+
+    <div class="nav-container">
+
+        <a
+            href="#home"
+            class="logo"
+        >
+            <span class="logo-box">MA</span>
+
+            <span class="logo-text">
+                Muhammad Abbas
+            </span>
+        </a>
+
+
+        <nav
+            class="desktop-nav"
+            id="desktopNav"
+        >
 
             <a
                 href="#home"
-                class="logo"
+                class="nav-link active"
             >
-                <span class="logo-mark">MA</span>
-                <span class="logo-text">Muhammad Abbas</span>
+                Home
             </a>
 
-
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                aria-label="Open menu"
+            <a
+                href="#about"
+                class="nav-link"
             >
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+                About
+            </a>
 
-
-            <nav
-                class="nav-menu"
-                id="navMenu"
+            <a
+                href="#skills"
+                class="nav-link"
             >
+                Skills
+            </a>
 
-                <a href="#home">Home</a>
+            <a
+                href="#projects"
+                class="nav-link"
+            >
+                Projects
+            </a>
 
-                <a href="#about">About</a>
+            <a
+                href="#experience"
+                class="nav-link"
+            >
+                Experience
+            </a>
 
-                <a href="#skills">Skills</a>
+            <a
+                href="#contact"
+                class="nav-link"
+            >
+                Contact
+            </a>
 
-                <a href="#projects">Projects</a>
+        </nav>
 
-                <a href="#experience">Experience</a>
 
-                <a href="#contact">Contact</a>
+        <a
+            href="#contact"
+            class="nav-cta"
+        >
+            Let's Talk
+            <span>↗</span>
+        </a>
+
+
+        <button
+            class="mobile-menu-btn"
+            id="mobileMenuBtn"
+            aria-label="Open menu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+
+    <!-- MOBILE MENU -->
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+
+        <a href="#home">Home</a>
+
+        <a href="#about">About</a>
+
+        <a href="#skills">Skills</a>
+
+        <a href="#projects">Projects</a>
+
+        <a href="#experience">Experience</a>
+
+        <a href="#contact">Contact</a>
+
+        <a
+            href="#contact"
+            class="mobile-contact-btn"
+        >
+            Let's Talk →
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+    class="hero section"
+    id="home"
+>
+
+    <div class="hero-grid"></div>
+
+    <div class="hero-glow hero-glow-one"></div>
+
+    <div class="hero-glow hero-glow-two"></div>
+
+
+    <div class="container hero-container">
+
+
+        <!-- HERO TEXT -->
+
+        <div class="hero-content reveal-left">
+
+            <div class="availability">
+
+                <span class="availability-dot"></span>
+
+                AVAILABLE FOR OPPORTUNITIES
+
+            </div>
+
+
+            <p class="hero-small">
+                HELLO, I'M
+            </p>
+
+
+            <h1>
+
+                Muhammad
+
+                <span>Abbas</span>
+
+            </h1>
+
+
+            <div class="hero-role">
+
+                <span id="typingText">
+                    Finance & Accounts
+                </span>
+
+                <span class="typing-cursor">|</span>
+
+            </div>
+
+
+            <p class="hero-description">
+
+                Economics graduate focused on
+                <strong>Finance, Accounting, Business Operations</strong>
+                and <strong>Digital Systems</strong> —
+                building practical solutions through technology,
+                data and structured workflows.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#projects"
+                    class="btn btn-primary"
+                >
+                    View My Work
+
+                    <span>↗</span>
+
+                </a>
+
 
                 <a
                     href="#contact"
-                    class="nav-button"
+                    class="btn btn-outline"
                 >
-                    Let's Talk
+                    Let's Connect
                 </a>
 
-            </nav>
+            </div>
+
+
+            <div class="hero-socials">
+
+                <a
+                    href="https://www.linkedin.com/in/muhammad-abbas-ba386b330/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    LinkedIn
+                </a>
+
+                <span>•</span>
+
+                <a
+                    href="mailto:abbasnazeer098@gmail.com"
+                >
+                    Email
+                </a>
+
+                <span>•</span>
+
+                <a
+                    href="https://wa.me/923460911451"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    WhatsApp
+                </a>
+
+            </div>
 
         </div>
 
-    </header>
+
+        <!-- HERO VISUAL -->
+
+        <div class="hero-visual reveal-right">
+
+            <div class="hero-orbit orbit-one"></div>
+
+            <div class="hero-orbit orbit-two"></div>
+
+            <div class="hero-orbit orbit-three"></div>
 
 
-    <main>
+            <div class="profile-ring">
 
+                <div class="profile-image">
 
-        <!-- =========================
-             HERO
-        ========================== -->
+                    <img
+                        src="profile.jpg"
+                        alt="Muhammad Abbas"
+                    >
 
-        <section
-            class="hero"
-            id="home"
-        >
-
-            <div class="hero-background">
-
-                <div class="glow glow-one"></div>
-
-                <div class="glow glow-two"></div>
-
-                <div class="grid-background"></div>
+                </div>
 
             </div>
 
 
-            <div class="hero-container">
+            <!-- FLOATING SKILLS -->
 
+            <div class="orbit-card orbit-finance">
 
-                <!-- HERO TEXT -->
-
-                <div class="hero-content reveal">
-
-                    <div class="availability">
-
-                        <span class="status-dot"></span>
-
-                        AVAILABLE FOR OPPORTUNITIES
-
-                    </div>
-
-
-                    <p class="hero-small-text">
-                        HELLO, I'M
-                    </p>
-
-
-                    <h1>
-
-                        Muhammad
-                        <span>Abbas</span>
-
-                    </h1>
-
-
-                    <div class="hero-title">
-
-                        <span class="typing-text">
-                            Finance & Accounts
-                        </span>
-
-                    </div>
-
-
-                    <p class="hero-description">
-
-                        Economics graduate focused on
-                        Finance, Accounting, Business Operations
-                        and Digital Systems — building practical
-                        solutions through technology and data.
-
-                    </p>
-
-
-                    <div class="hero-buttons">
-
-                        <a
-                            href="#projects"
-                            class="primary-button"
-                        >
-                            View My Work
-                            <span>↗</span>
-                        </a>
-
-
-                        <a
-                            href="#contact"
-                            class="secondary-button"
-                        >
-                            Let's Connect
-                        </a>
-
-                    </div>
-
-
-                    <div class="hero-socials">
-
-                        <a
-                            href="https://www.linkedin.com/in/muhammad-abbas-ba386b330/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            LinkedIn
-                        </a>
-
-                        <span>•</span>
-
-                        <a
-                            href="mailto:abbasnazeer098@gmail.com"
-                        >
-                            Email
-                        </a>
-
-                        <span>•</span>
-
-                        <a
-                            href="https://wa.me/923460911451"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            WhatsApp
-                        </a>
-
-                    </div>
-
+                <div class="mini-icon">
+                    ₨
                 </div>
 
-
-                <!-- =========================
-                     ANIMATED PROFILE
-                ========================== -->
-
-                <div class="hero-visual reveal">
-
-
-                    <div class="profile-orbit">
-
-
-                        <!-- ORBIT RINGS -->
-
-                        <div class="orbit orbit-one">
-
-                            <div class="service service-one">
-                                Finance
-                            </div>
-
-                        </div>
-
-
-                        <div class="orbit orbit-two">
-
-                            <div class="service service-two">
-                                Accounts
-                            </div>
-
-                        </div>
-
-
-                        <div class="orbit orbit-three">
-
-                            <div class="service service-three">
-                                Excel
-                            </div>
-
-                        </div>
-
-
-                        <div class="orbit orbit-four">
-
-                            <div class="service service-four">
-                                ERP
-                            </div>
-
-                        </div>
-
-
-                        <!-- PROFILE IMAGE -->
-
-                        <div class="profile-circle">
-
-                            <div class="profile-glow"></div>
-
-                            <img
-                                src="profile.jpg"
-                                alt="Muhammad Abbas"
-                                class="profile-image"
-                            >
-
-                        </div>
-
-
-                        <!-- FLOATING CARDS -->
-
-                        <div class="floating-card card-top">
-
-                            <span class="card-icon">▣</span>
-
-                            <div>
-                                <strong>Business</strong>
-                                <small>Operations</small>
-                            </div>
-
-                        </div>
-
-
-                        <div class="floating-card card-bottom">
-
-                            <span class="card-icon">◈</span>
-
-                            <div>
-                                <strong>Digital</strong>
-                                <small>Solutions</small>
-                            </div>
-
-                        </div>
-
-                    </div>
-
+                <div>
+                    <strong>Finance</strong>
+                    <small>Accounting</small>
                 </div>
 
             </div>
 
 
-            <div class="scroll-indicator">
+            <div class="orbit-card orbit-excel">
 
-                <span>SCROLL TO EXPLORE</span>
+                <div class="mini-icon">
+                    ▦
+                </div>
 
-                <div class="scroll-line"></div>
+                <div>
+                    <strong>Excel</strong>
+                    <small>Reporting</small>
+                </div>
 
             </div>
 
-        </section>
+
+            <div class="orbit-card orbit-erp">
+
+                <div class="mini-icon">
+                    ◈
+                </div>
+
+                <div>
+                    <strong>ERP</strong>
+                    <small>Business Systems</small>
+                </div>
+
+            </div>
 
 
+            <div class="orbit-card orbit-data">
 
-        <!-- =========================
-             ABOUT
-        ========================== -->
+                <div class="mini-icon">
+                    ◌
+                </div>
 
-        <section
-            class="section about-section"
-            id="about"
-        >
+                <div>
+                    <strong>Data</strong>
+                    <small>Analysis</small>
+                </div>
 
-            <div class="section-container">
+            </div>
 
-                <div class="section-heading reveal">
 
-                    <span class="section-number">01</span>
+            <!-- HERO DASHBOARD -->
+
+            <div class="hero-dashboard">
+
+                <div class="dashboard-top">
+
+                    <span>Business Overview</span>
+
+                    <span class="live-dot">
+                        ● Live
+                    </span>
+
+                </div>
+
+
+                <div class="dashboard-money">
+                    ₨ 248,500
+                </div>
+
+
+                <div class="dashboard-label">
+                    Demo Business Revenue
+                </div>
+
+
+                <div class="dashboard-chart">
+
+                    <span style="height:35%"></span>
+                    <span style="height:48%"></span>
+                    <span style="height:40%"></span>
+                    <span style="height:62%"></span>
+                    <span style="height:55%"></span>
+                    <span style="height:75%"></span>
+                    <span style="height:92%"></span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HERO SERVICE STRIP -->
+
+    <div class="hero-strip">
+
+        <div class="container">
+
+            <div class="service-marquee">
+
+                <span>FINANCE</span>
+                <i>✦</i>
+
+                <span>ACCOUNTING</span>
+                <i>✦</i>
+
+                <span>EXCEL REPORTING</span>
+                <i>✦</i>
+
+                <span>ERP SYSTEMS</span>
+                <i>✦</i>
+
+                <span>DATA</span>
+                <i>✦</i>
+
+                <span>DIGITAL SOLUTIONS</span>
+                <i>✦</i>
+
+                <span>FINANCE</span>
+                <i>✦</i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section
+    class="about section"
+    id="about"
+>
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <span class="section-number">
+                01 / ABOUT
+            </span>
+
+            <h2>
+                Turning business
+                <span>workflows into systems.</span>
+            </h2>
+
+            <p>
+                My focus sits between business, finance,
+                operations and technology.
+            </p>
+
+        </div>
+
+
+        <div class="about-layout">
+
+
+            <!-- ABOUT TEXT -->
+
+            <div class="about-text reveal-left">
+
+                <p class="large-text">
+
+                    I am an Economics graduate developing
+                    practical skills in Finance, Accounting,
+                    Business Operations, Excel, ERP systems
+                    and digital solutions.
+
+                </p>
+
+
+                <p>
+
+                    Instead of looking at a business process
+                    as only paperwork, I like understanding
+                    how information moves — from a sale,
+                    purchase or expense to records, reports
+                    and business decisions.
+
+                </p>
+
+
+                <p>
+
+                    My portfolio projects demonstrate this
+                    approach through practical systems such as
+                    <strong>THEA Books</strong>, business
+                    reporting and digital solutions.
+
+                </p>
+
+
+                <div class="about-tags">
+
+                    <span>Finance</span>
+                    <span>Operations</span>
+                    <span>Data</span>
+                    <span>Technology</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ABOUT VISUAL -->
+
+            <div class="workflow-visual reveal-right">
+
+                <div class="workflow-title">
+                    BUSINESS FLOW
+                </div>
+
+
+                <div class="workflow-line"></div>
+
+
+                <div class="workflow-item">
+
+                    <div class="workflow-icon">
+                        01
+                    </div>
 
                     <div>
-
-                        <p class="section-label">
-                            ABOUT ME
-                        </p>
-
-                        <h2>
-                            Turning business
-                            <span>workflows into systems.</span>
-                        </h2>
-
+                        <strong>Transaction</strong>
+                        <small>Sale / Purchase / Expense</small>
                     </div>
 
                 </div>
 
 
-                <div class="about-grid">
+                <div class="workflow-arrow">
+                    ↓
+                </div>
 
 
-                    <div class="about-text reveal">
+                <div class="workflow-item">
 
-                        <p class="large-text">
-
-                            I'm an Economics graduate with
-                            an interest in Finance, Accounting,
-                            Business Operations and Technology.
-
-                        </p>
-
-
-                        <p>
-
-                            My focus is on learning how real
-                            business processes work and turning
-                            them into organized, practical and
-                            digital workflows.
-
-                        </p>
-
-
-                        <p>
-
-                            Through projects like THEA Books
-                            and The A Tech, I am developing
-                            practical experience in business
-                            systems, reporting, data handling
-                            and digital solutions.
-
-                        </p>
-
+                    <div class="workflow-icon">
+                        02
                     </div>
 
+                    <div>
+                        <strong>Record</strong>
+                        <small>Data & Accounts</small>
+                    </div>
 
-                    <div class="about-stats reveal">
-
-                        <div class="stat-box">
-
-                            <strong>01</strong>
-
-                            <span>
-                                THEA Books
-                                <small>ERP Project</small>
-                            </span>
-
-                        </div>
+                </div>
 
 
-                        <div class="stat-box">
-
-                            <strong>02</strong>
-
-                            <span>
-                                The A Tech
-                                <small>Digital Initiative</small>
-                            </span>
-
-                        </div>
+                <div class="workflow-arrow">
+                    ↓
+                </div>
 
 
-                        <div class="stat-box">
+                <div class="workflow-item">
 
-                            <strong>03</strong>
+                    <div class="workflow-icon">
+                        03
+                    </div>
 
-                            <span>
-                                Business Reporting
-                                <small>Excel & Data</small>
-                            </span>
+                    <div>
+                        <strong>Report</strong>
+                        <small>Dashboard & Analysis</small>
+                    </div>
 
-                        </div>
+                </div>
 
+
+                <div class="workflow-arrow">
+                    ↓
+                </div>
+
+
+                <div class="workflow-item active-workflow">
+
+                    <div class="workflow-icon">
+                        04
+                    </div>
+
+                    <div>
+                        <strong>Decision</strong>
+                        <small>Better Business Visibility</small>
                     </div>
 
                 </div>
 
             </div>
 
-        </section>
+        </div>
 
 
+        <!-- ABOUT STATS -->
 
-        <!-- =========================
-             SKILLS
-        ========================== -->
+        <div class="about-stats reveal">
 
-        <section
-            class="section skills-section"
-            id="skills"
-        >
+            <div class="stat">
 
-            <div class="section-container">
+                <strong
+                    class="counter"
+                    data-target="3"
+                >
+                    0
+                </strong>
 
-                <div class="section-heading reveal">
-
-                    <span class="section-number">02</span>
-
-                    <div>
-
-                        <p class="section-label">
-                            SKILLS
-                        </p>
-
-                        <h2>
-                            Skills I'm
-                            <span>developing.</span>
-                        </h2>
-
-                    </div>
-
-                </div>
-
-
-                <div class="skills-grid">
-
-
-                    <div class="skill-card reveal">
-
-                        <span class="skill-number">01</span>
-
-                        <h3>
-                            Accounting & Finance
-                        </h3>
-
-                        <p>
-                            Financial workflows,
-                            accounting concepts,
-                            transactions and reporting.
-                        </p>
-
-                    </div>
-
-
-                    <div class="skill-card reveal">
-
-                        <span class="skill-number">02</span>
-
-                        <h3>
-                            MS Excel & Reporting
-                        </h3>
-
-                        <p>
-                            Business reports, data organization,
-                            calculations and reporting workflows.
-                        </p>
-
-                    </div>
-
-
-                    <div class="skill-card reveal">
-
-                        <span class="skill-number">03</span>
-
-                        <h3>
-                            QuickBooks
-                        </h3>
-
-                        <p>
-                            Accounting workflow practice,
-                            transactions and business records.
-                        </p>
-
-                    </div>
-
-
-                    <div class="skill-card reveal">
-
-                        <span class="skill-number">04</span>
-
-                        <h3>
-                            ERP & Business Management
-                        </h3>
-
-                        <p>
-                            Practical understanding of business
-                            systems and workflow automation.
-                        </p>
-
-                    </div>
-
-
-                    <div class="skill-card reveal">
-
-                        <span class="skill-number">05</span>
-
-                        <h3>
-                            Data Handling
-                        </h3>
-
-                        <p>
-                            Data entry, organization,
-                            validation and business records.
-                        </p>
-
-                    </div>
-
-
-                    <div class="skill-card reveal">
-
-                        <span class="skill-number">06</span>
-
-                        <h3>
-                            Business Operations
-                        </h3>
-
-                        <p>
-                            Cash handling, inventory,
-                            reporting and daily operations.
-                        </p>
-
-                    </div>
-
-
-                    <div class="skill-card reveal">
-
-                        <span class="skill-number">07</span>
-
-                        <h3>
-                            Digital Solutions
-                        </h3>
-
-                        <p>
-                            Web projects, digital workflows
-                            and practical technology solutions.
-                        </p>
-
-                    </div>
-
-
-                    <div class="skill-card reveal">
-
-                        <span class="skill-number">08</span>
-
-                        <h3>
-                            Python & Data
-                        </h3>
-
-                        <p>
-                            Developing programming foundations
-                            for future data analytics work.
-                        </p>
-
-                    </div>
-
-                </div>
+                <span>
+                    Main Portfolio Projects
+                </span>
 
             </div>
 
-        </section>
+
+            <div class="stat">
+
+                <strong
+                    class="counter"
+                    data-target="8"
+                >
+                    0
+                </strong>
+
+                <span>
+                    Core Skill Areas
+                </span>
+
+            </div>
 
 
+            <div class="stat">
 
-        <!-- =========================
-             PROJECTS
-        ========================== -->
+                <strong
+                    class="counter"
+                    data-target="4"
+                >
+                    0
+                </strong>
 
-        <section
-            class="section projects-section"
-            id="projects"
-        >
+                <span>
+                    Business Workflow Stages
+                </span>
 
-            <div class="section-container">
+            </div>
 
-                <div class="section-heading reveal">
 
-                    <span class="section-number">03</span>
+            <div class="stat">
 
-                    <div>
+                <strong>
+                    01
+                </strong>
 
-                        <p class="section-label">
-                            FEATURED PROJECTS
-                        </p>
+                <span>
+                    Practical ERP Project
+                </span>
 
-                        <h2>
-                            Work that shows
-                            <span>how I think.</span>
-                        </h2>
+            </div>
 
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SKILLS
+===================================================== -->
+
+<section
+    class="skills section dark-section"
+    id="skills"
+>
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <span class="section-number">
+                02 / SKILLS
+            </span>
+
+            <h2>
+                Skills that connect
+                <span>business with data.</span>
+            </h2>
+
+            <p>
+                A practical combination of business,
+                finance, reporting and technology.
+            </p>
+
+        </div>
+
+
+        <div class="skills-layout">
+
+
+            <!-- SKILL 01 -->
+
+            <article class="skill-card skill-finance reveal">
+
+                <div class="skill-number">
+                    01
+                </div>
+
+                <div class="skill-icon">
+                    ₨
+                </div>
+
+                <h3>
+                    Accounting & Finance
+                </h3>
+
+                <p>
+                    Understanding business transactions,
+                    invoices, expenses, receivables,
+                    payables and financial reporting.
+                </p>
+
+
+                <div class="skill-visual finance-visual">
+
+                    <div class="finance-step">
+                        <span>Invoice</span>
+                        <b>₨25K</b>
+                    </div>
+
+                    <div class="finance-arrow">
+                        →
+                    </div>
+
+                    <div class="finance-step">
+                        <span>Payment</span>
+                        <b>₨25K</b>
+                    </div>
+
+                    <div class="finance-arrow">
+                        →
+                    </div>
+
+                    <div class="finance-step">
+                        <span>Ledger</span>
+                        <b>Posted</b>
+                    </div>
+
+                    <div class="finance-arrow">
+                        →
+                    </div>
+
+                    <div class="finance-step">
+                        <span>Report</span>
+                        <b>Ready</b>
                     </div>
 
                 </div>
 
-
-                <!-- THEA BOOKS -->
-
-                <div class="project-feature reveal">
+            </article>
 
 
-                    <div class="project-info">
+            <!-- SKILL 02 -->
 
-                        <span class="project-tag">
-                            MAIN PROJECT
-                        </span>
+            <article class="skill-card reveal">
 
+                <div class="skill-number">
+                    02
+                </div>
 
-                        <h3>
-                            THEA Books
-                        </h3>
+                <div class="skill-icon">
+                    ▦
+                </div>
 
+                <h3>
+                    Excel & Reporting
+                </h3>
 
-                        <p class="project-subtitle">
-                            Business & Accounting Management Platform
-                        </p>
-
-
-                        <p>
-
-                            A practical ERP-style business
-                            management system designed to
-                            organize sales, purchases, expenses,
-                            customers, vendors, inventory and
-                            accounting workflows.
-
-                        </p>
+                <p>
+                    Organizing raw business information
+                    into structured sheets, summaries,
+                    calculations and visual reports.
+                </p>
 
 
-                        <div class="project-features">
+                <div class="excel-visual">
 
+                    <div class="excel-sheet">
+
+                        <div class="sheet-row sheet-head">
+                            <span>Product</span>
                             <span>Sales</span>
-
-                            <span>Purchases</span>
-
-                            <span>Expenses</span>
-
-                            <span>Inventory</span>
-
-                            <span>Customers</span>
-
-                            <span>Reports</span>
-
+                            <span>Stock</span>
                         </div>
 
+                        <div class="sheet-row">
+                            <span>Coffee</span>
+                            <span>42K</span>
+                            <span>86</span>
+                        </div>
 
-                        <a
-                            href="https://the-a-tech.github.io/thea-books/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="project-link"
-                        >
-                            Explore THEA Books
-                            <span>↗</span>
-                        </a>
+                        <div class="sheet-row">
+                            <span>Burger</span>
+                            <span>68K</span>
+                            <span>42</span>
+                        </div>
+
+                        <div class="sheet-row">
+                            <span>Dessert</span>
+                            <span>31K</span>
+                            <span>28</span>
+                        </div>
+
+                        <div class="sheet-row">
+                            <span>Drinks</span>
+                            <span>25K</span>
+                            <span>61</span>
+                        </div>
 
                     </div>
 
 
-                    <!-- ERP VISUAL -->
+                    <div class="mini-bars">
 
-                    <div class="erp-preview">
+                        <span style="height:40%"></span>
+                        <span style="height:68%"></span>
+                        <span style="height:50%"></span>
+                        <span style="height:82%"></span>
+                        <span style="height:64%"></span>
+
+                    </div>
+
+                </div>
+
+            </article>
 
 
-                        <div class="erp-window">
+            <!-- SKILL 03 -->
+
+            <article class="skill-card reveal">
+
+                <div class="skill-number">
+                    03
+                </div>
+
+                <div class="skill-icon">
+                    ◈
+                </div>
+
+                <h3>
+                    QuickBooks
+                </h3>
+
+                <p>
+                    Portfolio-focused understanding of
+                    accounting workflows, transactions,
+                    customers, vendors and reporting.
+                </p>
 
 
-                            <div class="erp-sidebar">
+                <div class="books-visual">
 
-                                <div class="erp-logo">
-                                    TB
-                                </div>
+                    <div class="books-sidebar">
 
-                                <span class="active">
-                                    Dashboard
+                        <span class="active">Dashboard</span>
+                        <span>Sales</span>
+                        <span>Purchases</span>
+                        <span>Expenses</span>
+                        <span>Reports</span>
+
+                    </div>
+
+
+                    <div class="books-main">
+
+                        <div class="books-header">
+                            Business Dashboard
+                        </div>
+
+                        <div class="books-cards">
+
+                            <div>
+                                <small>Sales</small>
+                                <b>₨84K</b>
+                            </div>
+
+                            <div>
+                                <small>Expenses</small>
+                                <b>₨32K</b>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- SKILL 04 -->
+
+            <article class="skill-card skill-wide reveal">
+
+                <div class="skill-number">
+                    04
+                </div>
+
+                <div class="skill-icon">
+                    ◌
+                </div>
+
+                <h3>
+                    Data Handling & Analysis
+                </h3>
+
+                <p>
+                    Working with structured business data,
+                    identifying patterns and turning information
+                    into understandable dashboards and insights.
+                </p>
+
+
+                <div class="data-visual">
+
+                    <div class="data-table">
+
+                        <div class="data-row heading">
+                            <span>Month</span>
+                            <span>Sales</span>
+                            <span>Expenses</span>
+                            <span>Profit</span>
+                        </div>
+
+                        <div class="data-row">
+                            <span>Jan</span>
+                            <span>82K</span>
+                            <span>41K</span>
+                            <span>41K</span>
+                        </div>
+
+                        <div class="data-row">
+                            <span>Feb</span>
+                            <span>96K</span>
+                            <span>45K</span>
+                            <span>51K</span>
+                        </div>
+
+                        <div class="data-row">
+                            <span>Mar</span>
+                            <span>118K</span>
+                            <span>52K</span>
+                            <span>66K</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="data-chart">
+
+                        <div class="chart-line"></div>
+
+                        <span class="point p1"></span>
+                        <span class="point p2"></span>
+                        <span class="point p3"></span>
+                        <span class="point p4"></span>
+                        <span class="point p5"></span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- SKILL 05 -->
+
+            <article class="skill-card reveal">
+
+                <div class="skill-number">
+                    05
+                </div>
+
+                <div class="skill-icon">
+                    ◫
+                </div>
+
+                <h3>
+                    ERP & Business Management
+                </h3>
+
+                <p>
+                    Designing connected workflows for sales,
+                    purchases, inventory, customers, vendors,
+                    accounting and reports.
+                </p>
+
+
+                <div class="erp-flow">
+
+                    <span>Sales</span>
+                    <i>→</i>
+                    <span>Inventory</span>
+                    <i>→</i>
+                    <span>Accounting</span>
+                    <i>→</i>
+                    <span>Reports</span>
+
+                </div>
+
+            </article>
+
+
+            <!-- SKILL 06 -->
+
+            <article class="skill-card reveal">
+
+                <div class="skill-number">
+                    06
+                </div>
+
+                <div class="skill-icon">
+                    ⚙
+                </div>
+
+                <h3>
+                    Business Operations
+                </h3>
+
+                <p>
+                    Practical experience with daily operations,
+                    cash handling, reporting, stock coordination,
+                    staff scheduling and customer issues.
+                </p>
+
+
+                <div class="operations-visual">
+
+                    <div class="operation-card">
+                        <b>Cash</b>
+                        <span>Collected</span>
+                    </div>
+
+                    <div class="operation-card">
+                        <b>Stock</b>
+                        <span>Checked</span>
+                    </div>
+
+                    <div class="operation-card">
+                        <b>Staff</b>
+                        <span>Scheduled</span>
+                    </div>
+
+                    <div class="operation-card">
+                        <b>Report</b>
+                        <span>Prepared</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- SKILL 07 -->
+
+            <article class="skill-card reveal">
+
+                <div class="skill-number">
+                    07
+                </div>
+
+                <div class="skill-icon">
+                    ◇
+                </div>
+
+                <h3>
+                    Digital Solutions
+                </h3>
+
+                <p>
+                    Building practical websites and digital
+                    business concepts through The A Tech
+                    and related projects.
+                </p>
+
+
+                <div class="digital-visual">
+
+                    <div class="browser-window">
+
+                        <div class="browser-top">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+
+                        <div class="browser-content">
+
+                            <span class="browser-line long"></span>
+                            <span class="browser-line"></span>
+                            <span class="browser-line medium"></span>
+
+                            <div class="browser-boxes">
+                                <b></b>
+                                <b></b>
+                                <b></b>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- SKILL 08 -->
+
+            <article class="skill-card reveal">
+
+                <div class="skill-number">
+                    08
+                </div>
+
+                <div class="skill-icon">
+                    </>
+                </div>
+
+                <h3>
+                    Python & Technology
+                </h3>
+
+                <p>
+                    Developing programming foundations with
+                    Python for future data handling, automation
+                    and analytical workflows.
+                </p>
+
+
+                <div class="code-visual">
+
+                    <div>
+                        <span>data</span> =
+                        <strong>[sales, expense]</strong>
+                    </div>
+
+                    <div>
+                        <span>report</span> =
+                        <strong>analyze(data)</strong>
+                    </div>
+
+                    <div>
+                        <span>result</span> =
+                        <strong>dashboard</strong>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROJECTS
+===================================================== -->
+
+<section
+    class="projects section"
+    id="projects"
+>
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <span class="section-number">
+                03 / PROJECTS
+            </span>
+
+            <h2>
+                Building ideas into
+                <span>working systems.</span>
+            </h2>
+
+            <p>
+                Projects are used to demonstrate practical
+                business, finance and technology workflows.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             THEA BOOKS MAIN PROJECT
+        ================================================= -->
+
+        <article class="project-main reveal">
+
+            <div class="project-main-content">
+
+                <div class="project-label">
+                    FEATURED CASE STUDY
+                </div>
+
+
+                <h3>
+                    THEA Books
+                </h3>
+
+
+                <p class="project-subtitle">
+                    Business & Accounting Management Platform
+                </p>
+
+
+                <p>
+
+                    A practical ERP-style project designed to
+                    connect everyday business operations with
+                    accounting and reporting workflows.
+
+                </p>
+
+
+                <div class="project-tags">
+
+                    <span>ERP</span>
+                    <span>Accounting</span>
+                    <span>Inventory</span>
+                    <span>Reporting</span>
+                    <span>Business Management</span>
+
+                </div>
+
+
+                <a
+                    href="https://the-a-tech.github.io/thea-books/"
+                    target="_blank"
+                    rel="noopener"
+                    class="project-link"
+                >
+                    Open THEA Books
+                    <span>↗</span>
+                </a>
+
+            </div>
+
+
+            <!-- THEA BOOKS VISUAL -->
+
+            <div class="thea-dashboard">
+
+                <div class="thea-topbar">
+
+                    <div class="thea-brand">
+                        <span>TB</span>
+                        THEA Books
+                    </div>
+
+                    <div class="thea-user">
+                        Business Account
+                    </div>
+
+                </div>
+
+
+                <div class="thea-body">
+
+                    <aside class="thea-sidebar">
+
+                        <span class="side-active">
+                            Dashboard
+                        </span>
+
+                        <span>Sales</span>
+
+                        <span>Purchases</span>
+
+                        <span>Expenses</span>
+
+                        <span>Customers</span>
+
+                        <span>Vendors</span>
+
+                        <span>Inventory</span>
+
+                        <span>Accounting</span>
+
+                        <span>Reports</span>
+
+                    </aside>
+
+
+                    <div class="thea-content">
+
+                        <div class="thea-heading">
+
+                            <div>
+
+                                <small>
+                                    DEMO BUSINESS DATA
+                                </small>
+
+                                <h4>
+                                    Business Overview
+                                </h4>
+
+                            </div>
+
+                            <span>
+                                Sep 2026
+                            </span>
+
+                        </div>
+
+
+                        <div class="thea-metrics">
+
+                            <div class="thea-metric">
+
+                                <small>
+                                    SALES
+                                </small>
+
+                                <strong>
+                                    ₨248K
+                                </strong>
+
+                                <span class="positive">
+                                    +12.4%
                                 </span>
 
-                                <span>Sales</span>
+                            </div>
 
-                                <span>Purchases</span>
 
-                                <span>Expenses</span>
+                            <div class="thea-metric">
 
-                                <span>Inventory</span>
+                                <small>
+                                    EXPENSES
+                                </small>
 
-                                <span>Reports</span>
+                                <strong>
+                                    ₨82K
+                                </strong>
+
+                                <span>
+                                    Monthly
+                                </span>
 
                             </div>
 
 
-                            <div class="erp-main">
+                            <div class="thea-metric">
+
+                                <small>
+                                    RECEIVABLES
+                                </small>
+
+                                <strong>
+                                    ₨41K
+                                </strong>
+
+                                <span>
+                                    Pending
+                                </span>
+
+                            </div>
 
 
-                                <div class="erp-top">
+                            <div class="thea-metric">
 
-                                    <span>
-                                        Business Dashboard
+                                <small>
+                                    STOCK VALUE
+                                </small>
+
+                                <strong>
+                                    ₨116K
+                                </strong>
+
+                                <span>
+                                    Inventory
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="thea-bottom">
+
+                            <div class="thea-chart-box">
+
+                                <div class="chart-box-title">
+                                    Sales Performance
+                                </div>
+
+                                <div class="big-chart">
+
+                                    <div
+                                        class="chart-bar"
+                                        style="height:42%"
+                                    ></div>
+
+                                    <div
+                                        class="chart-bar"
+                                        style="height:55%"
+                                    ></div>
+
+                                    <div
+                                        class="chart-bar"
+                                        style="height:48%"
+                                    ></div>
+
+                                    <div
+                                        class="chart-bar"
+                                        style="height:70%"
+                                    ></div>
+
+                                    <div
+                                        class="chart-bar"
+                                        style="height:64%"
+                                    ></div>
+
+                                    <div
+                                        class="chart-bar"
+                                        style="height:82%"
+                                    ></div>
+
+                                    <div
+                                        class="chart-bar"
+                                        style="height:94%"
+                                    ></div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="thea-activity">
+
+                                <div class="chart-box-title">
+                                    Recent Activity
+                                </div>
+
+
+                                <div class="activity-item">
+
+                                    <span class="activity-icon">
+                                        +
                                     </span>
 
-                                    <span>
-                                        Demo Business Data
+                                    <div>
+                                        <b>Invoice Created</b>
+                                        <small>INV-0024</small>
+                                    </div>
+
+                                    <strong>
+                                        ₨18K
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="activity-item">
+
+                                    <span class="activity-icon">
+                                        ↓
                                     </span>
 
-                                </div>
-
-
-                                <div class="erp-cards">
-
                                     <div>
-                                        <small>Sales</small>
-                                        <strong>Rs. 245K</strong>
+                                        <b>Purchase Recorded</b>
+                                        <small>PO-0018</small>
                                     </div>
 
-                                    <div>
-                                        <small>Expenses</small>
-                                        <strong>Rs. 82K</strong>
-                                    </div>
-
-                                    <div>
-                                        <small>Receivables</small>
-                                        <strong>Rs. 61K</strong>
-                                    </div>
+                                    <strong>
+                                        ₨9K
+                                    </strong>
 
                                 </div>
 
 
-                                <div class="erp-chart">
+                                <div class="activity-item">
 
-                                    <div class="chart-bars">
+                                    <span class="activity-icon">
+                                        ₨
+                                    </span>
 
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-
+                                    <div>
+                                        <b>Expense Added</b>
+                                        <small>Office Expense</small>
                                     </div>
+
+                                    <strong>
+                                        ₨4K
+                                    </strong>
 
                                 </div>
 
-
                             </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- OTHER PROJECTS -->
-
-                <div class="project-grid">
-
-
-                    <article class="project-card reveal">
-
-                        <span class="project-number">
-                            02
-                        </span>
-
-                        <p class="project-category">
-                            DIGITAL INITIATIVE
-                        </p>
-
-                        <h3>
-                            The A Tech
-                        </h3>
-
-                        <p>
-
-                            A growing technology initiative
-                            focused on business systems,
-                            websites, digital solutions,
-                            data and workflow improvement.
-
-                        </p>
-
-
-                        <div class="tech-visual">
-
-                            <div class="tech-node center">
-                                THE A TECH
-                            </div>
-
-                            <div class="tech-node node-one">
-                                Systems
-                            </div>
-
-                            <div class="tech-node node-two">
-                                Digital
-                            </div>
-
-                            <div class="tech-node node-three">
-                                Data
-                            </div>
-
-                        </div>
-
-
-                        <a
-                            href="https://the-a-tech.github.io/theatech/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-link"
-                        >
-                            Visit The A Tech ↗
-                        </a>
-
-                    </article>
-
-
-
-                    <article class="project-card reveal">
-
-                        <span class="project-number">
-                            03
-                        </span>
-
-                        <p class="project-category">
-                            BUSINESS REPORTING
-                        </p>
-
-                        <h3>
-                            Excel Reporting
-                        </h3>
-
-                        <p>
-
-                            Practical business reporting
-                            workflows covering sales,
-                            expenses, inventory and
-                            performance tracking.
-
-                        </p>
-
-
-                        <div class="report-preview">
-
-                            <div class="report-row">
-                                <span>Sales</span>
-                                <b>82%</b>
-                            </div>
-
-                            <div class="report-row">
-                                <span>Inventory</span>
-                                <b>67%</b>
-                            </div>
-
-                            <div class="report-row">
-                                <span>Expenses</span>
-                                <b>48%</b>
-                            </div>
-
-                            <div class="report-row">
-                                <span>Reports</span>
-                                <b>91%</b>
-                            </div>
-
-                        </div>
-
-
-                        <span class="text-link">
-                            Data • Reports • Analysis
-                        </span>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             EXPERIENCE
-        ========================== -->
-
-        <section
-            class="section experience-section"
-            id="experience"
-        >
-
-            <div class="section-container">
-
-                <div class="section-heading reveal">
-
-                    <span class="section-number">04</span>
-
-                    <div>
-
-                        <p class="section-label">
-                            EXPERIENCE
-                        </p>
-
-                        <h2>
-                            Learning through
-                            <span>real work.</span>
-                        </h2>
-
-                    </div>
-
-                </div>
-
-
-                <div class="timeline">
-
-
-                    <div class="timeline-item reveal">
-
-                        <div class="timeline-dot"></div>
-
-                        <div class="timeline-content">
-
-                            <span class="timeline-label">
-                                BUSINESS OPERATIONS
-                            </span>
-
-                            <h3>
-                                Cafe Manager
-                            </h3>
-
-                            <p>
-
-                                Managed daily operations,
-                                cash collections, reporting,
-                                inventory, staff coordination
-                                and customer handling.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="timeline-item reveal">
-
-                        <div class="timeline-dot"></div>
-
-                        <div class="timeline-content">
-
-                            <span class="timeline-label">
-                                FINANCE & ADMIN
-                            </span>
-
-                            <h3>
-                                Finance Research & Admin
-                            </h3>
-
-                            <p>
-
-                                Internship exposure to
-                                finance research, administrative
-                                work and organized business data.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="timeline-item reveal">
-
-                        <div class="timeline-dot"></div>
-
-                        <div class="timeline-content">
-
-                            <span class="timeline-label">
-                                ACCOUNTING
-                            </span>
-
-                            <h3>
-                                Account Assistant
-                            </h3>
-
-                            <p>
-
-                                Practical exposure to accounting
-                                support, records and business
-                                documentation.
-
-                            </p>
 
                         </div>
 
@@ -1048,249 +1565,857 @@
 
             </div>
 
-        </section>
+        </article>
 
 
+        <!-- THEA BOOKS FLOW -->
 
-        <!-- =========================
-             APPROACH
-        ========================== -->
+        <div class="case-study-flow reveal">
 
-        <section class="section approach-section">
+            <div class="case-flow-title">
+                HOW THE SYSTEM CONNECTS
+            </div>
 
-            <div class="section-container">
 
-                <div class="section-heading reveal">
+            <div class="case-flow">
 
-                    <span class="section-number">05</span>
+                <div class="case-node">
 
-                    <div>
-
-                        <p class="section-label">
-                            MY APPROACH
-                        </p>
-
-                        <h2>
-                            Understand.
-                            <span>Build. Improve.</span>
-                        </h2>
-
+                    <div class="case-node-icon">
+                        $
                     </div>
+
+                    <strong>Sales</strong>
+
+                    <span>
+                        Invoice
+                    </span>
 
                 </div>
 
 
-                <div class="approach-grid">
+                <div class="case-connector">
+                    →
+                </div>
 
 
-                    <div class="approach-card reveal">
+                <div class="case-node">
 
-                        <span>01</span>
-
-                        <h3>
-                            Understand
-                        </h3>
-
-                        <p>
-                            Understand the business,
-                            workflow and problem first.
-                        </p>
-
+                    <div class="case-node-icon">
+                        +
                     </div>
 
+                    <strong>Purchases</strong>
 
-                    <div class="approach-card reveal">
+                    <span>
+                        Vendor
+                    </span>
 
-                        <span>02</span>
+                </div>
 
-                        <h3>
-                            Build
-                        </h3>
 
-                        <p>
-                            Turn the requirement into
-                            an organized practical solution.
-                        </p>
+                <div class="case-connector">
+                    →
+                </div>
 
+
+                <div class="case-node">
+
+                    <div class="case-node-icon">
+                        ◫
                     </div>
 
+                    <strong>Inventory</strong>
 
-                    <div class="approach-card reveal">
+                    <span>
+                        Stock
+                    </span>
 
-                        <span>03</span>
+                </div>
 
-                        <h3>
-                            Improve
-                        </h3>
 
-                        <p>
-                            Keep learning, testing and
-                            improving the system over time.
-                        </p>
+                <div class="case-connector">
+                    →
+                </div>
 
+
+                <div class="case-node">
+
+                    <div class="case-node-icon">
+                        ₨
                     </div>
+
+                    <strong>Accounting</strong>
+
+                    <span>
+                        Records
+                    </span>
+
+                </div>
+
+
+                <div class="case-connector">
+                    →
+                </div>
+
+
+                <div class="case-node">
+
+                    <div class="case-node-icon">
+                        ◌
+                    </div>
+
+                    <strong>Reports</strong>
+
+                    <span>
+                        Insights
+                    </span>
 
                 </div>
 
             </div>
 
-        </section>
+        </div>
 
 
+        <!-- OTHER PROJECTS -->
 
-        <!-- =========================
-             CONTACT
-        ========================== -->
-
-        <section
-            class="section contact-section"
-            id="contact"
-        >
-
-            <div class="section-container">
+        <div class="projects-grid">
 
 
-                <div class="contact-box reveal">
+            <!-- THE A TECH -->
+
+            <article class="project-card reveal">
+
+                <div class="project-card-visual tech-visual">
+
+                    <div class="tech-orbit"></div>
+
+                    <div class="tech-center">
+                        THE A
+                        <small>TECH</small>
+                    </div>
 
 
-                    <div class="contact-content">
+                    <div class="tech-node node-web">
+                        WEB
+                    </div>
 
-                        <p class="section-label">
-                            GET IN TOUCH
-                        </p>
+                    <div class="tech-node node-data">
+                        DATA
+                    </div>
 
+                    <div class="tech-node node-system">
+                        SYSTEM
+                    </div>
 
-                        <h2>
+                    <div class="tech-node node-auto">
+                        AUTO
+                    </div>
 
-                            Let's build something
-                            <span>useful.</span>
-
-                        </h2>
-
-
-                        <p>
-
-                            I'm open to opportunities in
-                            Finance, Accounts, Business Operations,
-                            Data and Digital Systems.
-
-                        </p>
+                </div>
 
 
-                        <div class="contact-links">
+                <div class="project-card-content">
+
+                    <span class="project-card-number">
+                        02
+                    </span>
+
+                    <h3>
+                        The A Tech
+                    </h3>
+
+                    <p>
+
+                        A growing technology initiative focused
+                        on practical business systems, digital
+                        solutions, data and workflow improvement.
+
+                    </p>
 
 
-                            <a
-                                href="mailto:abbasnazeer098@gmail.com"
-                            >
+                    <div class="project-mini-tags">
 
-                                <span>Email</span>
-
-                                <strong>
-                                    abbasnazeer098@gmail.com
-                                </strong>
-
-                            </a>
-
-
-                            <a
-                                href="https://wa.me/923460911451"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-
-                                <span>WhatsApp</span>
-
-                                <strong>
-                                    +92 346 0911451
-                                </strong>
-
-                            </a>
-
-
-                            <a
-                                href="https://www.linkedin.com/in/muhammad-abbas-ba386b330/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-
-                                <span>LinkedIn</span>
-
-                                <strong>
-                                    Muhammad Abbas
-                                </strong>
-
-                            </a>
-
-                        </div>
+                        <span>Web</span>
+                        <span>Digital</span>
+                        <span>Systems</span>
 
                     </div>
 
 
-
-                    <form
-                        class="contact-form"
-                        id="contactForm"
+                    <a
+                        href="https://the-a-tech.github.io/theatech/"
+                        target="_blank"
+                        rel="noopener"
                     >
+                        Explore Project →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- EXCEL -->
+
+            <article class="project-card reveal">
+
+                <div class="project-card-visual report-visual">
+
+                    <div class="report-window">
+
+                        <div class="report-title">
+                            Monthly Business Report
+                        </div>
+
+
+                        <div class="report-stats">
+
+                            <div>
+                                <small>Sales</small>
+                                <b>₨248K</b>
+                            </div>
+
+                            <div>
+                                <small>Profit</small>
+                                <b>₨92K</b>
+                            </div>
+
+                        </div>
+
+
+                        <div class="report-graph">
+
+                            <span style="height:35%"></span>
+                            <span style="height:48%"></span>
+                            <span style="height:42%"></span>
+                            <span style="height:64%"></span>
+                            <span style="height:57%"></span>
+                            <span style="height:78%"></span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="project-card-content">
+
+                    <span class="project-card-number">
+                        03
+                    </span>
+
+                    <h3>
+                        Business Reporting
+                    </h3>
+
+                    <p>
+
+                        Structured Excel-based reporting concepts
+                        that transform raw sales, expenses and
+                        stock information into useful summaries.
+
+                    </p>
+
+
+                    <div class="project-mini-tags">
+
+                        <span>Excel</span>
+                        <span>Reports</span>
+                        <span>Data</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EXPERIENCE
+===================================================== -->
+
+<section
+    class="experience section dark-section"
+    id="experience"
+>
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <span class="section-number">
+                04 / EXPERIENCE
+            </span>
+
+            <h2>
+                Learning through
+                <span>real operations.</span>
+            </h2>
+
+            <p>
+                Practical exposure across business operations,
+                administration and accounts-related work.
+            </p>
+
+        </div>
+
+
+        <div class="experience-layout">
+
+
+            <div class="experience-timeline">
+
+
+                <article class="experience-item reveal">
+
+                    <div class="experience-marker">
+                        01
+                    </div>
+
+
+                    <div class="experience-content">
+
+                        <span>
+                            BUSINESS OPERATIONS
+                        </span>
+
+                        <h3>
+                            Cafe Manager
+                        </h3>
+
+                        <p>
+
+                            Managed daily business operations
+                            including cash handling, collections,
+                            reporting, stock coordination,
+                            staff scheduling and customer issues.
+
+                        </p>
+
+
+                        <div class="experience-tags">
+
+                            <span>Cash Handling</span>
+                            <span>Daily Reports</span>
+                            <span>Stock</span>
+                            <span>Staff</span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="experience-item reveal">
+
+                    <div class="experience-marker">
+                        02
+                    </div>
+
+
+                    <div class="experience-content">
+
+                        <span>
+                            FINANCE & ADMINISTRATION
+                        </span>
+
+                        <h3>
+                            Finance Research & Admin Assistant
+                        </h3>
+
+                        <p>
+
+                            Supported finance research and
+                            administrative tasks with a focus
+                            on organized information and
+                            business documentation.
+
+                        </p>
+
+
+                        <div class="experience-tags">
+
+                            <span>Research</span>
+                            <span>Finance</span>
+                            <span>Administration</span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="experience-item reveal">
+
+                    <div class="experience-marker">
+                        03
+                    </div>
+
+
+                    <div class="experience-content">
+
+                        <span>
+                            ACCOUNTS
+                        </span>
+
+                        <h3>
+                            Account Assistant
+                        </h3>
+
+                        <p>
+
+                            Practical exposure to accounting
+                            support, records and organized
+                            financial information.
+
+                        </p>
+
+
+                        <div class="experience-tags">
+
+                            <span>Accounts</span>
+                            <span>Records</span>
+                            <span>Data</span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+            <!-- EXPERIENCE VISUAL -->
+
+            <div class="experience-visual reveal-right">
+
+                <div class="ops-dashboard">
+
+                    <div class="ops-header">
+                        DAILY OPERATIONS
+                    </div>
+
+
+                    <div class="ops-circle">
+
+                        <span>
+                            BUSINESS
+                        </span>
+
+                        <strong>
+                            FLOW
+                        </strong>
+
+                    </div>
+
+
+                    <div class="ops-node ops-cash">
+                        CASH
+                    </div>
+
+                    <div class="ops-node ops-stock">
+                        STOCK
+                    </div>
+
+                    <div class="ops-node ops-staff">
+                        STAFF
+                    </div>
+
+                    <div class="ops-node ops-report">
+                        REPORT
+                    </div>
+
+
+                    <div class="ops-line line-one"></div>
+                    <div class="ops-line line-two"></div>
+                    <div class="ops-line line-three"></div>
+                    <div class="ops-line line-four"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     APPROACH
+===================================================== -->
+
+<section class="approach section">
+
+    <div class="container">
+
+        <div class="section-heading centered reveal">
+
+            <span class="section-number">
+                05 / APPROACH
+            </span>
+
+            <h2>
+                From problem
+                <span>to practical system.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="approach-grid">
+
+
+            <div class="approach-card reveal">
+
+                <span>01</span>
+
+                <div class="approach-icon">
+                    ?
+                </div>
+
+                <h3>
+                    Understand
+                </h3>
+
+                <p>
+
+                    Understand the business process,
+                    information flow and actual problem.
+
+                </p>
+
+            </div>
+
+
+            <div class="approach-connector">
+                →
+            </div>
+
+
+            <div class="approach-card reveal">
+
+                <span>02</span>
+
+                <div class="approach-icon">
+                    ◇
+                </div>
+
+                <h3>
+                    Build
+                </h3>
+
+                <p>
+
+                    Convert the workflow into a clear,
+                    structured and usable solution.
+
+                </p>
+
+            </div>
+
+
+            <div class="approach-connector">
+                →
+            </div>
+
+
+            <div class="approach-card reveal">
+
+                <span>03</span>
+
+                <div class="approach-icon">
+                    ↑
+                </div>
+
+                <h3>
+                    Improve
+                </h3>
+
+                <p>
+
+                    Use data, reports and feedback to
+                    improve visibility and workflow.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section
+    class="contact section dark-section"
+    id="contact"
+>
+
+    <div class="container">
+
+        <div class="contact-layout">
+
+
+            <div class="contact-content reveal-left">
+
+                <span class="section-number">
+                    06 / CONTACT
+                </span>
+
+
+                <h2>
+
+                    Let's build something
+                    <span>useful.</span>
+
+                </h2>
+
+
+                <p>
+
+                    Looking for opportunities in Finance,
+                    Accounting, Business Operations, Data
+                    or Digital Systems? Let's connect.
+
+                </p>
+
+
+                <div class="contact-links">
+
+
+                    <a
+                        href="mailto:abbasnazeer098@gmail.com"
+                        class="contact-link"
+                    >
+
+                        <span class="contact-icon">
+                            @
+                        </span>
+
+                        <div>
+                            <small>Email</small>
+                            <strong>
+                                abbasnazeer098@gmail.com
+                            </strong>
+                        </div>
+
+                        <span>↗</span>
+
+                    </a>
+
+
+                    <a
+                        href="https://wa.me/923460911451"
+                        target="_blank"
+                        rel="noopener"
+                        class="contact-link"
+                    >
+
+                        <span class="contact-icon">
+                            W
+                        </span>
+
+                        <div>
+                            <small>WhatsApp</small>
+                            <strong>
+                                +92 346 0911451
+                            </strong>
+                        </div>
+
+                        <span>↗</span>
+
+                    </a>
+
+
+                    <a
+                        href="https://www.linkedin.com/in/muhammad-abbas-ba386b330/"
+                        target="_blank"
+                        rel="noopener"
+                        class="contact-link"
+                    >
+
+                        <span class="contact-icon">
+                            in
+                        </span>
+
+                        <div>
+                            <small>LinkedIn</small>
+                            <strong>
+                                Muhammad Abbas
+                            </strong>
+                        </div>
+
+                        <span>↗</span>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTACT FORM -->
+
+            <div class="contact-form-wrapper reveal-right">
+
+                <div class="form-glow"></div>
+
+
+                <form
+                    id="contactForm"
+                    class="contact-form"
+                >
+
+                    <div class="form-heading">
+
+                        <span>
+                            SEND A MESSAGE
+                        </span>
+
+                        <h3>
+                            Start a conversation.
+                        </h3>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label>
+                                Your Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Your name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Your Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="your@email.com"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Subject
+                        </label>
 
                         <input
                             type="text"
-                            id="name"
-                            placeholder="Your Name"
+                            id="subject"
+                            placeholder="How can I help?"
                             required
                         >
 
+                    </div>
 
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="Your Email"
-                            required
-                        >
 
+                    <div class="form-group">
+
+                        <label>
+                            Message
+                        </label>
 
                         <textarea
                             id="message"
                             rows="6"
-                            placeholder="Your Message"
+                            placeholder="Write your message..."
                             required
                         ></textarea>
 
+                    </div>
 
-                        <button
-                            type="submit"
-                            class="primary-button"
-                        >
 
-                            Send Message
+                    <button
+                        type="submit"
+                        class="form-submit"
+                    >
 
-                            <span>↗</span>
+                        Send Message
 
-                        </button>
+                        <span>↗</span>
 
-                    </form>
+                    </button>
 
-                </div>
+
+                    <p
+                        class="form-note"
+                        id="formNote"
+                    >
+                        Your email app will open with
+                        the message prepared.
+
+                    </p>
+
+                </form>
 
             </div>
 
-        </section>
+        </div>
 
-    </main>
+    </div>
+
+</section>
 
 
+</main>
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
 
-    <footer class="footer">
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-        <div class="footer-container">
+<footer class="footer">
 
-            <span>
-                © 2026 Muhammad Abbas
-            </span>
+    <div class="container footer-inner">
+
+        <div>
+
+            <strong>
+                Muhammad Abbas
+            </strong>
 
             <span>
                 Finance • Operations • Digital Systems
@@ -1298,11 +2423,22 @@
 
         </div>
 
-    </footer>
+
+        <p>
+            © 2026 Muhammad Abbas. Built with purpose.
+        </p>
 
 
-    <script src="script.js"></script>
+        <a href="#home">
+            Back to top ↑
+        </a>
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
 
 </body>
-
 </html>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -10,15 +12,22 @@
 
     <meta
         name="description"
-        content="Muhammad Abbas - Finance, Accounting, Business Operations and Digital Systems Portfolio"
+        content="Muhammad Abbas — Finance, Accounting, Business Operations, Data and Digital Systems Portfolio"
     >
 
-    <title>Muhammad Abbas | Finance • Operations • Digital Systems</title>
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
+    <meta
+        name="theme-color"
+        content="#07111f"
     >
+
+    <title>
+        Muhammad Abbas | Finance • Operations • Digital Systems
+    </title>
+
+
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link
         rel="preconnect"
@@ -31,29 +40,47 @@
         rel="stylesheet"
     >
 
+
+    <!-- MAIN CSS -->
+
     <link
         rel="stylesheet"
         href="style.css"
     >
+
 </head>
 
+
 <body>
+
 
 <!-- =====================================================
      PAGE LOADER
 ===================================================== -->
 
-<div class="page-loader" id="pageLoader">
-    <div class="loader-logo">
-        MA
+<div
+    class="page-loader"
+    id="pageLoader"
+>
+
+    <div class="loader-content">
+
+        <div class="loader-logo">
+            MA
+        </div>
+
+        <div class="loader-line">
+            <span></span>
+        </div>
+
+        <p>
+            Building digital experience...
+        </p>
+
     </div>
 
-    <div class="loader-line">
-        <span></span>
-    </div>
-
-    <p>Building digital experience...</p>
 </div>
+
 
 
 <!-- =====================================================
@@ -61,29 +88,56 @@
 ===================================================== -->
 
 <div class="scroll-progress">
+
     <span id="scrollProgress"></span>
+
 </div>
+
+
+
+<!-- =====================================================
+     CURSOR GLOW
+===================================================== -->
+
+<div
+    class="cursor-glow"
+    id="cursorGlow"
+></div>
+
 
 
 <!-- =====================================================
      NAVBAR
 ===================================================== -->
 
-<header class="navbar" id="navbar">
+<header
+    class="navbar"
+    id="navbar"
+>
 
     <div class="nav-container">
+
+
+        <!-- LOGO -->
 
         <a
             href="#home"
             class="logo"
         >
-            <span class="logo-box">MA</span>
+
+            <span class="logo-box">
+                MA
+            </span>
 
             <span class="logo-text">
                 Muhammad Abbas
             </span>
+
         </a>
 
+
+
+        <!-- DESKTOP NAV -->
 
         <nav
             class="desktop-nav"
@@ -126,6 +180,13 @@
             </a>
 
             <a
+                href="#services"
+                class="nav-link"
+            >
+                Services
+            </a>
+
+            <a
                 href="#contact"
                 class="nav-link"
             >
@@ -135,26 +196,42 @@
         </nav>
 
 
+
+        <!-- NAV CTA -->
+
         <a
             href="#contact"
             class="nav-cta"
         >
+
             Let's Talk
-            <span>↗</span>
+
+            <span>
+                ↗
+            </span>
+
         </a>
 
+
+
+        <!-- MOBILE BUTTON -->
 
         <button
             class="mobile-menu-btn"
             id="mobileMenuBtn"
+            type="button"
             aria-label="Open menu"
+            aria-expanded="false"
         >
+
             <span></span>
             <span></span>
             <span></span>
+
         </button>
 
     </div>
+
 
 
     <!-- MOBILE MENU -->
@@ -164,17 +241,33 @@
         id="mobileMenu"
     >
 
-        <a href="#home">Home</a>
+        <a href="#home">
+            Home
+        </a>
 
-        <a href="#about">About</a>
+        <a href="#about">
+            About
+        </a>
 
-        <a href="#skills">Skills</a>
+        <a href="#skills">
+            Skills
+        </a>
 
-        <a href="#projects">Projects</a>
+        <a href="#projects">
+            Projects
+        </a>
 
-        <a href="#experience">Experience</a>
+        <a href="#experience">
+            Experience
+        </a>
 
-        <a href="#contact">Contact</a>
+        <a href="#services">
+            Services
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
 
         <a
             href="#contact"
@@ -188,7 +281,13 @@
 </header>
 
 
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
 <main>
+
 
 
 <!-- =====================================================
@@ -206,13 +305,19 @@
 
     <div class="hero-glow hero-glow-two"></div>
 
+    <div class="hero-particles"></div>
+
 
     <div class="container hero-container">
 
 
         <!-- HERO TEXT -->
 
-        <div class="hero-content reveal-left">
+        <div
+            class="hero-content reveal-left"
+            data-parallax="0.04"
+        >
+
 
             <div class="availability">
 
@@ -223,76 +328,109 @@
             </div>
 
 
+
             <p class="hero-small">
                 HELLO, I'M
             </p>
+
 
 
             <h1>
 
                 Muhammad
 
-                <span>Abbas</span>
+                <span>
+                    Abbas
+                </span>
 
             </h1>
 
 
+
             <div class="hero-role">
 
-                <span id="typingText">
+                <span
+                    class="typing-text"
+                    id="typingText"
+                >
                     Finance & Accounts
                 </span>
 
-                <span class="typing-cursor">|</span>
+                <span class="typing-cursor">
+                    |
+                </span>
 
             </div>
+
 
 
             <p class="hero-description">
 
                 Economics graduate focused on
-                <strong>Finance, Accounting, Business Operations</strong>
-                and <strong>Digital Systems</strong> —
-                building practical solutions through technology,
-                data and structured workflows.
+
+                <strong>
+                    Finance, Accounting, Business Operations
+                </strong>
+
+                and
+
+                <strong>
+                    Digital Systems
+                </strong>
+
+                — building practical solutions through
+                technology, data and structured workflows.
 
             </p>
 
+
+
+            <!-- HERO BUTTONS -->
 
             <div class="hero-buttons">
 
                 <a
                     href="#projects"
-                    class="btn btn-primary"
+                    class="btn btn-primary ripple"
                 >
+
                     View My Work
 
-                    <span>↗</span>
+                    <span>
+                        ↗
+                    </span>
 
                 </a>
 
 
                 <a
                     href="#contact"
-                    class="btn btn-outline"
+                    class="btn btn-outline ripple"
                 >
+
                     Let's Connect
+
                 </a>
 
             </div>
 
+
+
+            <!-- SOCIAL LINKS -->
 
             <div class="hero-socials">
 
                 <a
                     href="https://www.linkedin.com/in/muhammad-abbas-ba386b330/"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                 >
                     LinkedIn
                 </a>
 
-                <span>•</span>
+                <span>
+                    •
+                </span>
 
                 <a
                     href="mailto:abbasnazeer098@gmail.com"
@@ -300,12 +438,14 @@
                     Email
                 </a>
 
-                <span>•</span>
+                <span>
+                    •
+                </span>
 
                 <a
                     href="https://wa.me/923460911451"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                 >
                     WhatsApp
                 </a>
@@ -315,9 +455,18 @@
         </div>
 
 
-        <!-- HERO VISUAL -->
 
-        <div class="hero-visual reveal-right">
+        <!-- =================================================
+             HERO VISUAL
+        ================================================= -->
+
+        <div
+            class="hero-visual reveal-right"
+            data-parallax="0.08"
+        >
+
+
+            <!-- ORBITS -->
 
             <div class="hero-orbit orbit-one"></div>
 
@@ -326,6 +475,9 @@
             <div class="hero-orbit orbit-three"></div>
 
 
+
+            <!-- PROFILE -->
+
             <div class="profile-ring">
 
                 <div class="profile-image">
@@ -333,6 +485,7 @@
                     <img
                         src="profile.jpg"
                         alt="Muhammad Abbas"
+                        loading="eager"
                     >
 
                 </div>
@@ -340,7 +493,8 @@
             </div>
 
 
-            <!-- FLOATING SKILLS -->
+
+            <!-- FLOATING ROLE CARDS -->
 
             <div class="orbit-card orbit-finance">
 
@@ -349,11 +503,19 @@
                 </div>
 
                 <div>
-                    <strong>Finance</strong>
-                    <small>Accounting</small>
+
+                    <strong>
+                        Finance
+                    </strong>
+
+                    <small>
+                        Accounting
+                    </small>
+
                 </div>
 
             </div>
+
 
 
             <div class="orbit-card orbit-excel">
@@ -363,11 +525,19 @@
                 </div>
 
                 <div>
-                    <strong>Excel</strong>
-                    <small>Reporting</small>
+
+                    <strong>
+                        Excel
+                    </strong>
+
+                    <small>
+                        Reporting
+                    </small>
+
                 </div>
 
             </div>
+
 
 
             <div class="orbit-card orbit-erp">
@@ -377,11 +547,19 @@
                 </div>
 
                 <div>
-                    <strong>ERP</strong>
-                    <small>Business Systems</small>
+
+                    <strong>
+                        ERP
+                    </strong>
+
+                    <small>
+                        Business Systems
+                    </small>
+
                 </div>
 
             </div>
+
 
 
             <div class="orbit-card orbit-data">
@@ -391,11 +569,19 @@
                 </div>
 
                 <div>
-                    <strong>Data</strong>
-                    <small>Analysis</small>
+
+                    <strong>
+                        Data
+                    </strong>
+
+                    <small>
+                        Analysis
+                    </small>
+
                 </div>
 
             </div>
+
 
 
             <!-- HERO DASHBOARD -->
@@ -404,7 +590,9 @@
 
                 <div class="dashboard-top">
 
-                    <span>Business Overview</span>
+                    <span>
+                        Business Overview
+                    </span>
 
                     <span class="live-dot">
                         ● Live
@@ -426,11 +614,17 @@
                 <div class="dashboard-chart">
 
                     <span style="height:35%"></span>
+
                     <span style="height:48%"></span>
+
                     <span style="height:40%"></span>
+
                     <span style="height:62%"></span>
+
                     <span style="height:55%"></span>
+
                     <span style="height:75%"></span>
+
                     <span style="height:92%"></span>
 
                 </div>
@@ -442,7 +636,8 @@
     </div>
 
 
-    <!-- HERO SERVICE STRIP -->
+
+    <!-- HERO MARQUEE -->
 
     <div class="hero-strip">
 
@@ -450,25 +645,46 @@
 
             <div class="service-marquee">
 
-                <span>FINANCE</span>
+                <span>
+                    FINANCE
+                </span>
+
                 <i>✦</i>
 
-                <span>ACCOUNTING</span>
+                <span>
+                    ACCOUNTING
+                </span>
+
                 <i>✦</i>
 
-                <span>EXCEL REPORTING</span>
+                <span>
+                    EXCEL REPORTING
+                </span>
+
                 <i>✦</i>
 
-                <span>ERP SYSTEMS</span>
+                <span>
+                    ERP SYSTEMS
+                </span>
+
                 <i>✦</i>
 
-                <span>DATA</span>
+                <span>
+                    DATA
+                </span>
+
                 <i>✦</i>
 
-                <span>DIGITAL SOLUTIONS</span>
+                <span>
+                    DIGITAL SOLUTIONS
+                </span>
+
                 <i>✦</i>
 
-                <span>FINANCE</span>
+                <span>
+                    BUSINESS OPERATIONS
+                </span>
+
                 <i>✦</i>
 
             </div>
@@ -478,6 +694,7 @@
     </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -491,6 +708,7 @@
 
     <div class="container">
 
+
         <div class="section-heading reveal">
 
             <span class="section-number">
@@ -498,16 +716,22 @@
             </span>
 
             <h2>
+
                 Turning business
-                <span>workflows into systems.</span>
+
+                <span>
+                    workflows into systems.
+                </span>
+
             </h2>
 
             <p>
-                My focus sits between business, finance,
-                operations and technology.
+                My focus sits between business,
+                finance, operations and technology.
             </p>
 
         </div>
+
 
 
         <div class="about-layout">
@@ -542,27 +766,45 @@
 
                     My portfolio projects demonstrate this
                     approach through practical systems such as
-                    <strong>THEA Books</strong>, business
-                    reporting and digital solutions.
+                    <strong>
+                        THEA Books
+                    </strong>,
+                    business reporting and digital solutions.
 
                 </p>
 
 
+
                 <div class="about-tags">
 
-                    <span>Finance</span>
-                    <span>Operations</span>
-                    <span>Data</span>
-                    <span>Technology</span>
+                    <span>
+                        Finance
+                    </span>
+
+                    <span>
+                        Operations
+                    </span>
+
+                    <span>
+                        Data
+                    </span>
+
+                    <span>
+                        Technology
+                    </span>
 
                 </div>
 
             </div>
 
 
-            <!-- ABOUT VISUAL -->
 
-            <div class="workflow-visual reveal-right">
+            <!-- WORKFLOW VISUAL -->
+
+            <div
+                class="workflow-visual reveal-right"
+                data-parallax="0.05"
+            >
 
                 <div class="workflow-title">
                     BUSINESS FLOW
@@ -572,18 +814,30 @@
                 <div class="workflow-line"></div>
 
 
-                <div class="workflow-item">
+
+                <div
+                    class="workflow-item workflow-step"
+                    data-step="1"
+                >
 
                     <div class="workflow-icon">
                         01
                     </div>
 
                     <div>
-                        <strong>Transaction</strong>
-                        <small>Sale / Purchase / Expense</small>
+
+                        <strong>
+                            Transaction
+                        </strong>
+
+                        <small>
+                            Sale / Purchase / Expense
+                        </small>
+
                     </div>
 
                 </div>
+
 
 
                 <div class="workflow-arrow">
@@ -591,18 +845,30 @@
                 </div>
 
 
-                <div class="workflow-item">
+
+                <div
+                    class="workflow-item workflow-step"
+                    data-step="2"
+                >
 
                     <div class="workflow-icon">
                         02
                     </div>
 
                     <div>
-                        <strong>Record</strong>
-                        <small>Data & Accounts</small>
+
+                        <strong>
+                            Record
+                        </strong>
+
+                        <small>
+                            Data & Accounts
+                        </small>
+
                     </div>
 
                 </div>
+
 
 
                 <div class="workflow-arrow">
@@ -610,18 +876,30 @@
                 </div>
 
 
-                <div class="workflow-item">
+
+                <div
+                    class="workflow-item workflow-step"
+                    data-step="3"
+                >
 
                     <div class="workflow-icon">
                         03
                     </div>
 
                     <div>
-                        <strong>Report</strong>
-                        <small>Dashboard & Analysis</small>
+
+                        <strong>
+                            Report
+                        </strong>
+
+                        <small>
+                            Dashboard & Analysis
+                        </small>
+
                     </div>
 
                 </div>
+
 
 
                 <div class="workflow-arrow">
@@ -629,15 +907,26 @@
                 </div>
 
 
-                <div class="workflow-item active-workflow">
+
+                <div
+                    class="workflow-item workflow-step active-workflow"
+                    data-step="4"
+                >
 
                     <div class="workflow-icon">
                         04
                     </div>
 
                     <div>
-                        <strong>Decision</strong>
-                        <small>Better Business Visibility</small>
+
+                        <strong>
+                            Decision
+                        </strong>
+
+                        <small>
+                            Better Business Visibility
+                        </small>
+
                     </div>
 
                 </div>
@@ -647,15 +936,17 @@
         </div>
 
 
-        <!-- ABOUT STATS -->
+
+        <!-- STATS -->
 
         <div class="about-stats reveal">
+
 
             <div class="stat">
 
                 <strong
                     class="counter"
-                    data-target="3"
+                    data-counter="3"
                 >
                     0
                 </strong>
@@ -667,11 +958,12 @@
             </div>
 
 
+
             <div class="stat">
 
                 <strong
                     class="counter"
-                    data-target="8"
+                    data-counter="8"
                 >
                     0
                 </strong>
@@ -683,11 +975,12 @@
             </div>
 
 
+
             <div class="stat">
 
                 <strong
                     class="counter"
-                    data-target="4"
+                    data-counter="4"
                 >
                     0
                 </strong>
@@ -697,6 +990,7 @@
                 </span>
 
             </div>
+
 
 
             <div class="stat">
@@ -718,6 +1012,7 @@
 </section>
 
 
+
 <!-- =====================================================
      SKILLS
 ===================================================== -->
@@ -729,6 +1024,7 @@
 
     <div class="container">
 
+
         <div class="section-heading reveal">
 
             <span class="section-number">
@@ -736,8 +1032,13 @@
             </span>
 
             <h2>
+
                 Skills that connect
-                <span>business with data.</span>
+
+                <span>
+                    business with data.
+                </span>
+
             </h2>
 
             <p>
@@ -748,12 +1049,15 @@
         </div>
 
 
+
         <div class="skills-layout">
 
 
-            <!-- SKILL 01 -->
+            <!-- 01 FINANCE -->
 
-            <article class="skill-card skill-finance reveal">
+            <article
+                class="skill-card skill-finance reveal"
+            >
 
                 <div class="skill-number">
                     01
@@ -768,44 +1072,81 @@
                 </h3>
 
                 <p>
+
                     Understanding business transactions,
                     invoices, expenses, receivables,
                     payables and financial reporting.
+
                 </p>
+
 
 
                 <div class="skill-visual finance-visual">
 
                     <div class="finance-step">
-                        <span>Invoice</span>
-                        <b>₨25K</b>
+
+                        <span>
+                            Invoice
+                        </span>
+
+                        <b>
+                            ₨25K
+                        </b>
+
                     </div>
+
 
                     <div class="finance-arrow">
                         →
                     </div>
 
+
                     <div class="finance-step">
-                        <span>Payment</span>
-                        <b>₨25K</b>
+
+                        <span>
+                            Payment
+                        </span>
+
+                        <b>
+                            ₨25K
+                        </b>
+
                     </div>
+
 
                     <div class="finance-arrow">
                         →
                     </div>
 
+
                     <div class="finance-step">
-                        <span>Ledger</span>
-                        <b>Posted</b>
+
+                        <span>
+                            Ledger
+                        </span>
+
+                        <b>
+                            Posted
+                        </b>
+
                     </div>
+
 
                     <div class="finance-arrow">
                         →
                     </div>
 
+
                     <div class="finance-step">
-                        <span>Report</span>
-                        <b>Ready</b>
+
+                        <span>
+                            Report
+                        </span>
+
+                        <b>
+                            Ready
+                        </b>
+
                     </div>
 
                 </div>
@@ -813,9 +1154,12 @@
             </article>
 
 
-            <!-- SKILL 02 -->
 
-            <article class="skill-card reveal">
+            <!-- 02 EXCEL -->
+
+            <article
+                class="skill-card reveal"
+            >
 
                 <div class="skill-number">
                     02
@@ -830,10 +1174,13 @@
                 </h3>
 
                 <p>
+
                     Organizing raw business information
                     into structured sheets, summaries,
                     calculations and visual reports.
+
                 </p>
+
 
 
                 <div class="excel-visual">
@@ -841,44 +1188,103 @@
                     <div class="excel-sheet">
 
                         <div class="sheet-row sheet-head">
-                            <span>Product</span>
-                            <span>Sales</span>
-                            <span>Stock</span>
+
+                            <span>
+                                Product
+                            </span>
+
+                            <span>
+                                Sales
+                            </span>
+
+                            <span>
+                                Stock
+                            </span>
+
                         </div>
 
-                        <div class="sheet-row">
-                            <span>Coffee</span>
-                            <span>42K</span>
-                            <span>86</span>
-                        </div>
 
                         <div class="sheet-row">
-                            <span>Burger</span>
-                            <span>68K</span>
-                            <span>42</span>
+
+                            <span>
+                                Coffee
+                            </span>
+
+                            <span>
+                                42K
+                            </span>
+
+                            <span>
+                                86
+                            </span>
+
                         </div>
 
-                        <div class="sheet-row">
-                            <span>Dessert</span>
-                            <span>31K</span>
-                            <span>28</span>
-                        </div>
 
                         <div class="sheet-row">
-                            <span>Drinks</span>
-                            <span>25K</span>
-                            <span>61</span>
+
+                            <span>
+                                Burger
+                            </span>
+
+                            <span>
+                                68K
+                            </span>
+
+                            <span>
+                                42
+                            </span>
+
+                        </div>
+
+
+                        <div class="sheet-row">
+
+                            <span>
+                                Dessert
+                            </span>
+
+                            <span>
+                                31K
+                            </span>
+
+                            <span>
+                                28
+                            </span>
+
+                        </div>
+
+
+                        <div class="sheet-row">
+
+                            <span>
+                                Drinks
+                            </span>
+
+                            <span>
+                                25K
+                            </span>
+
+                            <span>
+                                61
+                            </span>
+
                         </div>
 
                     </div>
 
 
+
                     <div class="mini-bars">
 
                         <span style="height:40%"></span>
+
                         <span style="height:68%"></span>
+
                         <span style="height:50%"></span>
+
                         <span style="height:82%"></span>
+
                         <span style="height:64%"></span>
 
                     </div>
@@ -888,9 +1294,12 @@
             </article>
 
 
-            <!-- SKILL 03 -->
 
-            <article class="skill-card reveal">
+            <!-- 03 QUICKBOOKS -->
+
+            <article
+                class="skill-card reveal"
+            >
 
                 <div class="skill-number">
                     03
@@ -905,23 +1314,41 @@
                 </h3>
 
                 <p>
+
                     Portfolio-focused understanding of
                     accounting workflows, transactions,
                     customers, vendors and reporting.
+
                 </p>
+
 
 
                 <div class="books-visual">
 
                     <div class="books-sidebar">
 
-                        <span class="active">Dashboard</span>
-                        <span>Sales</span>
-                        <span>Purchases</span>
-                        <span>Expenses</span>
-                        <span>Reports</span>
+                        <span class="active">
+                            Dashboard
+                        </span>
+
+                        <span>
+                            Sales
+                        </span>
+
+                        <span>
+                            Purchases
+                        </span>
+
+                        <span>
+                            Expenses
+                        </span>
+
+                        <span>
+                            Reports
+                        </span>
 
                     </div>
+
 
 
                     <div class="books-main">
@@ -930,16 +1357,32 @@
                             Business Dashboard
                         </div>
 
+
                         <div class="books-cards">
 
                             <div>
-                                <small>Sales</small>
-                                <b>₨84K</b>
+
+                                <small>
+                                    Sales
+                                </small>
+
+                                <b>
+                                    ₨84K
+                                </b>
+
                             </div>
 
+
                             <div>
-                                <small>Expenses</small>
-                                <b>₨32K</b>
+
+                                <small>
+                                    Expenses
+                                </small>
+
+                                <b>
+                                    ₨32K
+                                </b>
+
                             </div>
 
                         </div>
@@ -951,9 +1394,12 @@
             </article>
 
 
-            <!-- SKILL 04 -->
 
-            <article class="skill-card skill-wide reveal">
+            <!-- 04 DATA -->
+
+            <article
+                class="skill-card skill-wide reveal"
+            >
 
                 <div class="skill-number">
                     04
@@ -968,10 +1414,14 @@
                 </h3>
 
                 <p>
+
                     Working with structured business data,
-                    identifying patterns and turning information
-                    into understandable dashboards and insights.
+                    identifying patterns and turning
+                    information into understandable
+                    dashboards and insights.
+
                 </p>
+
 
 
                 <div class="data-visual">
@@ -979,34 +1429,90 @@
                     <div class="data-table">
 
                         <div class="data-row heading">
-                            <span>Month</span>
-                            <span>Sales</span>
-                            <span>Expenses</span>
-                            <span>Profit</span>
+
+                            <span>
+                                Month
+                            </span>
+
+                            <span>
+                                Sales
+                            </span>
+
+                            <span>
+                                Expenses
+                            </span>
+
+                            <span>
+                                Profit
+                            </span>
+
                         </div>
 
-                        <div class="data-row">
-                            <span>Jan</span>
-                            <span>82K</span>
-                            <span>41K</span>
-                            <span>41K</span>
-                        </div>
 
                         <div class="data-row">
-                            <span>Feb</span>
-                            <span>96K</span>
-                            <span>45K</span>
-                            <span>51K</span>
+
+                            <span>
+                                Jan
+                            </span>
+
+                            <span>
+                                82K
+                            </span>
+
+                            <span>
+                                41K
+                            </span>
+
+                            <span>
+                                41K
+                            </span>
+
                         </div>
 
+
                         <div class="data-row">
-                            <span>Mar</span>
-                            <span>118K</span>
-                            <span>52K</span>
-                            <span>66K</span>
+
+                            <span>
+                                Feb
+                            </span>
+
+                            <span>
+                                96K
+                            </span>
+
+                            <span>
+                                45K
+                            </span>
+
+                            <span>
+                                51K
+                            </span>
+
+                        </div>
+
+
+                        <div class="data-row">
+
+                            <span>
+                                Mar
+                            </span>
+
+                            <span>
+                                118K
+                            </span>
+
+                            <span>
+                                52K
+                            </span>
+
+                            <span>
+                                66K
+                            </span>
+
                         </div>
 
                     </div>
+
 
 
                     <div class="data-chart">
@@ -1026,9 +1532,12 @@
             </article>
 
 
-            <!-- SKILL 05 -->
 
-            <article class="skill-card reveal">
+            <!-- 05 ERP -->
+
+            <article
+                class="skill-card reveal"
+            >
 
                 <div class="skill-number">
                     05
@@ -1043,30 +1552,56 @@
                 </h3>
 
                 <p>
+
                     Designing connected workflows for sales,
                     purchases, inventory, customers, vendors,
                     accounting and reports.
+
                 </p>
+
 
 
                 <div class="erp-flow">
 
-                    <span>Sales</span>
-                    <i>→</i>
-                    <span>Inventory</span>
-                    <i>→</i>
-                    <span>Accounting</span>
-                    <i>→</i>
-                    <span>Reports</span>
+                    <span>
+                        Sales
+                    </span>
+
+                    <i>
+                        →
+                    </i>
+
+                    <span>
+                        Inventory
+                    </span>
+
+                    <i>
+                        →
+                    </i>
+
+                    <span>
+                        Accounting
+                    </span>
+
+                    <i>
+                        →
+                    </i>
+
+                    <span>
+                        Reports
+                    </span>
 
                 </div>
 
             </article>
 
 
-            <!-- SKILL 06 -->
 
-            <article class="skill-card reveal">
+            <!-- 06 OPERATIONS -->
+
+            <article
+                class="skill-card reveal"
+            >
 
                 <div class="skill-number">
                     06
@@ -1081,32 +1616,66 @@
                 </h3>
 
                 <p>
+
                     Practical experience with daily operations,
                     cash handling, reporting, stock coordination,
                     staff scheduling and customer issues.
+
                 </p>
+
 
 
                 <div class="operations-visual">
 
                     <div class="operation-card">
-                        <b>Cash</b>
-                        <span>Collected</span>
+
+                        <b>
+                            Cash
+                        </b>
+
+                        <span>
+                            Collected
+                        </span>
+
                     </div>
 
-                    <div class="operation-card">
-                        <b>Stock</b>
-                        <span>Checked</span>
-                    </div>
 
                     <div class="operation-card">
-                        <b>Staff</b>
-                        <span>Scheduled</span>
+
+                        <b>
+                            Stock
+                        </b>
+
+                        <span>
+                            Checked
+                        </span>
+
                     </div>
 
+
                     <div class="operation-card">
-                        <b>Report</b>
-                        <span>Prepared</span>
+
+                        <b>
+                            Staff
+                        </b>
+
+                        <span>
+                            Scheduled
+                        </span>
+
+                    </div>
+
+
+                    <div class="operation-card">
+
+                        <b>
+                            Report
+                        </b>
+
+                        <span>
+                            Prepared
+                        </span>
+
                     </div>
 
                 </div>
@@ -1114,9 +1683,12 @@
             </article>
 
 
-            <!-- SKILL 07 -->
 
-            <article class="skill-card reveal">
+            <!-- 07 DIGITAL -->
+
+            <article
+                class="skill-card reveal"
+            >
 
                 <div class="skill-number">
                     07
@@ -1131,10 +1703,13 @@
                 </h3>
 
                 <p>
+
                     Building practical websites and digital
                     business concepts through The A Tech
                     and related projects.
+
                 </p>
+
 
 
                 <div class="digital-visual">
@@ -1142,21 +1717,29 @@
                     <div class="browser-window">
 
                         <div class="browser-top">
+
                             <i></i>
                             <i></i>
                             <i></i>
+
                         </div>
+
 
                         <div class="browser-content">
 
                             <span class="browser-line long"></span>
+
                             <span class="browser-line"></span>
+
                             <span class="browser-line medium"></span>
 
+
                             <div class="browser-boxes">
+
                                 <b></b>
                                 <b></b>
                                 <b></b>
+
                             </div>
 
                         </div>
@@ -1168,44 +1751,79 @@
             </article>
 
 
-            <!-- SKILL 08 -->
 
-            <article class="skill-card reveal">
+            <!-- 08 PYTHON -->
+
+            <article
+                class="skill-card reveal"
+            >
 
                 <div class="skill-number">
                     08
                 </div>
 
                 <div class="skill-icon">
-                 &lt;/&gt;
-               </div>
+                    &lt;/&gt;
+                </div>
 
                 <h3>
                     Python & Technology
                 </h3>
 
                 <p>
+
                     Developing programming foundations with
-                    Python for future data handling, automation
-                    and analytical workflows.
+                    Python for future data handling,
+                    automation and analytical workflows.
+
                 </p>
+
 
 
                 <div class="code-visual">
 
                     <div>
-                        <span>data</span> =
-                        <strong>[sales, expense]</strong>
+
+                        <span>
+                            data
+                        </span>
+
+                        =
+
+                        <strong>
+                            [sales, expense]
+                        </strong>
+
                     </div>
 
-                    <div>
-                        <span>report</span> =
-                        <strong>analyze(data)</strong>
-                    </div>
 
                     <div>
-                        <span>result</span> =
-                        <strong>dashboard</strong>
+
+                        <span>
+                            report
+                        </span>
+
+                        =
+
+                        <strong>
+                            analyze(data)
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            result
+                        </span>
+
+                        =
+
+                        <strong>
+                            dashboard
+                        </strong>
+
                     </div>
 
                 </div>
@@ -1219,6 +1837,7 @@
 </section>
 
 
+
 <!-- =====================================================
      PROJECTS
 ===================================================== -->
@@ -1230,6 +1849,7 @@
 
     <div class="container">
 
+
         <div class="section-heading reveal">
 
             <span class="section-number">
@@ -1237,23 +1857,34 @@
             </span>
 
             <h2>
+
                 Building ideas into
-                <span>working systems.</span>
+
+                <span>
+                    working systems.
+                </span>
+
             </h2>
 
             <p>
-                Projects are used to demonstrate practical
-                business, finance and technology workflows.
+
+                Projects demonstrate practical business,
+                finance and technology workflows.
+
             </p>
 
         </div>
 
 
+
         <!-- =================================================
-             THEA BOOKS MAIN PROJECT
+             THEA BOOKS FEATURED
         ================================================= -->
 
-        <article class="project-main reveal">
+        <article
+            class="project-main reveal"
+        >
+
 
             <div class="project-main-content">
 
@@ -1274,47 +1905,76 @@
 
                 <p>
 
-                    A practical ERP-style project designed to
-                    connect everyday business operations with
-                    accounting and reporting workflows.
+                    A practical ERP-style project designed
+                    to connect everyday business operations
+                    with accounting and reporting workflows.
 
                 </p>
 
 
+
                 <div class="project-tags">
 
-                    <span>ERP</span>
-                    <span>Accounting</span>
-                    <span>Inventory</span>
-                    <span>Reporting</span>
-                    <span>Business Management</span>
+                    <span>
+                        ERP
+                    </span>
+
+                    <span>
+                        Accounting
+                    </span>
+
+                    <span>
+                        Inventory
+                    </span>
+
+                    <span>
+                        Reporting
+                    </span>
+
+                    <span>
+                        Business Management
+                    </span>
 
                 </div>
+
 
 
                 <a
                     href="https://the-a-tech.github.io/thea-books/"
                     target="_blank"
-                    rel="noopener"
-                    class="project-link"
+                    rel="noopener noreferrer"
+                    class="project-link ripple"
                 >
+
                     Open THEA Books
-                    <span>↗</span>
+
+                    <span>
+                        ↗
+                    </span>
+
                 </a>
 
             </div>
 
 
-            <!-- THEA BOOKS VISUAL -->
+
+            <!-- THEA DASHBOARD -->
 
             <div class="thea-dashboard">
+
 
                 <div class="thea-topbar">
 
                     <div class="thea-brand">
-                        <span>TB</span>
+
+                        <span>
+                            TB
+                        </span>
+
                         THEA Books
+
                     </div>
+
 
                     <div class="thea-user">
                         Business Account
@@ -1323,7 +1983,9 @@
                 </div>
 
 
+
                 <div class="thea-body">
+
 
                     <aside class="thea-sidebar">
 
@@ -1331,26 +1993,44 @@
                             Dashboard
                         </span>
 
-                        <span>Sales</span>
+                        <span>
+                            Sales
+                        </span>
 
-                        <span>Purchases</span>
+                        <span>
+                            Purchases
+                        </span>
 
-                        <span>Expenses</span>
+                        <span>
+                            Expenses
+                        </span>
 
-                        <span>Customers</span>
+                        <span>
+                            Customers
+                        </span>
 
-                        <span>Vendors</span>
+                        <span>
+                            Vendors
+                        </span>
 
-                        <span>Inventory</span>
+                        <span>
+                            Inventory
+                        </span>
 
-                        <span>Accounting</span>
+                        <span>
+                            Accounting
+                        </span>
 
-                        <span>Reports</span>
+                        <span>
+                            Reports
+                        </span>
 
                     </aside>
 
 
+
                     <div class="thea-content">
+
 
                         <div class="thea-heading">
 
@@ -1373,7 +2053,11 @@
                         </div>
 
 
+
+                        <!-- METRICS -->
+
                         <div class="thea-metrics">
+
 
                             <div class="thea-metric">
 
@@ -1445,13 +2129,18 @@
                         </div>
 
 
+
                         <div class="thea-bottom">
+
+
+                            <!-- CHART -->
 
                             <div class="thea-chart-box">
 
                                 <div class="chart-box-title">
                                     Sales Performance
                                 </div>
+
 
                                 <div class="big-chart">
 
@@ -1495,6 +2184,9 @@
                             </div>
 
 
+
+                            <!-- ACTIVITY -->
+
                             <div class="thea-activity">
 
                                 <div class="chart-box-title">
@@ -1509,8 +2201,15 @@
                                     </span>
 
                                     <div>
-                                        <b>Invoice Created</b>
-                                        <small>INV-0024</small>
+
+                                        <b>
+                                            Invoice Created
+                                        </b>
+
+                                        <small>
+                                            INV-0024
+                                        </small>
+
                                     </div>
 
                                     <strong>
@@ -1527,8 +2226,15 @@
                                     </span>
 
                                     <div>
-                                        <b>Purchase Recorded</b>
-                                        <small>PO-0018</small>
+
+                                        <b>
+                                            Purchase Recorded
+                                        </b>
+
+                                        <small>
+                                            PO-0018
+                                        </small>
+
                                     </div>
 
                                     <strong>
@@ -1545,8 +2251,15 @@
                                     </span>
 
                                     <div>
-                                        <b>Expense Added</b>
-                                        <small>Office Expense</small>
+
+                                        <b>
+                                            Expense Added
+                                        </b>
+
+                                        <small>
+                                            Office Expense
+                                        </small>
+
                                     </div>
 
                                     <strong>
@@ -1568,9 +2281,12 @@
         </article>
 
 
-        <!-- THEA BOOKS FLOW -->
 
-        <div class="case-study-flow reveal">
+        <!-- THEA WORKFLOW -->
+
+        <div
+            class="case-study-flow reveal"
+        >
 
             <div class="case-flow-title">
                 HOW THE SYSTEM CONNECTS
@@ -1579,13 +2295,16 @@
 
             <div class="case-flow">
 
+
                 <div class="case-node">
 
                     <div class="case-node-icon">
                         $
                     </div>
 
-                    <strong>Sales</strong>
+                    <strong>
+                        Sales
+                    </strong>
 
                     <span>
                         Invoice
@@ -1605,7 +2324,9 @@
                         +
                     </div>
 
-                    <strong>Purchases</strong>
+                    <strong>
+                        Purchases
+                    </strong>
 
                     <span>
                         Vendor
@@ -1625,7 +2346,9 @@
                         ◫
                     </div>
 
-                    <strong>Inventory</strong>
+                    <strong>
+                        Inventory
+                    </strong>
 
                     <span>
                         Stock
@@ -1645,7 +2368,9 @@
                         ₨
                     </div>
 
-                    <strong>Accounting</strong>
+                    <strong>
+                        Accounting
+                    </strong>
 
                     <span>
                         Records
@@ -1665,7 +2390,9 @@
                         ◌
                     </div>
 
-                    <strong>Reports</strong>
+                    <strong>
+                        Reports
+                    </strong>
 
                     <span>
                         Insights
@@ -1678,6 +2405,7 @@
         </div>
 
 
+
         <!-- OTHER PROJECTS -->
 
         <div class="projects-grid">
@@ -1685,15 +2413,23 @@
 
             <!-- THE A TECH -->
 
-            <article class="project-card reveal">
+            <article
+                class="project-card reveal"
+            >
 
                 <div class="project-card-visual tech-visual">
 
                     <div class="tech-orbit"></div>
 
+
                     <div class="tech-center">
+
                         THE A
-                        <small>TECH</small>
+
+                        <small>
+                            TECH
+                        </small>
+
                     </div>
 
 
@@ -1714,6 +2450,7 @@
                     </div>
 
                 </div>
+
 
 
                 <div class="project-card-content">
@@ -1737,9 +2474,17 @@
 
                     <div class="project-mini-tags">
 
-                        <span>Web</span>
-                        <span>Digital</span>
-                        <span>Systems</span>
+                        <span>
+                            Web
+                        </span>
+
+                        <span>
+                            Digital
+                        </span>
+
+                        <span>
+                            Systems
+                        </span>
 
                     </div>
 
@@ -1747,7 +2492,7 @@
                     <a
                         href="https://the-a-tech.github.io/theatech/"
                         target="_blank"
-                        rel="noopener"
+                        rel="noopener noreferrer"
                     >
                         Explore Project →
                     </a>
@@ -1757,9 +2502,12 @@
             </article>
 
 
-            <!-- EXCEL -->
 
-            <article class="project-card reveal">
+            <!-- BUSINESS REPORTING -->
+
+            <article
+                class="project-card reveal"
+            >
 
                 <div class="project-card-visual report-visual">
 
@@ -1773,13 +2521,28 @@
                         <div class="report-stats">
 
                             <div>
-                                <small>Sales</small>
-                                <b>₨248K</b>
+
+                                <small>
+                                    Sales
+                                </small>
+
+                                <b>
+                                    ₨248K
+                                </b>
+
                             </div>
 
+
                             <div>
-                                <small>Profit</small>
-                                <b>₨92K</b>
+
+                                <small>
+                                    Profit
+                                </small>
+
+                                <b>
+                                    ₨92K
+                                </b>
+
                             </div>
 
                         </div>
@@ -1788,10 +2551,15 @@
                         <div class="report-graph">
 
                             <span style="height:35%"></span>
+
                             <span style="height:48%"></span>
+
                             <span style="height:42%"></span>
+
                             <span style="height:64%"></span>
+
                             <span style="height:57%"></span>
+
                             <span style="height:78%"></span>
 
                         </div>
@@ -1799,6 +2567,7 @@
                     </div>
 
                 </div>
+
 
 
                 <div class="project-card-content">
@@ -1822,9 +2591,17 @@
 
                     <div class="project-mini-tags">
 
-                        <span>Excel</span>
-                        <span>Reports</span>
-                        <span>Data</span>
+                        <span>
+                            Excel
+                        </span>
+
+                        <span>
+                            Reports
+                        </span>
+
+                        <span>
+                            Data
+                        </span>
 
                     </div>
 
@@ -1839,6 +2616,7 @@
 </section>
 
 
+
 <!-- =====================================================
      EXPERIENCE
 ===================================================== -->
@@ -1850,6 +2628,7 @@
 
     <div class="container">
 
+
         <div class="section-heading reveal">
 
             <span class="section-number">
@@ -1857,25 +2636,37 @@
             </span>
 
             <h2>
+
                 Learning through
-                <span>real operations.</span>
+
+                <span>
+                    real operations.
+                </span>
+
             </h2>
 
             <p>
+
                 Practical exposure across business operations,
                 administration and accounts-related work.
+
             </p>
 
         </div>
 
 
+
         <div class="experience-layout">
 
+
+            <!-- TIMELINE -->
 
             <div class="experience-timeline">
 
 
-                <article class="experience-item reveal">
+                <article
+                    class="experience-item reveal"
+                >
 
                     <div class="experience-marker">
                         01
@@ -1904,10 +2695,21 @@
 
                         <div class="experience-tags">
 
-                            <span>Cash Handling</span>
-                            <span>Daily Reports</span>
-                            <span>Stock</span>
-                            <span>Staff</span>
+                            <span>
+                                Cash Handling
+                            </span>
+
+                            <span>
+                                Daily Reports
+                            </span>
+
+                            <span>
+                                Stock
+                            </span>
+
+                            <span>
+                                Staff
+                            </span>
 
                         </div>
 
@@ -1916,7 +2718,10 @@
                 </article>
 
 
-                <article class="experience-item reveal">
+
+                <article
+                    class="experience-item reveal"
+                >
 
                     <div class="experience-marker">
                         02
@@ -1945,9 +2750,17 @@
 
                         <div class="experience-tags">
 
-                            <span>Research</span>
-                            <span>Finance</span>
-                            <span>Administration</span>
+                            <span>
+                                Research
+                            </span>
+
+                            <span>
+                                Finance
+                            </span>
+
+                            <span>
+                                Administration
+                            </span>
 
                         </div>
 
@@ -1956,7 +2769,10 @@
                 </article>
 
 
-                <article class="experience-item reveal">
+
+                <article
+                    class="experience-item reveal"
+                >
 
                     <div class="experience-marker">
                         03
@@ -1984,9 +2800,17 @@
 
                         <div class="experience-tags">
 
-                            <span>Accounts</span>
-                            <span>Records</span>
-                            <span>Data</span>
+                            <span>
+                                Accounts
+                            </span>
+
+                            <span>
+                                Records
+                            </span>
+
+                            <span>
+                                Data
+                            </span>
 
                         </div>
 
@@ -1994,13 +2818,16 @@
 
                 </article>
 
-
             </div>
+
 
 
             <!-- EXPERIENCE VISUAL -->
 
-            <div class="experience-visual reveal-right">
+            <div
+                class="experience-visual reveal-right"
+                data-parallax="0.04"
+            >
 
                 <div class="ops-dashboard">
 
@@ -2040,8 +2867,11 @@
 
 
                     <div class="ops-line line-one"></div>
+
                     <div class="ops-line line-two"></div>
+
                     <div class="ops-line line-three"></div>
+
                     <div class="ops-line line-four"></div>
 
                 </div>
@@ -2055,26 +2885,473 @@
 </section>
 
 
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section
+    class="services section"
+    id="services"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading reveal">
+
+            <span class="section-number">
+                05 / SERVICES
+            </span>
+
+            <h2>
+
+                Practical solutions for
+
+                <span>
+                    business workflows.
+                </span>
+
+            </h2>
+
+            <p>
+
+                Areas where business knowledge,
+                data and digital systems can work together.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="services-grid">
+
+
+            <!-- SERVICE 01 -->
+
+            <article
+                class="service-card reveal"
+                data-service="finance"
+            >
+
+                <div class="service-visual">
+
+                    <div class="service-finance-icon">
+                        ₨
+                    </div>
+
+
+                    <div class="service-mini-flow">
+
+                        <span>
+                            Transaction
+                        </span>
+
+                        <i>
+                            →
+                        </i>
+
+                        <span>
+                            Record
+                        </span>
+
+                        <i>
+                            →
+                        </i>
+
+                        <span>
+                            Report
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="service-content">
+
+                    <span class="service-number">
+                        01
+                    </span>
+
+                    <h3>
+                        Finance & Accounting Support
+                    </h3>
+
+                    <p>
+
+                        Structured support for business
+                        transactions, records, invoices,
+                        expenses and reporting workflows.
+
+                    </p>
+
+
+                    <span class="service-status">
+                        Finance Workflow
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- SERVICE 02 -->
+
+            <article
+                class="service-card reveal"
+                data-service="excel"
+            >
+
+                <div class="service-visual">
+
+                    <div class="service-excel-sheet">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                        <b></b>
+                        <b></b>
+                        <b></b>
+
+                        <i></i>
+                        <i></i>
+                        <i></i>
+
+                    </div>
+
+
+                    <div class="service-chart-mini">
+
+                        <span style="height:35%"></span>
+                        <span style="height:55%"></span>
+                        <span style="height:45%"></span>
+                        <span style="height:80%"></span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="service-content">
+
+                    <span class="service-number">
+                        02
+                    </span>
+
+                    <h3>
+                        Excel & Business Reporting
+                    </h3>
+
+                    <p>
+
+                        Turning raw sales, expenses,
+                        inventory and operational data
+                        into structured reports.
+
+                    </p>
+
+
+                    <span class="service-status">
+                        Data → Report
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- SERVICE 03 -->
+
+            <article
+                class="service-card reveal"
+                data-service="erp"
+            >
+
+                <div class="service-visual">
+
+                    <div class="service-erp-grid">
+
+                        <span>
+                            SALES
+                        </span>
+
+                        <span>
+                            STOCK
+                        </span>
+
+                        <span>
+                            ACCOUNTS
+                        </span>
+
+                        <span>
+                            REPORTS
+                        </span>
+
+                    </div>
+
+
+                    <div class="service-erp-center">
+                        ERP
+                    </div>
+
+                </div>
+
+
+                <div class="service-content">
+
+                    <span class="service-number">
+                        03
+                    </span>
+
+                    <h3>
+                        Business Systems & ERP Concepts
+                    </h3>
+
+                    <p>
+
+                        Designing connected workflows
+                        across sales, purchases, inventory,
+                        accounting and reporting.
+
+                    </p>
+
+
+                    <span class="service-status">
+                        Connected Workflow
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- SERVICE 04 -->
+
+            <article
+                class="service-card reveal"
+                data-service="data"
+            >
+
+                <div class="service-visual">
+
+                    <div class="service-data-dashboard">
+
+                        <div class="data-dash-card">
+                            <small>SALES</small>
+                            <strong>₨248K</strong>
+                        </div>
+
+                        <div class="data-dash-card">
+                            <small>PROFIT</small>
+                            <strong>₨92K</strong>
+                        </div>
+
+                        <div class="service-data-line"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="service-content">
+
+                    <span class="service-number">
+                        04
+                    </span>
+
+                    <h3>
+                        Data & Dashboard Concepts
+                    </h3>
+
+                    <p>
+
+                        Organizing business information
+                        into understandable dashboards,
+                        summaries and analytical views.
+
+                    </p>
+
+
+                    <span class="service-status">
+                        Data → Insight
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- SERVICE 05 -->
+
+            <article
+                class="service-card reveal"
+                data-service="digital"
+            >
+
+                <div class="service-visual">
+
+                    <div class="service-browser">
+
+                        <div class="service-browser-top">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+
+
+                        <div class="service-browser-body">
+
+                            <span></span>
+                            <span></span>
+
+                            <div>
+
+                                <b></b>
+                                <b></b>
+                                <b></b>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="service-content">
+
+                    <span class="service-number">
+                        05
+                    </span>
+
+                    <h3>
+                        Digital Solutions
+                    </h3>
+
+                    <p>
+
+                        Practical websites, web concepts
+                        and digital business solutions
+                        through The A Tech projects.
+
+                    </p>
+
+
+                    <span class="service-status">
+                        Digital Workflow
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- SERVICE 06 -->
+
+            <article
+                class="service-card reveal"
+                data-service="future"
+            >
+
+                <div class="service-visual">
+
+                    <div class="future-orbit">
+
+                        <span>
+                            FINANCE
+                        </span>
+
+                        <span>
+                            DATA
+                        </span>
+
+                        <span>
+                            SYSTEMS
+                        </span>
+
+                        <strong>
+                            FUTURE
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="service-content">
+
+                    <span class="service-number">
+                        06
+                    </span>
+
+                    <h3>
+                        Future Finance & Accounting Consultancy
+                    </h3>
+
+                    <p>
+
+                        A future direction focused on combining
+                        finance knowledge, reporting and digital
+                        systems to improve business workflows.
+
+                    </p>
+
+
+                    <span class="service-status">
+                        Future Direction
+                    </span>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
 <!-- =====================================================
      APPROACH
 ===================================================== -->
 
-<section class="approach section">
+<section
+    class="approach section dark-section"
+    id="approach"
+>
 
     <div class="container">
+
 
         <div class="section-heading centered reveal">
 
             <span class="section-number">
-                05 / APPROACH
+                06 / APPROACH
             </span>
 
             <h2>
+
                 From problem
-                <span>to practical system.</span>
+
+                <span>
+                    to practical system.
+                </span>
+
             </h2>
 
         </div>
+
 
 
         <div class="approach-grid">
@@ -2082,7 +3359,9 @@
 
             <div class="approach-card reveal">
 
-                <span>01</span>
+                <span>
+                    01
+                </span>
 
                 <div class="approach-icon">
                     ?
@@ -2109,7 +3388,9 @@
 
             <div class="approach-card reveal">
 
-                <span>02</span>
+                <span>
+                    02
+                </span>
 
                 <div class="approach-icon">
                     ◇
@@ -2136,7 +3417,9 @@
 
             <div class="approach-card reveal">
 
-                <span>03</span>
+                <span>
+                    03
+                </span>
 
                 <div class="approach-icon">
                     ↑
@@ -2162,12 +3445,13 @@
 </section>
 
 
+
 <!-- =====================================================
      CONTACT
 ===================================================== -->
 
 <section
-    class="contact section dark-section"
+    class="contact section"
     id="contact"
 >
 
@@ -2176,17 +3460,24 @@
         <div class="contact-layout">
 
 
-            <div class="contact-content reveal-left">
+            <!-- CONTACT INFO -->
+
+            <div
+                class="contact-content reveal-left"
+            >
 
                 <span class="section-number">
-                    06 / CONTACT
+                    07 / CONTACT
                 </span>
 
 
                 <h2>
 
                     Let's build something
-                    <span>useful.</span>
+
+                    <span>
+                        useful.
+                    </span>
 
                 </h2>
 
@@ -2200,8 +3491,11 @@
                 </p>
 
 
+
                 <div class="contact-links">
 
+
+                    <!-- EMAIL -->
 
                     <a
                         href="mailto:abbasnazeer098@gmail.com"
@@ -2213,21 +3507,31 @@
                         </span>
 
                         <div>
-                            <small>Email</small>
+
+                            <small>
+                                Email
+                            </small>
+
                             <strong>
                                 abbasnazeer098@gmail.com
                             </strong>
+
                         </div>
 
-                        <span>↗</span>
+                        <span>
+                            ↗
+                        </span>
 
                     </a>
 
 
+
+                    <!-- WHATSAPP -->
+
                     <a
                         href="https://wa.me/923460911451"
                         target="_blank"
-                        rel="noopener"
+                        rel="noopener noreferrer"
                         class="contact-link"
                     >
 
@@ -2236,21 +3540,31 @@
                         </span>
 
                         <div>
-                            <small>WhatsApp</small>
+
+                            <small>
+                                WhatsApp
+                            </small>
+
                             <strong>
                                 +92 346 0911451
                             </strong>
+
                         </div>
 
-                        <span>↗</span>
+                        <span>
+                            ↗
+                        </span>
 
                     </a>
 
 
+
+                    <!-- LINKEDIN -->
+
                     <a
                         href="https://www.linkedin.com/in/muhammad-abbas-ba386b330/"
                         target="_blank"
-                        rel="noopener"
+                        rel="noopener noreferrer"
                         class="contact-link"
                     >
 
@@ -2259,25 +3573,34 @@
                         </span>
 
                         <div>
-                            <small>LinkedIn</small>
+
+                            <small>
+                                LinkedIn
+                            </small>
+
                             <strong>
                                 Muhammad Abbas
                             </strong>
+
                         </div>
 
-                        <span>↗</span>
+                        <span>
+                            ↗
+                        </span>
 
                     </a>
-
 
                 </div>
 
             </div>
 
 
+
             <!-- CONTACT FORM -->
 
-            <div class="contact-form-wrapper reveal-right">
+            <div
+                class="contact-form-wrapper reveal-right"
+            >
 
                 <div class="form-glow"></div>
 
@@ -2286,6 +3609,7 @@
                     id="contactForm"
                     class="contact-form"
                 >
+
 
                     <div class="form-heading">
 
@@ -2300,34 +3624,41 @@
                     </div>
 
 
+
                     <div class="form-row">
+
 
                         <div class="form-group">
 
-                            <label>
+                            <label for="name">
                                 Your Name
                             </label>
 
                             <input
                                 type="text"
                                 id="name"
+                                name="name"
                                 placeholder="Your name"
+                                autocomplete="name"
                                 required
                             >
 
                         </div>
 
 
+
                         <div class="form-group">
 
-                            <label>
+                            <label for="email">
                                 Your Email
                             </label>
 
                             <input
                                 type="email"
                                 id="email"
+                                name="email"
                                 placeholder="your@email.com"
+                                autocomplete="email"
                                 required
                             >
 
@@ -2336,15 +3667,17 @@
                     </div>
 
 
+
                     <div class="form-group">
 
-                        <label>
+                        <label for="subject">
                             Subject
                         </label>
 
                         <input
                             type="text"
                             id="subject"
+                            name="subject"
                             placeholder="How can I help?"
                             required
                         >
@@ -2352,14 +3685,16 @@
                     </div>
 
 
+
                     <div class="form-group">
 
-                        <label>
+                        <label for="message">
                             Message
                         </label>
 
                         <textarea
                             id="message"
+                            name="message"
                             rows="6"
                             placeholder="Write your message..."
                             required
@@ -2368,16 +3703,20 @@
                     </div>
 
 
+
                     <button
                         type="submit"
-                        class="form-submit"
+                        class="form-submit ripple"
                     >
 
                         Send Message
 
-                        <span>↗</span>
+                        <span>
+                            ↗
+                        </span>
 
                     </button>
+
 
 
                     <p
@@ -2386,7 +3725,6 @@
                     >
                         Your email app will open with
                         the message prepared.
-
                     </p>
 
                 </form>
@@ -2400,7 +3738,9 @@
 </section>
 
 
+
 </main>
+
 
 
 <!-- =====================================================
@@ -2410,6 +3750,7 @@
 <footer class="footer">
 
     <div class="container footer-inner">
+
 
         <div>
 
@@ -2425,7 +3766,8 @@
 
 
         <p>
-            © 2026 Muhammad Abbas. Built with purpose.
+            © <span id="currentYear">2026</span>
+            Muhammad Abbas. Built with purpose.
         </p>
 
 
@@ -2438,29 +3780,43 @@
 </footer>
 
 
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
 <script src="script.js"></script>
 
+
+<!-- LOADER FALLBACK -->
+
 <script>
+
 window.addEventListener("load", function () {
 
-    const loader = document.getElementById("pageLoader");
+    const loader =
+        document.getElementById("pageLoader");
 
-    if (loader) {
+    if (!loader) return;
+
+
+    setTimeout(function () {
+
+        loader.classList.add("hidden");
 
         setTimeout(function () {
 
-            loader.classList.add("hidden");
+            loader.style.display = "none";
 
-            setTimeout(function () {
-                loader.style.display = "none";
-            }, 700);
+        }, 700);
 
-        }, 500);
-
-    }
+    }, 400);
 
 });
+
 </script>
-    
+
+
 </body>
+
 </html>

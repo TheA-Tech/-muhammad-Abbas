@@ -1,1094 +1,911 @@
 /* =========================================================
-   MUHAMMAD ABBAS PORTFOLIO
-   Interactive JavaScript
+   PORTFOLIO JAVASCRIPT
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
 
-    /* =========================
-       PAGE LOADING
-    ========================= */
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
 
-    document.body.classList.add("page-loaded");
+        const mobileMenuButton =
+            document.getElementById(
+                "mobileMenuButton"
+            );
 
-
-
-    /* =========================
-       MOBILE MENU
-    ========================= */
-
-    const mobileMenuButton =
-        document.querySelector(".mobile-menu-button");
-
-    const navMenu =
-        document.querySelector(".nav-menu");
+        const navMenu =
+            document.getElementById(
+                "navMenu"
+            );
 
 
-    if (mobileMenuButton && navMenu) {
+        if (
+            mobileMenuButton &&
+            navMenu
+        ) {
 
-        mobileMenuButton.addEventListener(
-            "click",
-            function () {
-
-                navMenu.classList.toggle("open");
-
-            }
-        );
-
-    }
-
-
-    /* Close mobile menu after clicking a link */
-
-    const navLinks =
-        document.querySelectorAll(".nav-menu a");
-
-
-    navLinks.forEach(function (link) {
-
-        link.addEventListener(
-            "click",
-            function () {
-
-                navMenu.classList.remove("open");
-
-            }
-        );
-
-    });
-
-
-
-    /* =========================
-       SMOOTH SCROLL
-    ========================= */
-
-    document
-        .querySelectorAll('a[href^="#"]')
-        .forEach(function (link) {
-
-            link.addEventListener(
+            mobileMenuButton.addEventListener(
                 "click",
-                function (event) {
+                function () {
 
-                    const targetId =
-                        this.getAttribute("href");
-
-                    if (
-                        !targetId ||
-                        targetId === "#"
-                    ) {
-                        return;
-                    }
-
-                    const target =
-                        document.querySelector(
-                            targetId
-                        );
-
-                    if (target) {
-
-                        event.preventDefault();
-
-                        target.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start"
-                        });
-
-                    }
+                    navMenu.classList.toggle(
+                        "open"
+                    );
 
                 }
             );
 
-        });
 
-
-
-    /* =========================
-       REVEAL ANIMATIONS
-    ========================= */
-
-    const revealElements =
-        document.querySelectorAll(".reveal");
-
-
-    const revealObserver =
-        new IntersectionObserver(
-            function (entries) {
-
-                entries.forEach(
-                    function (entry) {
-
-                        if (entry.isIntersecting) {
-
-                            entry.target.classList.add(
-                                "visible"
-                            );
-
-                            revealObserver.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    }
+            const navLinks =
+                navMenu.querySelectorAll(
+                    "a"
                 );
 
-            },
-            {
-                threshold: 0.12
-            }
-        );
 
+            navLinks.forEach(
+                function (link) {
 
-    revealElements.forEach(
-        function (element) {
+                    link.addEventListener(
+                        "click",
+                        function () {
 
-            revealObserver.observe(element);
-
-        }
-    );
-
-
-
-    /* =========================
-       THEA BOOKS MENU
-    ========================= */
-
-    const theaMenuItems =
-        document.querySelectorAll(
-            ".thea-menu-item"
-        );
-
-
-    const theaTopbarTitle =
-        document.querySelector(
-            ".thea-topbar h4"
-        );
-
-
-    theaMenuItems.forEach(
-        function (item) {
-
-            item.addEventListener(
-                "click",
-                function () {
-
-
-                    /* Remove active */
-
-                    theaMenuItems.forEach(
-                        function (menuItem) {
-
-                            menuItem.classList.remove(
-                                "active"
+                            navMenu.classList.remove(
+                                "open"
                             );
 
                         }
                     );
 
-
-                    /* Add active */
-
-                    this.classList.add(
-                        "active"
-                    );
-
-
-                    /* Change dashboard title */
-
-                    if (theaTopbarTitle) {
-
-                        theaTopbarTitle.textContent =
-                            this.dataset.page ||
-                            "Dashboard";
-
-                    }
-
-
-                    /* Small animation */
-
-                    const dashboard =
-                        document.querySelector(
-                            ".thea-dashboard"
-                        );
-
-
-                    if (dashboard) {
-
-                        dashboard.classList.remove(
-                            "thea-page-change"
-                        );
-
-
-                        void dashboard.offsetWidth;
-
-
-                        dashboard.classList.add(
-                            "thea-page-change"
-                        );
-
-                    }
-
                 }
             );
 
         }
-    );
 
 
 
-    /* =========================
-       THEA WORKFLOW
-    ========================= */
+        /* =====================================================
+           CLOSE MENU WHEN CLICKING OUTSIDE
+        ===================================================== */
 
-    const workflowSteps =
-        document.querySelectorAll(
-            ".workflow-step"
-        );
-
-
-    const workflowTitle =
-        document.getElementById(
-            "workflowTitle"
-        );
-
-
-    const workflowDescription =
-        document.getElementById(
-            "workflowDescription"
-        );
-
-
-    const workflowIcon =
-        document.querySelector(
-            ".workflow-icon"
-        );
-
-
-    const workflowData = {
-
-
-        setup: {
-
-            title: "Company Setup",
-
-            description:
-                "Start by defining the business profile, owner information, contact details and currency used by the system.",
-
-            icon: "◈"
-
-        },
-
-
-        customers: {
-
-            title: "Customers",
-
-            description:
-                "Store customer information and keep track of customer-related sales and outstanding balances.",
-
-            icon: "◎"
-
-        },
-
-
-        products: {
-
-            title: "Products & Inventory",
-
-            description:
-                "Maintain product records, pricing and stock information so the business can monitor inventory.",
-
-            icon: "▤"
-
-        },
-
-
-        sales: {
-
-            title: "Sales & Invoices",
-
-            description:
-                "Create sales invoices, record transactions and organize customer sales information.",
-
-            icon: "↗"
-
-        },
-
-
-        purchases: {
-
-            title: "Purchases",
-
-            description:
-                "Record purchases from vendors and connect purchasing activity with inventory and payable records.",
-
-            icon: "↙"
-
-        },
-
-
-        expenses: {
-
-            title: "Expenses",
-
-            description:
-                "Record business expenses such as rent, utilities, salaries, transport and other operating costs.",
-
-            icon: "₨"
-
-        },
-
-
-        accounting: {
-
-            title: "Accounting",
-
-            description:
-                "Bring sales, purchases and expenses together to organize financial records and business performance.",
-
-            icon: "◫"
-
-        },
-
-
-        reports: {
-
-            title: "Reports",
-
-            description:
-                "Convert business records into summaries and visual reports that can support management decisions.",
-
-            icon: "◩"
-
-        }
-
-    };
-
-
-    workflowSteps.forEach(
-        function (step) {
-
-            step.addEventListener(
-                "click",
-                function () {
-
-
-                    /* Remove active */
-
-                    workflowSteps.forEach(
-                        function (item) {
-
-                            item.classList.remove(
-                                "active"
-                            );
-
-                        }
-                    );
-
-
-                    /* Add active */
-
-                    this.classList.add(
-                        "active"
-                    );
-
-
-                    const key =
-                        this.dataset.workflow;
-
-
-                    const data =
-                        workflowData[key];
-
-
-                    if (!data) {
-                        return;
-                    }
-
-
-                    if (workflowTitle) {
-
-                        workflowTitle.textContent =
-                            data.title;
-
-                    }
-
-
-                    if (workflowDescription) {
-
-                        workflowDescription.textContent =
-                            data.description;
-
-                    }
-
-
-                    if (workflowIcon) {
-
-                        workflowIcon.textContent =
-                            data.icon;
-
-                    }
-
-
-                    /* Detail animation */
-
-                    const detail =
-                        document.querySelector(
-                            ".workflow-detail"
-                        );
-
-
-                    if (detail) {
-
-                        detail.classList.remove(
-                            "workflow-update"
-                        );
-
-
-                        void detail.offsetWidth;
-
-
-                        detail.classList.add(
-                            "workflow-update"
-                        );
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-
-
-    /* =========================
-       THEA DASHBOARD CHART
-    ========================= */
-
-    const chartBars =
-        document.querySelectorAll(
-            ".thea-bars div"
-        );
-
-
-    function animateChart() {
-
-        chartBars.forEach(
-            function (bar, index) {
-
-                const height =
-                    bar.dataset.height ||
-                    50;
-
-
-                setTimeout(
-                    function () {
-
-                        bar.style.height =
-                            height + "%";
-
-                    },
-                    index * 120
-                );
-
-            }
-        );
-
-    }
-
-
-    const chart =
-        document.querySelector(
-            ".thea-chart"
-        );
-
-
-    if (chart) {
-
-        const chartObserver =
-            new IntersectionObserver(
-                function (entries) {
-
-                    entries.forEach(
-                        function (entry) {
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                animateChart();
-
-                                chartObserver.unobserve(
-                                    chart
-                                );
-
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    threshold: 0.35
-                }
-            );
-
-
-        chartObserver.observe(chart);
-
-    }
-
-
-
-    /* =========================
-       HERO VISUAL PARALLAX
-    ========================= */
-
-    const heroVisual =
-        document.querySelector(
-            ".hero-visual"
-        );
-
-
-    if (
-        heroVisual &&
-        window.matchMedia(
-            "(min-width: 801px)"
-        ).matches
-    ) {
-
-        heroVisual.addEventListener(
-            "mousemove",
+        document.addEventListener(
+            "click",
             function (event) {
 
-                const rect =
-                    heroVisual.getBoundingClientRect();
+                if (
+                    !navMenu ||
+                    !mobileMenuButton
+                ) {
+                    return;
+                }
 
 
-                const x =
-                    event.clientX -
-                    rect.left;
-
-
-                const y =
-                    event.clientY -
-                    rect.top;
-
-
-                const centerX =
-                    rect.width / 2;
-
-
-                const centerY =
-                    rect.height / 2;
-
-
-                const moveX =
-                    (x - centerX) /
-                    30;
-
-
-                const moveY =
-                    (y - centerY) /
-                    30;
-
-
-                const circle =
-                    heroVisual.querySelector(
-                        ".hero-circle"
+                const clickedInsideMenu =
+                    navMenu.contains(
+                        event.target
                     );
 
 
-                if (circle) {
-
-                    circle.style.transform =
-                        `translate(${moveX}px, ${moveY}px)`;
-
-                }
-
-            }
-        );
-
-
-        heroVisual.addEventListener(
-            "mouseleave",
-            function () {
-
-                const circle =
-                    heroVisual.querySelector(
-                        ".hero-circle"
+                const clickedButton =
+                    mobileMenuButton.contains(
+                        event.target
                     );
-
-
-                if (circle) {
-
-                    circle.style.transform =
-                        "";
-
-                }
-
-            }
-        );
-
-    }
-
-
-
-    /* =========================
-       SKILL CARD TILT
-    ========================= */
-
-    const skillCards =
-        document.querySelectorAll(
-            ".skill-card"
-        );
-
-
-    skillCards.forEach(
-        function (card) {
-
-            card.addEventListener(
-                "mousemove",
-                function (event) {
-
-                    if (
-                        window.innerWidth < 801
-                    ) {
-                        return;
-                    }
-
-
-                    const rect =
-                        card.getBoundingClientRect();
-
-
-                    const x =
-                        event.clientX -
-                        rect.left;
-
-
-                    const y =
-                        event.clientY -
-                        rect.top;
-
-
-                    const rotateY =
-                        (x - rect.width / 2) /
-                        30;
-
-
-                    const rotateX =
-                        -(y - rect.height / 2) /
-                        30;
-
-
-                    card.style.transform =
-                        `perspective(700px)
-                         rotateX(${rotateX}deg)
-                         rotateY(${rotateY}deg)
-                         translateY(-7px)`;
-
-                }
-            );
-
-
-            card.addEventListener(
-                "mouseleave",
-                function () {
-
-                    card.style.transform =
-                        "";
-
-                }
-            );
-
-        }
-    );
-
-
-
-    /* =========================
-       PROJECT CARD EFFECT
-    ========================= */
-
-    const projectCards =
-        document.querySelectorAll(
-            ".project-card"
-        );
-
-
-    projectCards.forEach(
-        function (card) {
-
-            card.addEventListener(
-                "mouseenter",
-                function () {
-
-                    this.classList.add(
-                        "project-hover"
-                    );
-
-                }
-            );
-
-
-            card.addEventListener(
-                "mouseleave",
-                function () {
-
-                    this.classList.remove(
-                        "project-hover"
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-
-    /* =========================
-       CONTACT FORM
-       Opens user's email application
-    ========================= */
-
-    const contactForm =
-        document.getElementById(
-            "contactForm"
-        );
-
-
-    const formStatus =
-        document.getElementById(
-            "formStatus"
-        );
-
-
-    if (contactForm) {
-
-        contactForm.addEventListener(
-            "submit",
-            function (event) {
-
-                event.preventDefault();
-
-
-                const name =
-                    document.getElementById(
-                        "contactName"
-                    ).value.trim();
-
-
-                const email =
-                    document.getElementById(
-                        "contactEmail"
-                    ).value.trim();
-
-
-                const subject =
-                    document.getElementById(
-                        "contactSubject"
-                    ).value.trim();
-
-
-                const message =
-                    document.getElementById(
-                        "contactMessage"
-                    ).value.trim();
 
 
                 if (
-                    !name ||
-                    !email ||
-                    !subject ||
-                    !message
+                    !clickedInsideMenu &&
+                    !clickedButton
                 ) {
+
+                    navMenu.classList.remove(
+                        "open"
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           SMOOTH SCROLL
+        ===================================================== */
+
+        const anchorLinks =
+            document.querySelectorAll(
+                'a[href^="#"]'
+            );
+
+
+        anchorLinks.forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function (event) {
+
+                        const targetId =
+                            this.getAttribute(
+                                "href"
+                            );
+
+
+                        if (
+                            !targetId ||
+                            targetId === "#"
+                        ) {
+                            return;
+                        }
+
+
+                        const target =
+                            document.querySelector(
+                                targetId
+                            );
+
+
+                        if (!target) {
+                            return;
+                        }
+
+
+                        event.preventDefault();
+
+
+                        target.scrollIntoView({
+                            behavior: "smooth"
+                        });
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           REVEAL ANIMATION
+        ===================================================== */
+
+        const revealElements =
+            document.querySelectorAll(
+                ".reveal"
+            );
+
+
+        if (
+            "IntersectionObserver"
+            in window
+        ) {
+
+            const revealObserver =
+                new IntersectionObserver(
+                    function (
+                        entries,
+                        observer
+                    ) {
+
+                        entries.forEach(
+                            function (entry) {
+
+                                if (
+                                    entry.isIntersecting
+                                ) {
+
+                                    entry.target.classList.add(
+                                        "visible"
+                                    );
+
+                                    observer.unobserve(
+                                        entry.target
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    },
+                    {
+                        threshold: 0.12
+                    }
+                );
+
+
+            revealElements.forEach(
+                function (element) {
+
+                    revealObserver.observe(
+                        element
+                    );
+
+                }
+            );
+
+        } else {
+
+            revealElements.forEach(
+                function (element) {
+
+                    element.classList.add(
+                        "visible"
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           THEA BOOKS SIDEBAR
+        ===================================================== */
+
+        const theaMenuItems =
+            document.querySelectorAll(
+                ".thea-menu-item"
+            );
+
+
+        const theaTitle =
+            document.querySelector(
+                ".thea-topbar h4"
+            );
+
+
+        theaMenuItems.forEach(
+            function (item) {
+
+                item.addEventListener(
+                    "click",
+                    function () {
+
+                        theaMenuItems.forEach(
+                            function (menuItem) {
+
+                                menuItem.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        this.classList.add(
+                            "active"
+                        );
+
+
+                        if (theaTitle) {
+
+                            theaTitle.textContent =
+                                this.dataset.page;
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           THEA WORKFLOW
+        ===================================================== */
+
+        const workflowData = {
+
+            setup: {
+                number: "01",
+                title: "Company Setup",
+                description:
+                    "Create a company profile and organize the basic business information required for the system."
+            },
+
+            customers: {
+                number: "02",
+                title: "Customers",
+                description:
+                    "Manage customer information, balances, transactions and sales relationships."
+            },
+
+            products: {
+                number: "03",
+                title: "Products",
+                description:
+                    "Organize products, pricing, stock information and inventory-related data."
+            },
+
+            sales: {
+                number: "04",
+                title: "Sales",
+                description:
+                    "Create invoices, record sales and monitor customer receivables and payments."
+            },
+
+            purchases: {
+                number: "05",
+                title: "Purchases",
+                description:
+                    "Record purchases and supplier-related transactions while tracking business costs."
+            },
+
+            expenses: {
+                number: "06",
+                title: "Expenses",
+                description:
+                    "Track business expenses and organize outgoing transactions for reporting."
+            },
+
+            accounting: {
+                number: "07",
+                title: "Accounting",
+                description:
+                    "Bring business transactions together to support financial understanding and records."
+            },
+
+            reports: {
+                number: "08",
+                title: "Reports",
+                description:
+                    "Turn business data into useful summaries, dashboards and management reports."
+            }
+
+        };
+
+
+        const workflowSteps =
+            document.querySelectorAll(
+                ".workflow-step"
+            );
+
+
+        const workflowTitle =
+            document.getElementById(
+                "workflowTitle"
+            );
+
+
+        const workflowDescription =
+            document.getElementById(
+                "workflowDescription"
+            );
+
+
+        const workflowIcon =
+            document.querySelector(
+                ".workflow-icon"
+            );
+
+
+        workflowSteps.forEach(
+            function (step) {
+
+                step.addEventListener(
+                    "click",
+                    function () {
+
+                        workflowSteps.forEach(
+                            function (otherStep) {
+
+                                otherStep.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        this.classList.add(
+                            "active"
+                        );
+
+
+                        const key =
+                            this.dataset.workflow;
+
+
+                        const data =
+                            workflowData[key];
+
+
+                        if (!data) {
+                            return;
+                        }
+
+
+                        if (workflowTitle) {
+
+                            workflowTitle.textContent =
+                                data.title;
+
+                        }
+
+
+                        if (workflowDescription) {
+
+                            workflowDescription.textContent =
+                                data.description;
+
+                        }
+
+
+                        if (workflowIcon) {
+
+                            workflowIcon.textContent =
+                                data.number;
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           THEA CHART ANIMATION
+        ===================================================== */
+
+        const chartBars =
+            document.querySelectorAll(
+                ".thea-chart div"
+            );
+
+
+        if (
+            "IntersectionObserver"
+            in window
+        ) {
+
+            const chartObserver =
+                new IntersectionObserver(
+                    function (
+                        entries,
+                        observer
+                    ) {
+
+                        entries.forEach(
+                            function (entry) {
+
+                                if (
+                                    entry.isIntersecting
+                                ) {
+
+                                    chartBars.forEach(
+                                        function (bar) {
+
+                                            const height =
+                                                bar.dataset.height;
+
+                                            bar.style.height =
+                                                height + "%";
+
+                                        }
+                                    );
+
+
+                                    observer.disconnect();
+
+                                }
+
+                            }
+                        );
+
+                    },
+                    {
+                        threshold: 0.25
+                    }
+                );
+
+
+            const chart =
+                document.querySelector(
+                    ".thea-chart"
+                );
+
+
+            if (chart) {
+
+                chartObserver.observe(
+                    chart
+                );
+
+            }
+
+        } else {
+
+            chartBars.forEach(
+                function (bar) {
+
+                    bar.style.height =
+                        bar.dataset.height + "%";
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           CONTACT FORM
+        ===================================================== */
+
+        const contactForm =
+            document.getElementById(
+                "contactForm"
+            );
+
+
+        const formStatus =
+            document.getElementById(
+                "formStatus"
+            );
+
+
+        if (contactForm) {
+
+            contactForm.addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    const name =
+                        document.getElementById(
+                            "name"
+                        ).value.trim();
+
+
+                    const email =
+                        document.getElementById(
+                            "email"
+                        ).value.trim();
+
+
+                    const subject =
+                        document.getElementById(
+                            "subject"
+                        ).value.trim();
+
+
+                    const message =
+                        document.getElementById(
+                            "message"
+                        ).value.trim();
+
+
+                    if (
+                        !name ||
+                        !email ||
+                        !subject ||
+                        !message
+                    ) {
+
+                        if (formStatus) {
+
+                            formStatus.textContent =
+                                "Please fill in all fields.";
+
+                        }
+
+                        return;
+
+                    }
+
+
+                    const emailBody =
+                        "Name: " +
+                        name +
+                        "\n\n" +
+
+                        "Email: " +
+                        email +
+                        "\n\n" +
+
+                        "Message:\n" +
+                        message;
+
+
+                    const mailto =
+                        "mailto:abbasnazeer098@gmail.com" +
+
+                        "?subject=" +
+                        encodeURIComponent(
+                            subject
+                        ) +
+
+                        "&body=" +
+                        encodeURIComponent(
+                            emailBody
+                        );
+
 
                     if (formStatus) {
 
                         formStatus.textContent =
-                            "Please complete all fields.";
+                            "Opening your email application...";
 
                     }
 
-                    return;
 
-                }
-
-
-                const emailBody =
-                    `Hello Muhammad Abbas,
-
-Name: ${name}
-Email: ${email}
-
-Message:
-${message}
-
-Sent from Muhammad Abbas Portfolio.`;
-
-
-                const mailtoURL =
-                    "mailto:abbasnazeer098@gmail.com" +
-                    "?subject=" +
-                    encodeURIComponent(
-                        subject
-                    ) +
-                    "&body=" +
-                    encodeURIComponent(
-                        emailBody
-                    );
-
-
-                if (formStatus) {
-
-                    formStatus.textContent =
-                        "Opening your email application...";
-
-                }
-
-
-                window.location.href =
-                    mailtoURL;
-
-            }
-        );
-
-    }
-
-
-
-    /* =========================
-       BUTTON CLICK EFFECT
-    ========================= */
-
-    const buttons =
-        document.querySelectorAll(
-            ".btn"
-        );
-
-
-    buttons.forEach(
-        function (button) {
-
-            button.addEventListener(
-                "click",
-                function () {
-
-                    this.classList.add(
-                        "button-clicked"
-                    );
-
-
-                    setTimeout(
-                        () => {
-
-                            this.classList.remove(
-                                "button-clicked"
-                            );
-
-                        },
-                        250
-                    );
+                    window.location.href =
+                        mailto;
 
                 }
             );
 
         }
-    );
 
 
 
-    /* =========================
-       FOOTER YEAR
-    ========================= */
+        /* =====================================================
+           BUTTON CLICK EFFECT
+        ===================================================== */
 
-    const footerYear =
-        document.getElementById(
-            "footerYear"
-        );
-
-
-    if (footerYear) {
-
-        footerYear.textContent =
-            new Date().getFullYear();
-
-    }
+        const buttons =
+            document.querySelectorAll(
+                ".btn"
+            );
 
 
+        buttons.forEach(
+            function (button) {
 
-    /* =========================
-       SCROLL ACTIVE NAV
-    ========================= */
+                button.addEventListener(
+                    "click",
+                    function () {
 
-    const sections =
-        document.querySelectorAll(
-            "section[id]"
-        );
-
-
-    const navigationLinks =
-        document.querySelectorAll(
-            ".nav-menu a"
-        );
+                        this.style.transform =
+                            "scale(0.98)";
 
 
-    function updateActiveNav() {
+                        setTimeout(
+                            () => {
 
-        let currentSection = "";
+                                this.style.transform =
+                                    "";
 
-
-        sections.forEach(
-            function (section) {
-
-                const sectionTop =
-                    section.offsetTop - 150;
-
-
-                if (
-                    window.scrollY >=
-                    sectionTop
-                ) {
-
-                    currentSection =
-                        section.getAttribute(
-                            "id"
+                            },
+                            120
                         );
 
-                }
+                    }
+                );
 
             }
         );
 
 
-        navigationLinks.forEach(
-            function (link) {
 
-                link.classList.remove(
-                    "nav-active"
-                );
+        /* =====================================================
+           FOOTER YEAR
+        ===================================================== */
 
-
-                const href =
-                    link.getAttribute(
-                        "href"
-                    );
+        const currentYear =
+            document.getElementById(
+                "currentYear"
+            );
 
 
-                if (
-                    href ===
-                    "#" + currentSection
-                ) {
+        if (currentYear) {
 
-                    link.classList.add(
+            currentYear.textContent =
+                new Date().getFullYear();
+
+        }
+
+
+
+        /* =====================================================
+           ACTIVE NAVIGATION
+        ===================================================== */
+
+        const sections =
+            document.querySelectorAll(
+                "section[id]"
+            );
+
+
+        const navigationLinks =
+            document.querySelectorAll(
+                '.nav-menu a[href^="#"]'
+            );
+
+
+        function updateActiveNavigation() {
+
+            let currentSection = "";
+
+
+            sections.forEach(
+                function (section) {
+
+                    const sectionTop =
+                        section.offsetTop - 140;
+
+
+                    if (
+                        window.scrollY >=
+                        sectionTop
+                    ) {
+
+                        currentSection =
+                            section.getAttribute(
+                                "id"
+                            );
+
+                    }
+
+                }
+            );
+
+
+            navigationLinks.forEach(
+                function (link) {
+
+                    link.classList.remove(
                         "nav-active"
                     );
 
+
+                    const target =
+                        link.getAttribute(
+                            "href"
+                        );
+
+
+                    if (
+                        target ===
+                        "#" + currentSection
+                    ) {
+
+                        link.classList.add(
+                            "nav-active"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        window.addEventListener(
+            "scroll",
+            updateActiveNavigation
+        );
+
+
+        updateActiveNavigation();
+
+
+
+        /* =====================================================
+           SCROLL PROGRESS
+        ===================================================== */
+
+        const progressBar =
+            document.createElement(
+                "div"
+            );
+
+
+        progressBar.style.position =
+            "fixed";
+
+        progressBar.style.top =
+            "0";
+
+        progressBar.style.left =
+            "0";
+
+        progressBar.style.height =
+            "2px";
+
+        progressBar.style.width =
+            "0%";
+
+        progressBar.style.zIndex =
+            "2000";
+
+        progressBar.style.background =
+            "linear-gradient(90deg, #2f81ff, #00e5ff)";
+
+        progressBar.style.pointerEvents =
+            "none";
+
+
+        document.body.appendChild(
+            progressBar
+        );
+
+
+        function updateProgress() {
+
+            const scrollTop =
+                window.scrollY;
+
+
+            const documentHeight =
+                document.documentElement
+                    .scrollHeight -
+                window.innerHeight;
+
+
+            if (
+                documentHeight <= 0
+            ) {
+
+                progressBar.style.width =
+                    "0%";
+
+                return;
+
+            }
+
+
+            const percentage =
+                (
+                    scrollTop /
+                    documentHeight
+                ) *
+                100;
+
+
+            progressBar.style.width =
+                Math.min(
+                    percentage,
+                    100
+                ) + "%";
+
+        }
+
+
+        window.addEventListener(
+            "scroll",
+            updateProgress
+        );
+
+
+        updateProgress();
+
+
+
+        /* =====================================================
+           ESCAPE KEY CLOSES MOBILE MENU
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Escape" &&
+                    navMenu
+                ) {
+
+                    navMenu.classList.remove(
+                        "open"
+                    );
+
                 }
 
             }
         );
 
-    }
-
-
-    window.addEventListener(
-        "scroll",
-        updateActiveNav,
-        {
-            passive: true
-        }
-    );
-
-
-    updateActiveNav();
-
-
-
-    /* =========================
-       SCROLL PROGRESS
-    ========================= */
-
-    const progressBar =
-        document.createElement(
-            "div"
-        );
-
-
-    progressBar.className =
-        "scroll-progress";
-
-
-    document.body.appendChild(
-        progressBar
-    );
-
-
-    function updateScrollProgress() {
-
-        const scrollTop =
-            window.scrollY;
-
-
-        const documentHeight =
-            document.documentElement
-                .scrollHeight -
-            window.innerHeight;
-
-
-        const percentage =
-            documentHeight > 0
-                ? (scrollTop / documentHeight) *
-                  100
-                : 0;
-
-
-        progressBar.style.width =
-            percentage + "%";
 
     }
-
-
-    window.addEventListener(
-        "scroll",
-        updateScrollProgress,
-        {
-            passive: true
-        }
-    );
-
-
-    updateScrollProgress();
-
-
-
-    /* =========================
-       RESIZE
-    ========================= */
-
-    window.addEventListener(
-        "resize",
-        function () {
-
-            if (
-                window.innerWidth > 800 &&
-                navMenu
-            ) {
-
-                navMenu.classList.remove(
-                    "open"
-                );
-
-            }
-
-        }
-    );
-
-
-});
+);

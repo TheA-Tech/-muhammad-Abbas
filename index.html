@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -10,14 +8,14 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <meta
+        name="description"
+        content="Muhammad Abbas - Finance, Accounts, Business Operations and Digital Systems Portfolio"
+    >
+
     <title>
         Muhammad Abbas | Finance, Accounts & Digital Solutions
     </title>
-
-    <meta
-        name="description"
-        content="Muhammad Abbas - Finance, Accounts, Business Operations, Reporting and Digital Solutions portfolio."
-    >
 
     <link
         rel="preconnect"
@@ -39,42 +37,25 @@
         rel="stylesheet"
         href="style.css"
     >
-
 </head>
-
 
 <body>
 
-
-<!-- =========================
-     BACKGROUND
-========================= -->
-
-<div class="bg-grid"></div>
-
-<div class="bg-glow bg-glow-one"></div>
-
-<div class="bg-glow bg-glow-two"></div>
-
-
-
-<!-- =========================
+<!-- =========================================================
      NAVBAR
-========================= -->
+========================================================= -->
 
 <header class="navbar">
 
-    <div class="nav-container">
+    <div class="container nav-container">
 
         <a
             href="#home"
             class="logo"
         >
-            <span class="logo-box">
-                MA
-            </span>
+            <span class="logo-mark">MA</span>
 
-            <span>
+            <span class="logo-text">
                 Muhammad Abbas
             </span>
         </a>
@@ -82,41 +63,31 @@
 
         <button
             class="mobile-menu-button"
-            aria-label="Open Menu"
+            id="mobileMenuButton"
+            type="button"
+            aria-label="Open navigation menu"
         >
-            ☰
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
 
 
-        <nav class="nav-menu">
+        <nav
+            class="nav-menu"
+            id="navMenu"
+        >
 
-            <a href="#home">
-                Home
-            </a>
-
-            <a href="#about">
-                About
-            </a>
-
-            <a href="#skills">
-                Skills
-            </a>
-
-            <a href="#projects">
-                Projects
-            </a>
-
-            <a href="#experience">
-                Experience
-            </a>
-
-            <a href="#contact">
-                Contact
-            </a>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
 
             <a
                 href="#contact"
-                class="nav-talk"
+                class="nav-button"
             >
                 Let's Talk
             </a>
@@ -129,74 +100,54 @@
 
 
 
-<!-- =========================
+<!-- =========================================================
      HERO
-========================= -->
+========================================================= -->
 
 <main>
 
-
 <section
-    id="home"
     class="hero section"
+    id="home"
 >
 
-    <div class="hero-container">
+    <div class="hero-background"></div>
 
-
-        <!-- HERO TEXT -->
+    <div class="container hero-grid">
 
         <div class="hero-content reveal">
 
-            <div class="hero-label">
-
-                <span class="status-dot"></span>
-
+            <div class="availability">
+                <span class="availability-dot"></span>
                 AVAILABLE FOR OPPORTUNITIES
-
             </div>
 
 
-            <p class="hero-small">
+            <p class="hero-small-title">
                 HELLO, I'M
             </p>
 
 
             <h1>
-
                 Muhammad
-                <span>
-                    Abbas.
-                </span>
-
+                <span>Abbas</span>
             </h1>
 
 
             <h2>
-
                 Finance & Accounts
                 <br>
 
                 <span>
                     Business Operations • Digital Systems
                 </span>
-
             </h2>
 
 
             <p class="hero-description">
-
-                I am a BS Economics graduate developing practical
-                skills across finance, accounting workflows,
-                business operations, reporting and digital
-                business systems.
-
-                <br><br>
-
-                My portfolio demonstrates how business processes
-                can be organized, measured and supported through
-                modern digital tools.
-
+                BS Economics graduate focused on finance,
+                accounting workflows, business operations,
+                reporting and practical digital business systems.
             </p>
 
 
@@ -210,10 +161,9 @@
                     <span>→</span>
                 </a>
 
-
                 <a
                     href="#contact"
-                    class="btn btn-outline"
+                    class="btn btn-secondary"
                 >
                     Contact Me
                 </a>
@@ -224,20 +174,19 @@
             <div class="hero-socials">
 
                 <a
-                    href="https://lnkd.in/p/dtUs6BtD"
+                    href="https://www.linkedin.com/in/muhammad-abbas-ba386b330/"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                 >
-                    LinkedIn ↗
+                    LinkedIn
                 </a>
-
 
                 <a
                     href="https://github.com/TheA-Tech"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                 >
-                    GitHub ↗
+                    GitHub
                 </a>
 
             </div>
@@ -250,98 +199,63 @@
 
         <div class="hero-visual reveal">
 
-
-            <div class="hero-orbit orbit-one"></div>
-
-            <div class="hero-orbit orbit-two"></div>
-
-            <div class="hero-orbit orbit-three"></div>
+            <div class="visual-glow"></div>
 
 
-            <div class="hero-circle">
-
-                <div class="circle-ring"></div>
-
-
-                <!-- Professional avatar -->
-
-                <div class="profile-avatar">
-
-                    <div class="avatar-glow"></div>
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="orbit orbit-three"></div>
 
 
-                    <div class="avatar-head">
+            <!-- Fictional professional avatar -->
+            <div class="profile-avatar">
 
-                        <div class="hair"></div>
+                <div class="avatar-head">
 
-                        <div class="face">
+                    <div class="hair"></div>
 
-                            <div class="ear left"></div>
+                    <div class="ear ear-left"></div>
+                    <div class="ear ear-right"></div>
 
-                            <div class="ear right"></div>
+                    <div class="face">
 
-                            <div class="eye left"></div>
+                        <div class="eye eye-left"></div>
+                        <div class="eye eye-right"></div>
 
-                            <div class="eye right"></div>
+                        <div class="nose"></div>
 
-                            <div class="nose"></div>
-
-                            <div class="mouth"></div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="avatar-body">
-
-                        <div class="shirt"></div>
-
-                        <div class="collar left"></div>
-
-                        <div class="collar right"></div>
-
-                        <div class="tie"></div>
+                        <div class="mouth"></div>
 
                     </div>
 
                 </div>
 
 
-                <div class="profile-name">
+                <div class="avatar-body">
 
-                    <strong>
-                        Muhammad Abbas
-                    </strong>
+                    <div class="shirt"></div>
 
-                    <span>
-                        Finance • Business • Technology
-                    </span>
+                    <div class="collar collar-left"></div>
+                    <div class="collar collar-right"></div>
+
+                    <div class="tie"></div>
 
                 </div>
 
             </div>
 
 
-
-            <!-- FLOATING CARDS -->
+            <!-- Floating cards -->
 
             <div class="floating-card card-finance">
 
-                <span class="floating-icon">
+                <div class="floating-icon">
                     ₨
-                </span>
+                </div>
 
                 <div>
-
-                    <small>
-                        Finance
-                    </small>
-
-                    <strong>
-                        Accounts
-                    </strong>
-
+                    <strong>Finance</strong>
+                    <small>Accounts & Cash Flow</small>
                 </div>
 
             </div>
@@ -349,20 +263,13 @@
 
             <div class="floating-card card-data">
 
-                <span class="floating-icon">
-                    ◫
-                </span>
+                <div class="floating-icon">
+                    ↗
+                </div>
 
                 <div>
-
-                    <small>
-                        Data
-                    </small>
-
-                    <strong>
-                        Reporting
-                    </strong>
-
+                    <strong>Data</strong>
+                    <small>Reporting & Analysis</small>
                 </div>
 
             </div>
@@ -370,24 +277,16 @@
 
             <div class="floating-card card-system">
 
-                <span class="floating-icon">
+                <div class="floating-icon">
                     ◈
-                </span>
+                </div>
 
                 <div>
-
-                    <small>
-                        Digital
-                    </small>
-
-                    <strong>
-                        Systems
-                    </strong>
-
+                    <strong>Systems</strong>
+                    <small>Digital Workflows</small>
                 </div>
 
             </div>
-
 
         </div>
 
@@ -397,17 +296,16 @@
 
 
 
-<!-- =========================
+<!-- =========================================================
      ABOUT
-========================= -->
+========================================================= -->
 
 <section
-    id="about"
     class="section about-section"
+    id="about"
 >
 
     <div class="container">
-
 
         <div class="section-heading reveal">
 
@@ -416,84 +314,68 @@
             </span>
 
             <h2>
-                Business knowledge
-                <br>
-                meets digital thinking.
+                Building a career at the
+                <strong>intersection of business & technology.</strong>
             </h2>
-
-            <p>
-
-                My background is in Economics, while my practical
-                interests are focused on finance, accounting,
-                business operations, reporting and technology.
-
-            </p>
 
         </div>
 
 
         <div class="about-grid">
 
-
             <div class="about-text reveal">
 
                 <p>
-
-                    I am building practical experience by working
-                    with business processes, financial workflows,
-                    reporting and digital tools.
-
+                    I am a BS Economics graduate with an interest
+                    in Finance, Accounts, Business Operations,
+                    Data and Digital Business Systems.
                 </p>
-
 
                 <p>
-
-                    Instead of focusing only on theory, I am
-                    developing projects that demonstrate how
-                    real business activities can be organized
-                    into structured digital workflows.
-
+                    My focus is on understanding real business
+                    workflows and turning them into organized,
+                    practical and easy-to-use digital solutions.
                 </p>
-
 
                 <p>
-
-                    One of my main portfolio projects is
-                    <strong>
-                        THEA Books
-                    </strong>
-                    — a business and accounting management
-                    system created under
-                    <strong>
-                        The A Tech
-                    </strong>.
-
+                    I am continuously developing my skills in
+                    accounting concepts, Excel, business reporting,
+                    ERP workflows, data handling and programming.
                 </p>
 
 
-                <div class="about-highlight">
+                <div class="future-box">
 
-                    <span>
-                        FUTURE DIRECTION
-                    </span>
+                    <div class="future-icon">
+                        +
+                    </div>
 
-                    <strong>
-                        Finance & Accounting Consultancy
-                    </strong>
+                    <div>
 
-                    <p>
-                        A planned direction after gaining further
-                        professional experience.
-                    </p>
+                        <span>
+                            FUTURE DIRECTION
+                        </span>
+
+                        <h3>
+                            Finance & Accounting Consultancy
+                        </h3>
+
+                        <p>
+                            A long-term direction focused on
+                            practical business finance, reporting,
+                            accounting systems and digital
+                            transformation after gaining further
+                            professional experience.
+                        </p>
+
+                    </div>
 
                 </div>
 
             </div>
 
 
-
             <div class="about-stats reveal">
-
 
                 <div class="stat-card">
 
@@ -511,11 +393,11 @@
                 <div class="stat-card">
 
                     <strong>
-                        10+
+                        01+
                     </strong>
 
                     <span>
-                        Business Skills
+                        Years of Business Experience
                     </span>
 
                 </div>
@@ -524,11 +406,11 @@
                 <div class="stat-card">
 
                     <strong>
-                        01
+                        ERP
                     </strong>
 
                     <span>
-                        ERP Project
+                        Project Development
                     </span>
 
                 </div>
@@ -537,15 +419,14 @@
                 <div class="stat-card">
 
                     <strong>
-                        360°
+                        IT
                     </strong>
 
                     <span>
-                        Business Thinking
+                        Digital Solutions
                     </span>
 
                 </div>
-
 
             </div>
 
@@ -557,29 +438,32 @@
 
 
 
-<!-- =========================
+<!-- =========================================================
      SKILLS
-========================= -->
+========================================================= -->
 
 <section
+    class="section skills-section"
     id="skills"
-    class="section"
 >
 
     <div class="container">
 
-
-        <div class="section-heading reveal">
+        <div class="section-heading center reveal">
 
             <span>
                 SKILLS
             </span>
 
             <h2>
-                Skills I am developing
-                <br>
-                for modern business.
+                Skills I am
+                <strong>building & applying.</strong>
             </h2>
+
+            <p>
+                A combination of business knowledge,
+                finance-focused skills and digital systems.
+            </p>
 
         </div>
 
@@ -587,29 +471,9 @@
         <div class="skills-grid">
 
 
-            <!-- ACCOUNTING -->
+            <!-- Accounting -->
 
-            <div class="skill-card reveal">
-
-                <div class="skill-visual ledger-visual">
-
-                    <div class="ledger-row">
-                        <span>Sales</span>
-                        <b>+45K</b>
-                    </div>
-
-                    <div class="ledger-row">
-                        <span>Expense</span>
-                        <b>-12K</b>
-                    </div>
-
-                    <div class="ledger-row">
-                        <span>Balance</span>
-                        <b>33K</b>
-                    </div>
-
-                </div>
-
+            <article class="skill-card reveal">
 
                 <div class="skill-icon">
                     ₨
@@ -620,48 +484,27 @@
                 </h3>
 
                 <p>
-                    Financial workflows, transactions,
-                    invoices, expenses, receivables and
-                    payables.
+                    Accounting workflows, transactions,
+                    invoices, expenses, cash handling and
+                    financial understanding.
                 </p>
 
-            </div>
+                <div class="skill-visual accounting-visual">
 
-
-
-            <!-- EXCEL -->
-
-            <div class="skill-card reveal">
-
-                <div class="skill-visual spreadsheet-visual">
-
-                    <div class="sheet-row">
-
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-
-                    </div>
-
-                    <div class="sheet-row">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                    <div class="sheet-row">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                    <div class="mini-chart"></div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
 
                 </div>
 
+            </article>
+
+
+
+            <!-- Excel -->
+
+            <article class="skill-card reveal">
 
                 <div class="skill-icon">
                     ▦
@@ -672,40 +515,31 @@
                 </h3>
 
                 <p>
-                    Structured data, reports, calculations,
-                    business summaries and visualization.
+                    Business reports, data organization,
+                    calculations, summaries and dashboards.
                 </p>
 
-            </div>
+                <div class="skill-visual excel-visual">
 
-
-
-            <!-- QUICKBOOKS -->
-
-            <div class="skill-card reveal">
-
-                <div class="skill-visual invoice-visual">
-
-                    <div class="invoice-top">
-                        INVOICE
-                        <span>
-                            #0001
-                        </span>
-                    </div>
-
-                    <div class="invoice-line"></div>
-
-                    <div class="invoice-line short"></div>
-
-                    <div class="invoice-total">
-                        Rs. 85,000
-                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
 
                 </div>
 
+            </article>
+
+
+
+            <!-- QuickBooks -->
+
+            <article class="skill-card reveal">
 
                 <div class="skill-icon">
-                    QB
+                    Q
                 </div>
 
                 <h3>
@@ -713,33 +547,25 @@
                 </h3>
 
                 <p>
-                    Invoicing, transactions, customer records
-                    and business accounting workflows.
+                    Understanding of accounting software
+                    workflows including customers, invoices,
+                    expenses and reports.
                 </p>
 
-            </div>
+                <div class="skill-mini-window">
+
+                    <span>Invoice</span>
+                    <strong>Rs. 25,000</strong>
+
+                </div>
+
+            </article>
 
 
 
             <!-- ERP -->
 
-            <div class="skill-card reveal">
-
-                <div class="skill-visual erp-visual">
-
-                    <div class="erp-sidebar"></div>
-
-                    <div class="erp-content">
-
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-
-                    </div>
-
-                </div>
-
+            <article class="skill-card reveal">
 
                 <div class="skill-icon">
                     ◈
@@ -750,30 +576,27 @@
                 </h3>
 
                 <p>
-                    Business management workflows,
-                    inventory, sales, purchases and reports.
+                    Practical understanding of business
+                    management workflows and ERP-style systems.
                 </p>
 
-            </div>
+                <div class="skill-mini-window">
 
-
-
-            <!-- DATA -->
-
-            <div class="skill-card reveal">
-
-                <div class="skill-visual data-visual">
-
-                    <div class="data-bar b1"></div>
-                    <div class="data-bar b2"></div>
-                    <div class="data-bar b3"></div>
-                    <div class="data-bar b4"></div>
+                    <span>Inventory</span>
+                    <strong>128 Items</strong>
 
                 </div>
 
+            </article>
+
+
+
+            <!-- Data -->
+
+            <article class="skill-card reveal">
 
                 <div class="skill-icon">
-                    ◫
+                    ↗
                 </div>
 
                 <h3>
@@ -781,41 +604,30 @@
                 </h3>
 
                 <p>
-                    Organizing business records and converting
-                    data into useful information.
+                    Organizing business data, identifying
+                    patterns and preparing information for
+                    reporting and analysis.
                 </p>
 
-            </div>
+                <div class="data-bars">
 
-
-
-            <!-- OPERATIONS -->
-
-            <div class="skill-card reveal">
-
-                <div class="skill-visual operation-visual">
-
-                    <div>
-                        ORDER
-                    </div>
-
-                    <span>→</span>
-
-                    <div>
-                        STOCK
-                    </div>
-
-                    <span>→</span>
-
-                    <div>
-                        REPORT
-                    </div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
 
                 </div>
 
+            </article>
+
+
+
+            <!-- Operations -->
+
+            <article class="skill-card reveal">
 
                 <div class="skill-icon">
-                    ↗
+                    ⚙
                 </div>
 
                 <h3>
@@ -823,39 +635,31 @@
                 </h3>
 
                 <p>
-                    Cash handling, stock coordination,
-                    reporting and operational workflows.
+                    Cash management, daily reporting,
+                    inventory coordination, staff coordination
+                    and customer handling.
                 </p>
 
-            </div>
+                <div class="operation-flow">
 
-
-
-            <!-- DIGITAL -->
-
-            <div class="skill-card reveal">
-
-                <div class="skill-visual digital-visual">
-
-                    <div class="browser-window">
-
-                        <div class="browser-dots"></div>
-
-                        <div class="browser-body">
-
-                            <div></div>
-                            <div></div>
-                            <div></div>
-
-                        </div>
-
-                    </div>
+                    <span>INPUT</span>
+                    <i>→</i>
+                    <span>PROCESS</span>
+                    <i>→</i>
+                    <span>OUTPUT</span>
 
                 </div>
 
+            </article>
+
+
+
+            <!-- IT -->
+
+            <article class="skill-card reveal">
 
                 <div class="skill-icon">
-                    &lt;/&gt;
+                    </>
                 </div>
 
                 <h3>
@@ -863,11 +667,19 @@
                 </h3>
 
                 <p>
-                    Websites, digital workflows and
-                    business-oriented technology projects.
+                    Websites, web applications, digital
+                    workflows and practical technology solutions.
                 </p>
 
-            </div>
+                <div class="code-visual">
+
+                    <span>&lt;</span>
+                    <span>/</span>
+                    <span>&gt;</span>
+
+                </div>
+
+            </article>
 
 
         </div>
@@ -878,34 +690,27 @@
 
 
 
-<!-- =========================
+<!-- =========================================================
      PROJECTS
-========================= -->
+========================================================= -->
 
 <section
-    id="projects"
     class="section projects-section"
+    id="projects"
 >
 
     <div class="container">
 
-
         <div class="section-heading reveal">
 
             <span>
-                PROJECTS
+                FEATURED PROJECT
             </span>
 
             <h2>
-                Practical projects,
-                <br>
-                not just ideas.
+                Turning business workflows
+                into <strong>digital systems.</strong>
             </h2>
-
-            <p>
-                Selected work demonstrating business,
-                finance and digital system thinking.
-            </p>
 
         </div>
 
@@ -913,37 +718,60 @@
 
         <!-- THEA BOOKS -->
 
-        <div class="thea-featured-project reveal">
+        <article class="featured-project reveal">
+
+            <div class="project-info">
+
+                <div class="project-label">
+                    ACCOUNTING & BUSINESS MANAGEMENT
+                </div>
 
 
-            <div class="thea-project-intro">
+                <h3>
+                    THEA Books
+                </h3>
 
-                <div>
 
-                    <div class="project-badge">
-                        FEATURED PROJECT
-                    </div>
+                <p>
+                    A QuickBooks-inspired business management
+                    and accounting platform designed to organize
+                    sales, purchases, expenses, customers,
+                    vendors, inventory, accounting and reports.
+                </p>
 
-                    <h3>
-                        THEA Books
-                    </h3>
 
-                    <p>
+                <div class="project-tags">
 
-                        A practical business and accounting
-                        management system designed to organize
-                        everyday business workflows.
-
-                    </p>
+                    <span>Accounting</span>
+                    <span>ERP</span>
+                    <span>Inventory</span>
+                    <span>Reporting</span>
+                    <span>Business Management</span>
 
                 </div>
 
 
-                <div class="thea-project-status">
+                <div class="project-buttons">
 
-                    <span></span>
+                    <a
+                        href="https://the-a-tech.github.io/thea-books/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-primary"
+                    >
+                        Open Live THEA Books
+                        <span>↗</span>
+                    </a>
 
-                    LIVE PROJECT
+
+                    <a
+                        href="https://github.com/TheA-Tech/thea-books"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-secondary"
+                    >
+                        View Source
+                    </a>
 
                 </div>
 
@@ -951,28 +779,17 @@
 
 
 
-            <!-- DASHBOARD -->
+            <!-- THEA DASHBOARD -->
 
-            <div class="thea-dashboard-wrapper">
+            <div class="thea-preview">
 
+                <div class="thea-window">
 
-                <div class="thea-dashboard">
-
-
-                    <!-- SIDEBAR -->
-
-                    <aside class="thea-sidebar">
+                    <div class="thea-sidebar">
 
                         <div class="thea-brand">
-
-                            <div>
-                                TB
-                            </div>
-
-                            <span>
-                                THEA Books
-                            </span>
-
+                            <span>TB</span>
+                            THEA Books
                         </div>
 
 
@@ -980,98 +797,78 @@
                             class="thea-menu-item active"
                             data-page="Dashboard"
                         >
-                            ▦
                             Dashboard
                         </button>
-
 
                         <button
                             class="thea-menu-item"
                             data-page="Sales"
                         >
-                            ↗
                             Sales
                         </button>
-
 
                         <button
                             class="thea-menu-item"
                             data-page="Purchases"
                         >
-                            ↙
                             Purchases
                         </button>
-
 
                         <button
                             class="thea-menu-item"
                             data-page="Expenses"
                         >
-                            ₨
                             Expenses
                         </button>
-
 
                         <button
                             class="thea-menu-item"
                             data-page="Customers"
                         >
-                            ◎
                             Customers
                         </button>
-
 
                         <button
                             class="thea-menu-item"
                             data-page="Vendors"
                         >
-                            ◉
                             Vendors
                         </button>
-
 
                         <button
                             class="thea-menu-item"
                             data-page="Inventory"
                         >
-                            ▤
                             Inventory
                         </button>
-
 
                         <button
                             class="thea-menu-item"
                             data-page="Accounting"
                         >
-                            ◫
                             Accounting
                         </button>
-
 
                         <button
                             class="thea-menu-item"
                             data-page="Reports"
                         >
-                            ◩
                             Reports
                         </button>
 
-                    </aside>
+                    </div>
 
 
-
-                    <!-- MAIN -->
 
                     <div class="thea-main">
-
 
                         <div class="thea-topbar">
 
                             <div>
 
-                                <span>
+                                <small>
                                     BUSINESS MANAGEMENT
-                                </span>
+                                </small>
 
                                 <h4>
                                     Dashboard
@@ -1080,13 +877,84 @@
                             </div>
 
 
-                            <div class="thea-user">
+                            <div class="demo-badge">
+                                Demo Business Data
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="thea-stats">
+
+                            <div>
+                                <small>Sales</small>
+                                <strong>Rs.245K</strong>
+                            </div>
+
+                            <div>
+                                <small>Expenses</small>
+                                <strong>Rs.42K</strong>
+                            </div>
+
+                            <div>
+                                <small>Receivables</small>
+                                <strong>Rs.68K</strong>
+                            </div>
+
+                            <div>
+                                <small>Stock Value</small>
+                                <strong>Rs.120K</strong>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="thea-chart-card">
+
+                            <div class="chart-heading">
+
+                                <strong>
+                                    Sales Overview
+                                </strong>
 
                                 <span>
-                                    MA
+                                    Monthly
                                 </span>
 
-                                Muhammad Abbas
+                            </div>
+
+
+                            <div class="thea-chart">
+
+                                <div
+                                    data-height="45"
+                                ></div>
+
+                                <div
+                                    data-height="65"
+                                ></div>
+
+                                <div
+                                    data-height="52"
+                                ></div>
+
+                                <div
+                                    data-height="80"
+                                ></div>
+
+                                <div
+                                    data-height="68"
+                                ></div>
+
+                                <div
+                                    data-height="92"
+                                ></div>
+
+                                <div
+                                    data-height="75"
+                                ></div>
 
                             </div>
 
@@ -1094,213 +962,43 @@
 
 
 
-                        <div class="thea-dashboard-content">
+                        <div class="thea-summary">
 
+                            <div>
 
-                            <div class="thea-welcome">
+                                <small>
+                                    Purchases
+                                </small>
 
-                                <div>
-
-                                    <small>
-                                        DEMO BUSINESS DATA
-                                    </small>
-
-                                    <h4>
-                                        Business Overview
-                                    </h4>
-
-                                </div>
-
-                                <span>
-                                    PKR
-                                </span>
+                                <strong>
+                                    Rs.75K
+                                </strong>
 
                             </div>
 
 
+                            <div>
 
-                            <div class="thea-metrics">
+                                <small>
+                                    Payables
+                                </small>
 
-
-                                <div class="thea-metric-card">
-
-                                    <small>
-                                        SALES
-                                    </small>
-
-                                    <strong>
-                                        Rs.245K
-                                    </strong>
-
-                                    <span>
-                                        ↑ 12.4%
-                                    </span>
-
-                                </div>
-
-
-                                <div class="thea-metric-card">
-
-                                    <small>
-                                        EXPENSES
-                                    </small>
-
-                                    <strong>
-                                        Rs.42K
-                                    </strong>
-
-                                    <span>
-                                        Monthly
-                                    </span>
-
-                                </div>
-
-
-                                <div class="thea-metric-card">
-
-                                    <small>
-                                        RECEIVABLES
-                                    </small>
-
-                                    <strong>
-                                        Rs.68K
-                                    </strong>
-
-                                    <span>
-                                        Outstanding
-                                    </span>
-
-                                </div>
-
-
-                                <div class="thea-metric-card">
-
-                                    <small>
-                                        STOCK VALUE
-                                    </small>
-
-                                    <strong>
-                                        Rs.120K
-                                    </strong>
-
-                                    <span>
-                                        Inventory
-                                    </span>
-
-                                </div>
-
+                                <strong>
+                                    Rs.31K
+                                </strong>
 
                             </div>
 
 
+                            <div>
 
-                            <div class="thea-lower-grid">
+                                <small>
+                                    Profit
+                                </small>
 
-
-                                <div class="thea-panel">
-
-                                    <div class="panel-header">
-
-                                        <span>
-                                            SALES OVERVIEW
-                                        </span>
-
-                                        <small>
-                                            Demo
-                                        </small>
-
-                                    </div>
-
-
-                                    <div class="thea-chart">
-
-                                        <div
-                                            class="thea-bars"
-                                        >
-
-                                            <div
-                                                data-height="42"
-                                            ></div>
-
-                                            <div
-                                                data-height="62"
-                                            ></div>
-
-                                            <div
-                                                data-height="50"
-                                            ></div>
-
-                                            <div
-                                                data-height="78"
-                                            ></div>
-
-                                            <div
-                                                data-height="68"
-                                            ></div>
-
-                                            <div
-                                                data-height="90"
-                                            ></div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-
-                                <div class="thea-panel">
-
-                                    <div class="panel-header">
-
-                                        <span>
-                                            BUSINESS SUMMARY
-                                        </span>
-
-                                    </div>
-
-
-                                    <div class="thea-summary-row">
-
-                                        <span>
-                                            Purchases
-                                        </span>
-
-                                        <strong>
-                                            Rs.75K
-                                        </strong>
-
-                                    </div>
-
-
-                                    <div class="thea-summary-row">
-
-                                        <span>
-                                            Payables
-                                        </span>
-
-                                        <strong>
-                                            Rs.31K
-                                        </strong>
-
-                                    </div>
-
-
-                                    <div class="thea-summary-row">
-
-                                        <span>
-                                            Profit
-                                        </span>
-
-                                        <strong>
-                                            Rs.203K
-                                        </strong>
-
-                                    </div>
-
-                                </div>
-
+                                <strong>
+                                    Rs.203K
+                                </strong>
 
                             </div>
 
@@ -1312,83 +1010,22 @@
 
             </div>
 
-
-
-            <!-- PROJECT INFO -->
-
-            <div class="thea-project-bottom">
-
-
-                <div class="thea-project-tags">
-
-                    <span>
-                        Accounting
-                    </span>
-
-                    <span>
-                        ERP
-                    </span>
-
-                    <span>
-                        Inventory
-                    </span>
-
-                    <span>
-                        Reporting
-                    </span>
-
-                    <span>
-                        Business Management
-                    </span>
-
-                </div>
-
-
-                <div class="project-actions">
-
-                    <a
-                        href="https://thea-tech.github.io/thea-books/"
-                        target="_blank"
-                        rel="noopener"
-                        class="btn btn-primary"
-                    >
-                        Open Live THEA Books
-                        ↗
-                    </a>
-
-
-                    <a
-                        href="https://github.com/TheA-Tech/thea-books"
-                        target="_blank"
-                        rel="noopener"
-                        class="btn btn-outline"
-                    >
-                        View Source
-                        ↗
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
+        </article>
 
 
 
-        <!-- HOW IT WORKS -->
+        <!-- WORKFLOW -->
 
-        <div class="thea-how-it-works reveal">
+        <div class="workflow-section reveal">
 
-            <div class="section-heading small-heading">
+            <div class="workflow-heading">
 
                 <span>
                     HOW IT WORKS
                 </span>
 
                 <h3>
-                    From business activity
-                    <br>
-                    to organized information.
+                    From business setup to reporting
                 </h3>
 
             </div>
@@ -1396,24 +1033,12 @@
 
             <div class="workflow-grid">
 
-
                 <button
                     class="workflow-step active"
                     data-workflow="setup"
                 >
-
-                    <span>
-                        01
-                    </span>
-
-                    <strong>
-                        Company Setup
-                    </strong>
-
-                    <small>
-                        Business profile
-                    </small>
-
+                    <span>01</span>
+                    Company Setup
                 </button>
 
 
@@ -1421,19 +1046,8 @@
                     class="workflow-step"
                     data-workflow="customers"
                 >
-
-                    <span>
-                        02
-                    </span>
-
-                    <strong>
-                        Customers
-                    </strong>
-
-                    <small>
-                        Manage records
-                    </small>
-
+                    <span>02</span>
+                    Customers
                 </button>
 
 
@@ -1441,19 +1055,8 @@
                     class="workflow-step"
                     data-workflow="products"
                 >
-
-                    <span>
-                        03
-                    </span>
-
-                    <strong>
-                        Products
-                    </strong>
-
-                    <small>
-                        Track inventory
-                    </small>
-
+                    <span>03</span>
+                    Products
                 </button>
 
 
@@ -1461,19 +1064,8 @@
                     class="workflow-step"
                     data-workflow="sales"
                 >
-
-                    <span>
-                        04
-                    </span>
-
-                    <strong>
-                        Sales
-                    </strong>
-
-                    <small>
-                        Create invoices
-                    </small>
-
+                    <span>04</span>
+                    Sales
                 </button>
 
 
@@ -1481,19 +1073,8 @@
                     class="workflow-step"
                     data-workflow="purchases"
                 >
-
-                    <span>
-                        05
-                    </span>
-
-                    <strong>
-                        Purchases
-                    </strong>
-
-                    <small>
-                        Vendor purchases
-                    </small>
-
+                    <span>05</span>
+                    Purchases
                 </button>
 
 
@@ -1501,19 +1082,8 @@
                     class="workflow-step"
                     data-workflow="expenses"
                 >
-
-                    <span>
-                        06
-                    </span>
-
-                    <strong>
-                        Expenses
-                    </strong>
-
-                    <small>
-                        Record costs
-                    </small>
-
+                    <span>06</span>
+                    Expenses
                 </button>
 
 
@@ -1521,19 +1091,8 @@
                     class="workflow-step"
                     data-workflow="accounting"
                 >
-
-                    <span>
-                        07
-                    </span>
-
-                    <strong>
-                        Accounting
-                    </strong>
-
-                    <small>
-                        Financial records
-                    </small>
-
+                    <span>07</span>
+                    Accounting
                 </button>
 
 
@@ -1541,19 +1100,8 @@
                     class="workflow-step"
                     data-workflow="reports"
                 >
-
-                    <span>
-                        08
-                    </span>
-
-                    <strong>
-                        Reports
-                    </strong>
-
-                    <small>
-                        Business insights
-                    </small>
-
+                    <span>08</span>
+                    Reports
                 </button>
 
             </div>
@@ -1562,25 +1110,19 @@
             <div class="workflow-detail">
 
                 <div class="workflow-icon">
-                    ◈
+                    01
                 </div>
 
                 <div>
-
-                    <span>
-                        CURRENT WORKFLOW
-                    </span>
 
                     <h4 id="workflowTitle">
                         Company Setup
                     </h4>
 
                     <p id="workflowDescription">
-
-                        Start by defining the business profile,
-                        owner information, contact details and
-                        currency used by the system.
-
+                        Create a company profile and organize
+                        the basic business information required
+                        for the system.
                     </p>
 
                 </div>
@@ -1593,39 +1135,42 @@
 
         <!-- THE A TECH -->
 
-        <div class="the-tech-section reveal">
+        <article class="thea-tech-project reveal">
 
+            <div class="thea-tech-content">
 
-            <div class="the-tech-content">
-
-                <span class="section-label">
-                    THE A TECH
+                <span>
+                    TECHNOLOGY INITIATIVE
                 </span>
 
                 <h3>
-                    Building practical
-                    <span>
-                        business technology.
-                    </span>
+                    The A Tech
                 </h3>
 
                 <p>
-
                     The A Tech is a growing technology initiative
                     focused on practical business systems,
                     digital solutions, data and workflow
                     improvement.
-
                 </p>
 
                 <p>
-
                     THEA Books is one of its current projects,
-                    created as a practical example of turning
-                    business and accounting workflows into a
-                    digital management system.
-
+                    demonstrating how business and accounting
+                    workflows can be transformed into a digital
+                    management system.
                 </p>
+
+
+                <a
+                    href="https://the-a-tech.github.io/theatech/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-link"
+                >
+                    Explore The A Tech
+                    →
+                </a>
 
             </div>
 
@@ -1633,176 +1178,36 @@
 
             <div class="tech-visual">
 
-
-                <div class="tech-node center-node">
-
-                    <strong>
-                        THE A TECH
-                    </strong>
-
-                    <small>
-                        Business Technology
-                    </small>
-
+                <div class="tech-center">
+                    THE A TECH
                 </div>
+
+
+                <div class="tech-line line-one"></div>
+                <div class="tech-line line-two"></div>
+                <div class="tech-line line-three"></div>
+                <div class="tech-line line-four"></div>
 
 
                 <div class="tech-node node-one">
-
-                    <span>
-                        ◈
-                    </span>
-
                     Business Systems
-
                 </div>
-
 
                 <div class="tech-node node-two">
-
-                    <span>
-                        ◫
-                    </span>
-
                     Data & Reporting
-
                 </div>
-
 
                 <div class="tech-node node-three">
-
-                    <span>
-                        &lt;/&gt;
-                    </span>
-
                     Digital Solutions
-
                 </div>
-
 
                 <div class="tech-node node-four">
-
-                    <span>
-                        ↗
-                    </span>
-
                     Automation
-
-                </div>
-
-
-                <div class="tech-lines">
-
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-
                 </div>
 
             </div>
 
-        </div>
-
-
-
-        <!-- OTHER PROJECTS -->
-
-        <div class="other-projects">
-
-
-            <div class="project-card reveal">
-
-                <div class="project-number">
-                    02
-                </div>
-
-                <div>
-
-                    <span>
-                        BUSINESS REPORTING
-                    </span>
-
-                    <h3>
-                        Business Data & Reporting
-                    </h3>
-
-                    <p>
-
-                        Structured reporting concepts focused
-                        on turning business records into useful
-                        management information.
-
-                    </p>
-
-                    <div class="project-tags">
-
-                        <span>
-                            Excel
-                        </span>
-
-                        <span>
-                            Reporting
-                        </span>
-
-                        <span>
-                            Data
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="project-card reveal">
-
-                <div class="project-number">
-                    03
-                </div>
-
-                <div>
-
-                    <span>
-                        DIGITAL SOLUTIONS
-                    </span>
-
-                    <h3>
-                        The A Tech
-                    </h3>
-
-                    <p>
-
-                        A broader digital initiative exploring
-                        websites, business systems and practical
-                        technology solutions.
-
-                    </p>
-
-                    <div class="project-tags">
-
-                        <span>
-                            Web
-                        </span>
-
-                        <span>
-                            Business
-                        </span>
-
-                        <span>
-                            Technology
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-        </div>
+        </article>
 
     </div>
 
@@ -1810,28 +1215,26 @@
 
 
 
-<!-- =========================
+<!-- =========================================================
      EXPERIENCE
-========================= -->
+========================================================= -->
 
 <section
-    id="experience"
     class="section experience-section"
+    id="experience"
 >
 
     <div class="container">
 
-
-        <div class="section-heading reveal">
+        <div class="section-heading center reveal">
 
             <span>
                 EXPERIENCE
             </span>
 
             <h2>
-                Experience across
-                <br>
-                business operations.
+                Business experience
+                <strong>& continuous learning.</strong>
             </h2>
 
         </div>
@@ -1844,45 +1247,22 @@
 
                 <div class="timeline-dot"></div>
 
-                <div class="timeline-date">
-                    BUSINESS OPERATIONS
-                </div>
+                <div class="timeline-card">
 
-                <div class="timeline-content">
+                    <span>
+                        BUSINESS OPERATIONS
+                    </span>
 
                     <h3>
                         Cafe Management & Operations
                     </h3>
 
                     <p>
-
-                        Experience involving cash handling,
-                        daily reporting, staff coordination,
-                        inventory/storeroom management,
-                        customer handling and operational
-                        responsibilities.
-
+                        Cash handling, collections, daily
+                        reporting, staff coordination,
+                        inventory/storeroom management and
+                        customer complaint handling.
                     </p>
-
-                    <div class="timeline-tags">
-
-                        <span>
-                            Cash Handling
-                        </span>
-
-                        <span>
-                            Reporting
-                        </span>
-
-                        <span>
-                            Inventory
-                        </span>
-
-                        <span>
-                            Operations
-                        </span>
-
-                    </div>
 
                 </div>
 
@@ -1894,39 +1274,21 @@
 
                 <div class="timeline-dot"></div>
 
-                <div class="timeline-date">
-                    FINANCE & ADMIN
-                </div>
+                <div class="timeline-card">
 
-                <div class="timeline-content">
+                    <span>
+                        INTERNSHIP
+                    </span>
 
                     <h3>
                         Finance Research & Administration
                     </h3>
 
                     <p>
-
                         Exposure to finance research,
-                        administrative coordination and
-                        structured business documentation.
-
+                        administrative tasks, documentation
+                        and business support activities.
                     </p>
-
-                    <div class="timeline-tags">
-
-                        <span>
-                            Finance
-                        </span>
-
-                        <span>
-                            Administration
-                        </span>
-
-                        <span>
-                            Research
-                        </span>
-
-                    </div>
 
                 </div>
 
@@ -1938,49 +1300,25 @@
 
                 <div class="timeline-dot"></div>
 
-                <div class="timeline-date">
-                    CURRENT DEVELOPMENT
-                </div>
+                <div class="timeline-card">
 
-                <div class="timeline-content">
+                    <span>
+                        CURRENT DEVELOPMENT
+                    </span>
 
                     <h3>
                         Finance + Digital Systems
                     </h3>
 
                     <p>
-
-                        Currently developing practical knowledge
-                        in accounting workflows, Excel, data
-                        handling, business systems and
-                        programming foundations.
-
+                        Building practical projects such as
+                        THEA Books while developing skills in
+                        accounting, Excel, data and programming.
                     </p>
-
-                    <div class="timeline-tags">
-
-                        <span>
-                            Accounting
-                        </span>
-
-                        <span>
-                            Excel
-                        </span>
-
-                        <span>
-                            Data
-                        </span>
-
-                        <span>
-                            Digital Systems
-                        </span>
-
-                    </div>
 
                 </div>
 
             </div>
-
 
         </div>
 
@@ -1990,23 +1328,23 @@
 
 
 
-<!-- =========================
+<!-- =========================================================
      APPROACH
-========================= -->
+========================================================= -->
 
 <section class="section approach-section">
 
     <div class="container">
 
-
-        <div class="section-heading reveal">
+        <div class="section-heading center reveal">
 
             <span>
                 MY APPROACH
             </span>
 
             <h2>
-                Learn. Build. Improve.
+                Understand.
+                <strong>Build. Improve.</strong>
             </h2>
 
         </div>
@@ -2014,20 +1352,17 @@
 
         <div class="approach-grid">
 
-
             <div class="approach-card reveal">
 
-                <span>
-                    01
-                </span>
+                <span>01</span>
 
                 <h3>
                     Understand
                 </h3>
 
                 <p>
-                    Understand the business process before
-                    trying to digitize or improve it.
+                    Understand the business process,
+                    problem and required outcome.
                 </p>
 
             </div>
@@ -2035,17 +1370,15 @@
 
             <div class="approach-card reveal">
 
-                <span>
-                    02
-                </span>
+                <span>02</span>
 
                 <h3>
                     Build
                 </h3>
 
                 <p>
-                    Turn the workflow into a practical,
-                    organized and usable system.
+                    Turn the workflow into an organized
+                    practical digital solution.
                 </p>
 
             </div>
@@ -2053,21 +1386,18 @@
 
             <div class="approach-card reveal">
 
-                <span>
-                    03
-                </span>
+                <span>03</span>
 
                 <h3>
                     Improve
                 </h3>
 
                 <p>
-                    Continue learning and improve the system
-                    through better data, reporting and automation.
+                    Continuously learn, test and improve
+                    the system and workflow.
                 </p>
 
             </div>
-
 
         </div>
 
@@ -2077,54 +1407,51 @@
 
 
 
-<!-- =========================
+<!-- =========================================================
      CONTACT
-========================= -->
+========================================================= -->
 
 <section
-    id="contact"
     class="section contact-section"
+    id="contact"
 >
 
     <div class="container">
 
+        <div class="contact-grid">
 
-        <div class="contact-wrapper reveal">
 
-
-            <div class="contact-info">
+            <div class="contact-info reveal">
 
                 <span class="section-label">
-                    CONTACT
+                    GET IN TOUCH
                 </span>
 
                 <h2>
-                    Let's build something
-                    <span>
-                        useful.
-                    </span>
+                    Let's discuss
+                    <strong>an opportunity.</strong>
                 </h2>
 
                 <p>
-
-                    If you have an opportunity, project,
-                    business requirement or professional
-                    discussion, feel free to contact me.
-
+                    Open to opportunities related to Finance,
+                    Accounts, Business Operations, Data,
+                    Administration and Digital Systems.
                 </p>
 
 
-                <div class="contact-details">
+                <div class="contact-links">
 
+
+                    <!-- EMAIL -->
 
                     <a
                         href="mailto:abbasnazeer098@gmail.com"
-                        class="contact-item"
+                        class="contact-link"
                     >
 
-                        <span>
+                        <div class="contact-icon">
                             @
-                        </span>
+                        </div>
 
                         <div>
 
@@ -2141,16 +1468,19 @@
                     </a>
 
 
+
+                    <!-- WHATSAPP -->
+
                     <a
                         href="https://wa.me/923460911451"
                         target="_blank"
-                        rel="noopener"
-                        class="contact-item"
+                        rel="noopener noreferrer"
+                        class="contact-link"
                     >
 
-                        <span>
-                            ☎
-                        </span>
+                        <div class="contact-icon">
+                            W
+                        </div>
 
                         <div>
 
@@ -2167,16 +1497,19 @@
                     </a>
 
 
+
+                    <!-- LINKEDIN -->
+
                     <a
-                        href="https://lnkd.in/p/dtUs6BtD"
+                        href="https://www.linkedin.com/in/muhammad-abbas-ba386b330/"
                         target="_blank"
-                        rel="noopener"
-                        class="contact-item"
+                        rel="noopener noreferrer"
+                        class="contact-link"
                     >
 
-                        <span>
+                        <div class="contact-icon">
                             in
-                        </span>
+                        </div>
 
                         <div>
 
@@ -2192,7 +1525,6 @@
 
                     </a>
 
-
                 </div>
 
             </div>
@@ -2202,22 +1534,22 @@
             <!-- CONTACT FORM -->
 
             <form
+                class="contact-form reveal"
                 id="contactForm"
-                class="contact-form"
             >
 
                 <div class="form-row">
 
-
                     <div class="form-group">
 
-                        <label>
+                        <label for="name">
                             Your Name
                         </label>
 
                         <input
                             type="text"
-                            id="contactName"
+                            id="name"
+                            name="name"
                             placeholder="Enter your name"
                             required
                         >
@@ -2227,32 +1559,33 @@
 
                     <div class="form-group">
 
-                        <label>
+                        <label for="email">
                             Your Email
                         </label>
 
                         <input
                             type="email"
-                            id="contactEmail"
+                            id="email"
+                            name="email"
                             placeholder="Enter your email"
                             required
                         >
 
                     </div>
 
-
                 </div>
 
 
                 <div class="form-group">
 
-                    <label>
+                    <label for="subject">
                         Subject
                     </label>
 
                     <input
                         type="text"
-                        id="contactSubject"
+                        id="subject"
+                        name="subject"
                         placeholder="What would you like to discuss?"
                         required
                     >
@@ -2262,12 +1595,13 @@
 
                 <div class="form-group">
 
-                    <label>
+                    <label for="message">
                         Message
                     </label>
 
                     <textarea
-                        id="contactMessage"
+                        id="message"
+                        name="message"
                         rows="6"
                         placeholder="Write your message..."
                         required
@@ -2278,25 +1612,19 @@
 
                 <button
                     type="submit"
-                    class="btn btn-primary form-submit"
+                    class="btn btn-primary submit-button"
                 >
-
                     Send Message
-
-                    <span>
-                        →
-                    </span>
-
+                    <span>→</span>
                 </button>
 
 
-                <p
-                    id="formStatus"
+                <div
                     class="form-status"
-                ></p>
+                    id="formStatus"
+                ></div>
 
             </form>
-
 
         </div>
 
@@ -2304,19 +1632,17 @@
 
 </section>
 
-
 </main>
 
 
 
-<!-- =========================
+<!-- =========================================================
      FOOTER
-========================= -->
+========================================================= -->
 
 <footer class="footer">
 
     <div class="container footer-container">
-
 
         <div>
 
@@ -2325,7 +1651,7 @@
             </strong>
 
             <p>
-                Finance • Business Operations • Digital Systems
+                Finance • Accounts • Business Operations • Digital Systems
             </p>
 
         </div>
@@ -2348,15 +1674,10 @@
         </div>
 
 
-        <div class="footer-copy">
-
-            ©
-            <span id="footerYear"></span>
-
-            Muhammad Abbas
-
-        </div>
-
+        <p class="copyright">
+            © <span id="currentYear"></span>
+            Muhammad Abbas. All rights reserved.
+        </p>
 
     </div>
 
@@ -2364,11 +1685,7 @@
 
 
 
-<script
-    src="script.js"
-></script>
-
+<script src="script.js"></script>
 
 </body>
-
 </html>

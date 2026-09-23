@@ -1477,3 +1477,85 @@
     });
 
 })();
+
+/* =====================================================
+   DATA VISUALIZATION ANIMATIONS
+===================================================== */
+
+function animateBusinessVisuals() {
+
+    document
+        .querySelectorAll(".data-bar")
+        .forEach(function (bar) {
+
+            if (bar.classList.contains("is-visible")) {
+                return;
+            }
+
+            const height =
+                bar.getAttribute("data-height");
+
+            if (!height) return;
+
+            bar.style.height = height;
+
+            bar.classList.add("is-visible");
+
+        });
+
+
+    document
+        .querySelectorAll(".trend-bar")
+        .forEach(function (bar) {
+
+            if (bar.classList.contains("is-visible")) {
+                return;
+            }
+
+            const height =
+                bar.getAttribute("data-height");
+
+            if (!height) return;
+
+            bar.style.height = height;
+
+            bar.classList.add("is-visible");
+
+        });
+
+}
+
+
+const visualizationObserver =
+    new IntersectionObserver(
+
+        function (entries) {
+
+            entries.forEach(function (entry) {
+
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                animateBusinessVisuals();
+
+            });
+
+        },
+
+        {
+            threshold: 0.2
+        }
+
+    );
+
+
+document
+    .querySelectorAll(
+        ".data-visual-pro, .thea-chart-box"
+    )
+    .forEach(function (element) {
+
+        visualizationObserver.observe(element);
+
+    });
